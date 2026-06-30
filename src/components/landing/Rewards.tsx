@@ -202,12 +202,25 @@ function Calculator() {
             value={partnerCustomers}
             onChange={setPartnerCustomers}
           />
-          <CalcInput
-            label="Monthly plan price"
-            value={planPrice}
-            onChange={setPlanPrice}
-            prefix="$"
-          />
+          <div className="flex flex-col gap-1.5">
+            <span className="text-xs font-semibold text-muted-foreground">Monthly plan price</span>
+            <div className="flex gap-2">
+              {[20, 50, 100].map((price) => (
+                <button
+                  key={price}
+                  type="button"
+                  onClick={() => setPlanPrice(price)}
+                  className={`flex-1 rounded-xl border py-2.5 text-sm font-bold transition-all ${
+                    planPrice === price
+                      ? "gradient-purple border-transparent text-primary-foreground shadow-float"
+                      : "border-border bg-background text-foreground hover:border-primary/40 hover:shadow-sm"
+                  }`}
+                >
+                  ${price}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <ResultCard
