@@ -29,12 +29,12 @@ export function Navbar() {
       }`}
     >
       <div className="border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-[0_1px_20px_-12px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[72px]">
           <a href="#" aria-label="TradeIt home" className="flex items-center">
             <img
               src={tradeitLogo.url}
               alt="TradeIt"
-              className="h-6 w-auto sm:h-7"
+              className="h-8 w-auto md:h-10"
               width={1920}
               height={1080}
             />
