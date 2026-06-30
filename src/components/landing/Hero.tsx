@@ -131,8 +131,11 @@ const trustItems = [
   "Exporters",
   "Manufacturers",
   "Trading Companies",
+  "Sourcing Teams",
+  "Procurement Teams",
   "Consultants",
   "Global Sales Teams",
+  "Importers",
 ];
 
 export function Hero() {
@@ -187,11 +190,11 @@ export function Hero() {
         {/* trust strip */}
         <div className="mt-20 border-t border-border/70 pt-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Trusted by the people who power global trade
+            Trusted by professionals across global trade
           </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-foreground/70 sm:gap-x-12">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-sm font-semibold text-foreground/70 sm:gap-x-10">
             {trustItems.map((t, i) => (
-              <span key={t} className="flex items-center gap-8 sm:gap-12">
+              <span key={t} className="flex items-center gap-6 sm:gap-10">
                 {t}
                 {i < trustItems.length - 1 && (
                   <span className="hidden h-1 w-1 rounded-full bg-primary/40 sm:inline-block" />
