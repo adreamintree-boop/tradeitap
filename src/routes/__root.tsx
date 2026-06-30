@@ -77,22 +77,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "TradeIt Affiliate Partners — Earn Recurring Revenue" },
+      {
+        name: "description",
+        content:
+          "Join the TradeIt Affiliate Partner Program. Earn recurring commissions helping companies grow global sales with trade data and AI.",
+      },
+      { name: "author", content: "TradeIt" },
+      { property: "og:title", content: "TradeIt Affiliate Partners Program" },
+      {
+        property: "og:description",
+        content:
+          "Recommend TradeIt and earn recurring monthly commissions. 15% direct + 5% indirect Tier 2 partner rewards.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@TradeIt" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
       },
     ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
