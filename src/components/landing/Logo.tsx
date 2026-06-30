@@ -1,4 +1,5 @@
 import { Globe } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 
 export function Logo({
@@ -50,6 +51,12 @@ export function PartnerButton({
       "bg-background text-foreground border border-border shadow-sm hover:-translate-y-0.5 hover:bg-muted",
   };
   return (
-    <button className={cn(base, sizes[size], variants[variant], className)}>{children}</button>
+    <Link
+      to="/signup"
+      search={{ type: "partner" }}
+      className={cn(base, sizes[size], variants[variant], className)}
+    >
+      {children}
+    </Link>
   );
 }
