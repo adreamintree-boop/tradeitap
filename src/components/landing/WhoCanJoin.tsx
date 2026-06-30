@@ -59,9 +59,9 @@ export function WhoCanJoin() {
     <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* 3-column desktop grid: title top-left, 5 cards filling the rest */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Title block */}
-          <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-card lg:row-span-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Title block — top-left */}
+          <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-card sm:col-span-2 lg:col-span-1">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
                 Open to everyone
@@ -78,11 +78,11 @@ export function WhoCanJoin() {
             </div>
           </div>
 
-          {/* Row 1 cards */}
+          {/* Row 1 — cards 1 & 2 */}
           <PersonCard {...people[0]} />
           <PersonCard {...people[1]} />
 
-          {/* Row 2 cards */}
+          {/* Row 2 — cards 3, 4 & 5 */}
           <PersonCard {...people[2]} />
           <PersonCard {...people[3]} />
           <PersonCard {...people[4]} />
