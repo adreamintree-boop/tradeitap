@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { PartnerButton } from "./Logo";
 import heroImage from "@/assets/hero-affiliate.jpg";
+import { useState, useEffect } from "react";
 
 function IncomeGraphCard() {
   return (
@@ -47,11 +48,42 @@ function IncomeGraphCard() {
   );
 }
 
-const commissionPills = [
-  { v: "+$350", cls: "bg-mint text-mint-foreground", pos: "right-6 top-20 sm:-right-4" },
-  { v: "+$200", cls: "gradient-purple text-primary-foreground", pos: "left-4 top-1/2 sm:-left-7" },
-  { v: "+$120", cls: "bg-lavender text-lavender-foreground", pos: "left-6 bottom-40 sm:-left-4" },
-];
+function FloatingBadges() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    let to: ReturnType<typeof setTimeout>;
+    const loop = () => {
+      setShow(true);
+      to = setTimeout(() => {
+        setShow(false);
+        to = setTimeout(loop, 2500);
+      }, 3200);
+    };
+    loop();
+    return () => clearTimeout(to);
+  }, []);
+
+  const pills = [
+    { v: "+$350", cls: "bg-mint text-mint-foreground", pos: "right-6 top-20 sm:-right-4" },
+    { v: "+$200", cls: "gradient-purple text-primary-foreground", pos: "left-4 top-1/2 sm:-left-7" },
+    { v: "+$120", cls: "bg-lavender text-lavender-foreground", pos: "left-6 bottom-40 sm:-left-4" },
+  ];
+
+  return (
+    <>
+      {pills.map((p, i) => (
+        <span
+          key={p.v}
+          className={`absolute ${p.pos} inline-flex items-center rounded-full px-4 py-2 font-display text-base font-black shadow-float transition-all duration-500 ease-out ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"}`}
+          style={{ transitionDelay: show ? `${i * 180}ms` : "0ms" }}
+        >
+          {p.v}
+        </span>
+      ))}
+    </>
+  );
+}
 
 function HeroVisual() {
   return (
@@ -71,22 +103,15 @@ function HeroVisual() {
       </div>
 
       {/* floating commission pills */}
-      {commissionPills.map((p) => (
-        <span
-          key={p.v}
-          className={`absolute ${p.pos} inline-flex items-center gap-1 rounded-full px-3 py-1.5 font-display text-sm font-extrabold shadow-float ${p.cls}`}
-        >
-          {p.v}
-        </span>
-      ))}
+      <FloatingBadges />
 
       {/* monthly commission summary card */}
       <div className="absolute -left-4 top-6 hidden w-40 rounded-2xl border border-border bg-card p-3.5 shadow-float sm:block">
         <div className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-          Monthly Commission
+          Indirect Commission
         </div>
         <div className="mt-1 flex items-end gap-1.5">
-          <span className="font-display text-xl font-extrabold leading-none">$2,480</span>
+          <span className="font-display text-xl font-extrabold leading-none">$1,800</span>
           <span className="inline-flex items-center text-[11px] font-semibold text-primary">
             <TrendingUp className="h-3 w-3" />
             +23%
