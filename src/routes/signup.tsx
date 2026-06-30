@@ -165,7 +165,7 @@ function SignupPage() {
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       {/* Left visual / brand panel */}
-      <div className="relative hidden flex-col justify-center overflow-hidden px-12 py-16 text-white lg:flex gradient-navy">
+      <div className="relative hidden flex-col items-center justify-center overflow-hidden px-8 py-16 text-white lg:flex gradient-navy">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-60"
@@ -174,9 +174,15 @@ function SignupPage() {
               "radial-gradient(circle at 18% 18%, oklch(0.61 0.19 255 / 0.55), transparent 45%), radial-gradient(circle at 85% 70%, oklch(0.65 0.14 210 / 0.45), transparent 50%)",
           }}
         />
-        <div className="relative max-w-md">
+        <div className="relative w-full max-w-[560px]">
           <Link to="/" className="inline-flex">
-            <Logo variant="light" />
+            <div className="rounded-xl bg-white/95 px-5 py-2.5 shadow-lg transition hover:bg-white">
+              <img
+                src={tradeitLogoAsset.url}
+                alt="TradeIt"
+                className="h-7 w-auto object-contain"
+              />
+            </div>
           </Link>
 
           {isPartner ? (
