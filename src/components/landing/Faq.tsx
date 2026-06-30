@@ -84,7 +84,7 @@ export function Faq() {
                 {f.q}
               </AccordionTrigger>
               <AccordionContent className="whitespace-pre-wrap pb-5 text-base leading-relaxed text-muted-foreground">
-                {f.a}
+                <div className="w-full">{f.a}</div>
               </AccordionContent>
             </AccordionItem>
           ))}
