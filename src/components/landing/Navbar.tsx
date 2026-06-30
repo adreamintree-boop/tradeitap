@@ -29,12 +29,12 @@ export function Navbar() {
       }`}
     >
       <div className="border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-[0_1px_20px_-12px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[72px]">
+        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[88px]">
           <a href="#" aria-label="TradeIt home" className="flex items-center">
             <img
               src={tradeitLogo.url}
               alt="TradeIt"
-              className="h-8 w-auto md:h-10"
+              className="h-9 w-auto md:h-12"
               width={1920}
               height={1080}
             />
@@ -50,13 +50,7 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-3">
-            <a
-              href="#"
-              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:block"
-            >
-              Sign in
-            </a>
+          <div className="flex items-center">
             <PartnerButton size="md" />
           </div>
         </div>
