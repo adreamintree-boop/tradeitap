@@ -1,4 +1,5 @@
 import { Globe } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 
 export function Logo({
