@@ -1,6 +1,7 @@
-import { User, Users, ArrowRight, ArrowDown, CircleDollarSign, Network } from "lucide-react";
+import { useState } from "react";
+import { User, Users, UserPlus, ArrowRight, ArrowDown, CircleDollarSign, Network } from "lucide-react";
 
-function Node({
+function FlowNode({
   icon: Icon,
   label,
   sub,
@@ -19,16 +20,25 @@ function Node({
   } as const;
   return (
     <div
-      className={`flex items-center gap-3 rounded-2xl border px-4 py-3 shadow-sm ${styles[highlight ?? "muted"]}`}
+      className={`flex flex-1 flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center shadow-sm ${styles[highlight ?? "muted"]}`}
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-background/20">
-        <Icon className="h-4.5 w-4.5" />
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background/20">
+        <Icon className="h-5 w-5" />
       </span>
       <div className="leading-tight">
         <div className="text-sm font-bold">{label}</div>
-        {sub && <div className="text-xs opacity-80">{sub}</div>}
+        {sub && <div className="mt-0.5 text-xs opacity-80">{sub}</div>}
       </div>
     </div>
+  );
+}
+
+function FlowArrow() {
+  return (
+    <>
+      <ArrowRight className="mx-auto hidden h-5 w-5 shrink-0 self-center text-muted-foreground sm:block" />
+      <ArrowDown className="mx-auto h-5 w-5 shrink-0 text-muted-foreground sm:hidden" />
+    </>
   );
 }
 
@@ -42,96 +52,192 @@ function TierDiagram() {
 
       {/* Direct path */}
       <div className="rounded-2xl border border-border bg-muted/30 p-5">
-        <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-primary">
-          Direct commission
+        <div className="mb-1 flex items-center justify-between">
+          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+            Direct commission
+          </span>
+          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+            15%
+          </span>
         </div>
-        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-          <Node icon={User} label="You" highlight="navy" />
-          <ArrowRight className="mx-auto hidden h-5 w-5 shrink-0 text-muted-foreground sm:block" />
-          <ArrowDown className="mx-auto h-5 w-5 text-muted-foreground sm:hidden" />
-          <Node icon={Users} label="Direct Customers" />
-          <ArrowRight className="mx-auto hidden h-5 w-5 shrink-0 text-muted-foreground sm:block" />
-          <ArrowDown className="mx-auto h-5 w-5 text-muted-foreground sm:hidden" />
-          <Node icon={CircleDollarSign} label="15%" sub="Direct" highlight="purple" />
+        <p className="mb-4 text-sm text-muted-foreground">
+          Refer customers directly and earn 15% recurring commission.
+        </p>
+        <div className="flex flex-col items-stretch gap-2 sm:flex-row">
+          <FlowNode icon={User} label="You" sub="Refer customers" highlight="navy" />
+          <FlowArrow />
+          <FlowNode icon={Users} label="Direct Customers" sub="Subscribe to TradeIt" />
+          <FlowArrow />
+          <FlowNode icon={CircleDollarSign} label="15% Commission" sub="Recurring, monthly" highlight="purple" />
         </div>
       </div>
 
       {/* Indirect path */}
       <div className="mt-4 rounded-2xl border border-border bg-muted/30 p-5">
-        <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-primary">
-          Indirect commission
+        <div className="mb-1 flex items-center justify-between">
+          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+            Indirect commission
+          </span>
+          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+            5%
+          </span>
         </div>
-        <div className="flex flex-col items-stretch gap-2">
-          <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-            <Node icon={User} label="You" highlight="navy" />
-            <ArrowRight className="mx-auto hidden h-5 w-5 shrink-0 text-muted-foreground sm:block" />
-            <ArrowDown className="mx-auto h-5 w-5 text-muted-foreground sm:hidden" />
-            <Node icon={User} label="Invited Partner" highlight="mint" />
-          </div>
-          <ArrowDown className="mx-auto h-5 w-5 text-muted-foreground" />
-          <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-            <Node icon={Users} label="Partner's Customers" />
-            <ArrowRight className="mx-auto hidden h-5 w-5 shrink-0 text-muted-foreground sm:block" />
-            <ArrowDown className="mx-auto h-5 w-5 text-muted-foreground sm:hidden" />
-            <Node icon={CircleDollarSign} label="5%" sub="Indirect" highlight="purple" />
-          </div>
+        <p className="mb-4 text-sm text-muted-foreground">
+          Invite partners. When they bring paying customers, you earn 5% recurring indirect
+          commission.
+        </p>
+        <div className="flex flex-col items-stretch gap-2 sm:flex-row">
+          <FlowNode icon={User} label="You" sub="Invite a partner" highlight="navy" />
+          <FlowArrow />
+          <FlowNode icon={UserPlus} label="Invited Partner" sub="Refers customers" highlight="mint" />
+          <FlowArrow />
+          <FlowNode icon={Users} label="Partner's Customers" sub="Subscribe to TradeIt" />
+          <FlowArrow />
+          <FlowNode icon={CircleDollarSign} label="5% Commission" sub="Recurring, monthly" highlight="purple" />
         </div>
       </div>
     </div>
   );
 }
 
+const DIRECT_RATE = 0.15;
+const INDIRECT_RATE = 0.05;
+
+function formatMoney(value: number) {
+  return `$${Math.round(value).toLocaleString("en-US")}`;
+}
+
+function CalcInput({
+  label,
+  value,
+  onChange,
+  prefix,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  prefix?: string;
+}) {
+  return (
+    <label className="flex flex-col gap-1.5">
+      <span className="text-xs font-semibold text-muted-foreground">{label}</span>
+      <div className="flex items-center rounded-xl border border-border bg-background px-3 focus-within:ring-2 focus-within:ring-ring">
+        {prefix && <span className="text-sm font-semibold text-muted-foreground">{prefix}</span>}
+        <input
+          type="number"
+          min={0}
+          value={value}
+          onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
+          className="w-full bg-transparent py-2.5 text-sm font-bold text-foreground outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        />
+      </div>
+    </label>
+  );
+}
+
+function ResultCard({
+  tier,
+  rate,
+  formula,
+  monthly,
+  annual,
+}: {
+  tier: string;
+  rate: string;
+  formula: string;
+  monthly: number;
+  annual: number;
+}) {
+  return (
+    <div className="rounded-2xl border border-border p-4">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
+        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+          {rate} recurring
+        </span>
+      </div>
+      <p className="mt-1 text-sm text-muted-foreground">{formula}</p>
+      <div className="mt-3 flex items-baseline justify-between">
+        <span className="font-display text-2xl font-extrabold">
+          {formatMoney(monthly)}
+          <span className="text-base font-semibold text-muted-foreground">/mo</span>
+        </span>
+        <span className="text-sm text-muted-foreground">{formatMoney(annual)}/yr</span>
+      </div>
+    </div>
+  );
+}
+
 function Calculator() {
+  const [directCustomers, setDirectCustomers] = useState(10);
+  const [partnerCustomers, setPartnerCustomers] = useState(30);
+  const [planPrice, setPlanPrice] = useState(50);
+
+  const directMonthly = directCustomers * planPrice * DIRECT_RATE;
+  const directAnnual = directMonthly * 12;
+  const indirectMonthly = partnerCustomers * planPrice * INDIRECT_RATE;
+  const indirectAnnual = indirectMonthly * 12;
+  const totalMonthly = directMonthly + indirectMonthly;
+  const totalAnnual = directAnnual + indirectAnnual;
+
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
       <div className="border-b border-border bg-muted/40 px-6 py-5">
-        <h3 className="font-display text-lg font-bold">Earnings example</h3>
+        <h3 className="font-display text-lg font-bold">Earnings calculator</h3>
         <p className="mt-1 text-sm text-muted-foreground">
-          A simple scenario on a $50/month plan.
+          Adjust the numbers to estimate your recurring earnings.
         </p>
       </div>
 
       <div className="space-y-4 p-6">
-        <div className="rounded-2xl border border-border p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Direct
-            </span>
-            <span className="text-xs text-muted-foreground">15% recurring</span>
-          </div>
-          <p className="mt-1 text-sm text-muted-foreground">
-            10 customers subscribe to a $50/month plan
-          </p>
-          <div className="mt-3 flex items-baseline justify-between">
-            <span className="font-display text-2xl font-extrabold">$75</span>
-            <span className="text-sm text-muted-foreground">/mo · $900/yr</span>
-          </div>
+        {/* Inputs */}
+        <div className="grid gap-3 rounded-2xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
+          <CalcInput
+            label="Direct customers"
+            value={directCustomers}
+            onChange={setDirectCustomers}
+          />
+          <CalcInput
+            label="Partner's customers"
+            value={partnerCustomers}
+            onChange={setPartnerCustomers}
+          />
+          <CalcInput
+            label="Monthly plan price"
+            value={planPrice}
+            onChange={setPlanPrice}
+            prefix="$"
+          />
         </div>
 
-        <div className="rounded-2xl border border-border p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Indirect
-            </span>
-            <span className="text-xs text-muted-foreground">5% recurring</span>
-          </div>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Your invited partner brings 30 customers on a $50/month plan
-          </p>
-          <div className="mt-3 flex items-baseline justify-between">
-            <span className="font-display text-2xl font-extrabold">$75</span>
-            <span className="text-sm text-muted-foreground">/mo · $900/yr</span>
-          </div>
-        </div>
+        <ResultCard
+          tier="Direct"
+          rate="15%"
+          formula={`${directCustomers} customers × $${planPrice} × 15%`}
+          monthly={directMonthly}
+          annual={directAnnual}
+        />
+
+        <ResultCard
+          tier="Indirect"
+          rate="5%"
+          formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
+          monthly={indirectMonthly}
+          annual={indirectAnnual}
+        />
 
         <div className="rounded-2xl gradient-purple p-5 text-primary-foreground shadow-float">
           <div className="text-xs font-semibold uppercase tracking-wide opacity-90">
             Total recurring earnings
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
-            <span className="font-display text-4xl font-extrabold leading-none">$150</span>
-            <span className="text-sm font-medium opacity-90">/ month</span>
-            <span className="ml-auto font-display text-2xl font-bold">$1,800/yr</span>
+            <span className="font-display text-4xl font-extrabold leading-none">
+              {formatMoney(totalMonthly)}
+              <span className="text-xl font-bold opacity-90">/mo</span>
+            </span>
+            <span className="ml-auto font-display text-2xl font-bold">
+              {formatMoney(totalAnnual)}/yr
+            </span>
           </div>
         </div>
 
