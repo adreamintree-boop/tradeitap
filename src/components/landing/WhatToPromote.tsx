@@ -74,7 +74,7 @@ export function WhatToPromote() {
         </p>
       </div>
 
-      <div className="mt-14 grid items-center gap-10 lg:grid-cols-[42%_1fr] lg:gap-16">
+      <div className="mt-16 grid items-center gap-10 lg:grid-cols-[38%_1fr] lg:gap-20">
         <div className="grid gap-4">
           {features.map((f) => {
             const isActive = active === f.key;
@@ -110,8 +110,8 @@ export function WhatToPromote() {
           })}
         </div>
         <div>
-          <div className="overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-elevated">
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-muted/30">
+          <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-elevated">
+            <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-muted/30">
               {features.map((f) => {
                 const isActive = active === f.key;
                 return (
