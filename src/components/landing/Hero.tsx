@@ -133,8 +133,6 @@ const trustItems = [
   "Trading Companies",
   "Sourcing Teams",
   "Procurement Teams",
-  "Consultants",
-  "Global Sales Teams",
   "Importers",
 ];
 
