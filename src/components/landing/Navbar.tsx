@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PartnerButton } from "./Logo";
-import tradeitLogo from "@/assets/tradeit-logo.png.asset.json";
+import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 
 const navLinks = [
   { label: "Why Join", href: "#why-join" },
@@ -29,14 +29,12 @@ export function Navbar() {
       }`}
     >
       <div className="border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-[0_1px_20px_-12px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[88px]">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[68px]">
           <a href="#" aria-label="TradeIt home" className="flex items-center">
             <img
               src={tradeitLogo.url}
               alt="TradeIt"
-              className="h-9 w-auto md:h-12"
-              width={1920}
-              height={1080}
+              className="h-7 w-auto object-contain md:h-8"
             />
           </a>
           <nav className="hidden items-center gap-8 lg:flex">
