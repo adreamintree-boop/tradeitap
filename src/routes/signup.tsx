@@ -44,7 +44,7 @@ const partnerPoints = [
 
 function PartnerVisual() {
   return (
-    <div className="relative mt-12 w-full max-w-md">
+    <div className="relative mt-10 w-full">
       {/* Monthly Commission — primary card */}
       <div className="rounded-3xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-md">
         <div className="flex items-start justify-between">
@@ -76,43 +76,21 @@ function PartnerVisual() {
         </div>
       </div>
 
-      {/* Direct / Indirect indicators */}
-      <div className="mt-4 grid grid-cols-2 gap-4">
+      {/* Direct / Indirect / Referral signups */}
+      <div className="mt-4 grid grid-cols-3 gap-3">
         <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-          <p className="text-xs font-medium text-white/70">Direct Commission</p>
-          <p className="font-display text-2xl font-bold text-white">15%</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Direct</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">15%</p>
         </div>
         <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-          <p className="text-xs font-medium text-white/70">Indirect Commission</p>
-          <p className="font-display text-2xl font-bold text-white">5%</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Indirect</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">5%</p>
         </div>
-      </div>
-
-      {/* Referral signups + partner link */}
-      <div className="absolute -right-6 top-2 hidden w-44 rounded-2xl border border-white/15 bg-white p-4 shadow-xl lg:block">
-        <div className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary/10 text-primary">
-            <Users className="h-4 w-4" />
-          </span>
-          <p className="text-xs font-medium text-muted-foreground">Referral Signups</p>
+        <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Signups</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">42</p>
+          <p className="text-[10px] text-white/60">This month</p>
         </div>
-        <p className="mt-2 font-display text-2xl font-bold text-foreground">42</p>
-        <p className="text-xs text-muted-foreground">This month</p>
-      </div>
-
-      <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/15 bg-white p-4 shadow-xl">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-          <Link2 className="h-4 w-4" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-xs font-medium text-muted-foreground">Partner Link</p>
-          <p className="truncate font-mono text-sm font-semibold text-foreground">
-            tradeit.global/ref/partner
-          </p>
-        </div>
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground">
-          <Copy className="h-4 w-4" />
-        </span>
       </div>
     </div>
   );
