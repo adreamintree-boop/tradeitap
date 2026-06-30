@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "How much commission can I earn?",
-    a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program. As your customer base and partner network continue to grow, so does your recurring earning potential.",
+    a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program.\u00a0\n\n\nAs your customer base and partner network continue to grow, so does your recurring earning potential.",
   },
   {
     q: "When do I get paid?",
@@ -83,7 +83,7 @@ export function Faq() {
               <AccordionTrigger className="py-5 text-left font-display text-base font-semibold hover:no-underline sm:text-lg">
                 {f.q}
               </AccordionTrigger>
-              <AccordionContent className="pb-5 text-base leading-relaxed text-muted-foreground">
+              <AccordionContent className="whitespace-pre-wrap pb-5 text-base leading-relaxed text-muted-foreground">
                 {f.a}
               </AccordionContent>
             </AccordionItem>
