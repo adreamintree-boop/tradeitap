@@ -75,7 +75,7 @@ export function WhatToPromote() {
       </div>
 
       <div className="mt-16 grid items-start gap-8 lg:grid-cols-[35%_1fr] lg:gap-16">
-        <div className="grid gap-3">
+        <div className="grid gap-3 lg:mt-14">
           {features.map((f) => {
             const isActive = active === f.key;
             return (
