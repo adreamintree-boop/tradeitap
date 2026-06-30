@@ -34,7 +34,7 @@ export function Navbar() {
             <img
               src={tradeitLogo.url}
               alt="TradeIt"
-              className="h-7 w-auto object-contain md:h-8"
+              className="h-3.5 w-auto object-contain md:h-4"
             />
           </a>
           <nav className="hidden items-center gap-8 lg:flex">
