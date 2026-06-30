@@ -54,8 +54,9 @@ export function CtaSection() {
             Start Monetizing Your Global Network
           </h2>
           <p className="mt-5 text-lg text-foreground/70">
-            Join the TradeIt Partner Program and turn your business connections into recurring monthly
-            revenue.
+            Join the TradeIt Partner Program and turn your business connections{"\u00a0"}
+            <br />
+            into recurring monthly revenue.
           </p>
           <div className="mt-8 flex justify-center">
             <PartnerButton variant="navy" />
