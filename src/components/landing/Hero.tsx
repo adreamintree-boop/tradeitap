@@ -48,8 +48,8 @@ function IncomeGraphCard() {
 }
 
 const commissionPills = [
-  { v: "+$200", cls: "gradient-purple text-primary-foreground", pos: "left-2 top-10 sm:-left-5" },
-  { v: "+$350", cls: "bg-mint text-mint-foreground", pos: "right-6 top-24 sm:right-2" },
+  { v: "+$350", cls: "bg-mint text-mint-foreground", pos: "right-6 top-20 sm:-right-4" },
+  { v: "+$200", cls: "gradient-purple text-primary-foreground", pos: "right-10 top-44 sm:right-2" },
   { v: "+$120", cls: "bg-lavender text-lavender-foreground", pos: "left-4 bottom-44 sm:-left-6" },
 ];
 
