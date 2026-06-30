@@ -204,3 +204,12 @@
 @utility text-balance {
   text-wrap: balance;
 }
+@utility bg-badge-mint {
+  background-color: var(--badge-mint);
+}
+@utility bg-badge-lavender {
+  background-color: var(--badge-lavender);
+}
+@utility shadow-badge {
+  box-shadow: var(--badge-shadow);
+}
