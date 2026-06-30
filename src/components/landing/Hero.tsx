@@ -131,8 +131,11 @@ const trustItems = [
   "Exporters",
   "Manufacturers",
   "Trading Companies",
+  "Sourcing Teams",
+  "Procurement Teams",
   "Consultants",
   "Global Sales Teams",
+  "Importers",
 ];
 
 export function Hero() {
