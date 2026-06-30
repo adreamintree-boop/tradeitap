@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "How much commission can I earn?",
-    a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program. As your customer base and partner network continue to grow, so does your recurring earning potential.",
+    a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program.\u00a0\n\n\nAs your customer base and partner network continue to grow, so does your recurring earning potential.",
   },
   {
     q: "When do I get paid?",
