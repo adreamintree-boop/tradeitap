@@ -1,29 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { WhyJoin } from "@/components/landing/WhyJoin";
+import { WhoCanJoin } from "@/components/landing/WhoCanJoin";
+import { WhatToPromote } from "@/components/landing/WhatToPromote";
+import { Rewards } from "@/components/landing/Rewards";
+import { SuccessStories } from "@/components/landing/SuccessStories";
+import { TrustStats } from "@/components/landing/TrustStats";
+import { CtaSection } from "@/components/landing/CtaSection";
+import { Faq } from "@/components/landing/Faq";
+import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "TradeIt Affiliate Partners — Earn Recurring Revenue" },
+      {
+        name: "description",
+        content:
+          "Join the TradeIt Affiliate Partner Program. Earn 15% direct + 5% indirect recurring commissions helping companies grow global sales with trade data and AI.",
+      },
+      { property: "og:title", content: "TradeIt Affiliate Partners Program" },
+      {
+        property: "og:description",
+        content:
+          "Recommend TradeIt and earn recurring monthly commissions. Free to join, Tier 2 partner rewards.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <WhyJoin />
+        <WhoCanJoin />
+        <WhatToPromote />
+        <Rewards />
+        <SuccessStories />
+        <TrustStats />
+        <CtaSection />
+        <Faq />
+      </main>
+      <Footer />
     </div>
   );
 }
