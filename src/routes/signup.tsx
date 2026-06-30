@@ -180,7 +180,7 @@ function SignupPage() {
               <img
                 src={tradeitLogoAsset.url}
                 alt="TradeIt"
-                className="h-7 w-auto object-contain"
+                className="h-8 w-auto object-contain"
               />
             </div>
           </Link>
