@@ -7,11 +7,10 @@ import {
   EyeOff,
   TrendingUp,
   Users,
-  Link2,
   Wallet,
-  Copy,
 } from "lucide-react";
 import { Logo } from "@/components/landing/Logo";
+import tradeitLogoAsset from "@/assets/tradeit-logo.png.asset.json";
 
 type SignupSearch = {
   type?: string;
