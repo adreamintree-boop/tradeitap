@@ -109,9 +109,9 @@ export function WhatToPromote() {
             );
           })}
         </div>
-        <div className="lg:pl-2">
-          <div className="overflow-hidden rounded-3xl border border-border bg-card p-2 shadow-elevated sm:p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted/30">
+        <div>
+          <div className="overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-elevated">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-muted/30">
               {features.map((f) => {
                 const isActive = active === f.key;
                 return (
