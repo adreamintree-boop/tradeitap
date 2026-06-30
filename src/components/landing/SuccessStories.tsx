@@ -1,53 +1,121 @@
 import { Star } from "lucide-react";
 
-const testimonials = [
+type Testimonial = {
+  type: "User" | "Partner";
+  quote: string;
+  role: string;
+  context: string;
+};
+
+const testimonials: Testimonial[] = [
   {
     type: "User",
+    role: "Export Manager",
+    context: "Food Manufacturer",
     quote:
       "Finding verified buyers used to take days. With TradeIt, we can identify qualified prospects in minutes.",
-    name: "Export Manager",
-    role: "Food Manufacturer",
-  },
-  {
-    type: "Partner",
-    quote:
-      "TradeIt is easy to recommend because clients immediately understand the value. That makes recurring commissions much easier to build.",
-    name: "Business Consultant",
-    role: "Independent Advisor",
   },
   {
     type: "User",
+    role: "International Sales Manager",
+    context: "Industrial Equipment",
     quote:
       "Buyer Enrichment helped us reach the right decision-makers instead of generic company emails.",
-    name: "International Sales",
-    role: "Industrial Equipment",
   },
   {
     type: "Partner",
+    role: "Business Consultant",
+    context: "Independent Advisor",
+    quote: "TradeIt is easy to recommend because clients immediately understand the value.",
+  },
+  {
+    type: "Partner",
+    role: "Content Creator",
+    context: "B2B Growth Channel",
     quote:
       "My audience is always looking for practical global sales tools. TradeIt has become one of the products I recommend most.",
-    name: "Content Creator",
-    role: "B2B Growth Channel",
+  },
+  {
+    type: "User",
+    role: "Sourcing Lead",
+    context: "Consumer Goods",
+    quote:
+      "TradeIt helps us understand who is buying, who is supplying, and where new opportunities are emerging.",
+  },
+  {
+    type: "User",
+    role: "Overseas Sales Team",
+    context: "Manufacturing",
+    quote:
+      "We can manage buyer discovery, contact enrichment, and outreach in one workflow instead of switching between tools.",
+  },
+  {
+    type: "Partner",
+    role: "Affiliate Marketer",
+    context: "SaaS Partnership",
+    quote:
+      "The recurring commission structure makes TradeIt much more attractive than one-time referral programs.",
+  },
+  {
+    type: "Partner",
+    role: "Trade Association Manager",
+    context: "Member Benefits",
+    quote:
+      "TradeIt gives our members a practical way to explore global markets with real trade data.",
+  },
+  {
+    type: "User",
+    role: "Procurement Manager",
+    context: "Import Business",
+    quote:
+      "TradeIt gives us visibility into global suppliers and trade relationships that are difficult to find elsewhere.",
+  },
+  {
+    type: "Partner",
+    role: "Community Operator",
+    context: "Global Business Community",
+    quote:
+      "It is a strong fit for communities focused on export, sourcing, and international sales.",
   },
 ];
 
-function Avatar({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("");
+function TestimonialCard({ t }: { t: Testimonial }) {
+  const isPartner = t.type === "Partner";
   return (
-    <span className="grid h-11 w-11 place-items-center rounded-full bg-accent text-sm font-bold text-accent-foreground">
-      {initials}
-    </span>
+    <article className="flex w-[330px] shrink-0 flex-col rounded-3xl border border-border bg-card p-7 shadow-card sm:w-[380px]">
+      <div className="flex items-center justify-between gap-3">
+        <span
+          className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+            isPartner
+              ? "bg-lavender text-lavender-foreground"
+              : "bg-accent text-accent-foreground"
+          }`}
+        >
+          {isPartner ? "Recommended by Partners" : "Loved by Users"}
+        </span>
+        <div className="flex gap-0.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} className="h-4 w-4 fill-chart-4 text-chart-4" />
+          ))}
+        </div>
+      </div>
+      <p className="mt-5 flex-1 text-base font-medium leading-relaxed text-foreground">
+        “{t.quote}”
+      </p>
+      <div className="mt-6 border-t border-border pt-5">
+        <div className="text-sm font-bold text-foreground">{t.role}</div>
+        <div className="text-xs text-muted-foreground">{t.context}</div>
+      </div>
+    </article>
   );
 }
 
 export function SuccessStories() {
+  const loop = [...testimonials, ...testimonials];
+
   return (
-    <section id="stories" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-8">
-      <div className="mx-auto max-w-2xl text-center">
+    <section id="stories" className="scroll-mt-20 py-24">
+      <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           Trusted on both sides
         </span>
@@ -60,43 +128,19 @@ export function SuccessStories() {
         </p>
       </div>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2">
-        {testimonials.map((t) => {
-          const isPartner = t.type === "Partner";
-          return (
-            <article
-              key={t.quote}
-              className="flex flex-col rounded-3xl border border-border bg-card p-7 shadow-card"
-            >
-              <div className="flex items-center justify-between">
-                <span
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
-                    isPartner
-                      ? "bg-lavender text-lavender-foreground"
-                      : "bg-mint text-mint-foreground"
-                  }`}
-                >
-                  {isPartner ? "Recommended by Partners" : "Loved by Users"}
-                </span>
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-chart-4 text-chart-4" />
-                  ))}
-                </div>
-              </div>
-              <p className="mt-5 flex-1 text-lg font-medium leading-relaxed text-foreground">
-                “{t.quote}”
-              </p>
-              <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                <Avatar name={t.name} />
-                <div>
-                  <div className="text-sm font-bold">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.role}</div>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+      <div className="group relative mt-14 overflow-hidden">
+        {/* edge fade masks */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent sm:w-32" />
+
+        <div
+          className="flex w-max animate-marquee gap-6 px-3 group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+          style={{ ["--marquee-duration" as string]: "55s" }}
+        >
+          {loop.map((t, i) => (
+            <TestimonialCard key={`${t.role}-${i}`} t={t} />
+          ))}
+        </div>
       </div>
     </section>
   );
