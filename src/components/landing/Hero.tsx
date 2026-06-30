@@ -151,7 +151,7 @@ export function Hero() {
             </span>
             <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem]">
               Earn Recurring Revenue by Helping Companies Grow Their{" "}
-              <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.2_278)] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.18_250)] bg-clip-text text-transparent">
                 Global Sales
               </span>
             </h1>
