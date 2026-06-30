@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Join the TradeIt Affiliate Partner Program. Earn recurring commissions helping companies grow global sales with trade data and AI.",
       },
       { name: "author", content: "TradeIt" },
-      { property: "og:title", content: "TradeIt Affiliate Partners Program" },
+      { property: "og:title", content: "TradeIt Affiliate Partners — Earn Recurring Revenue" },
       {
         property: "og:description",
         content:
@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@TradeIt" },
+      { name: "twitter:title", content: "TradeIt Affiliate Partners — Earn Recurring Revenue" },
+      { name: "description", content: "Partner Growth Hub is a SaaS landing page designed to recruit affiliates for TradeIt's global trade data and AI-powered sales platform." },
+      { property: "og:description", content: "Partner Growth Hub is a SaaS landing page designed to recruit affiliates for TradeIt's global trade data and AI-powered sales platform." },
+      { name: "twitter:description", content: "Partner Growth Hub is a SaaS landing page designed to recruit affiliates for TradeIt's global trade data and AI-powered sales platform." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ca4d7470-dc3f-4cbf-be9d-28d6969bcd94/id-preview-e13feb57--979f9354-1264-44b5-98cf-67632936a535.lovable.app-1782799638887.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ca4d7470-dc3f-4cbf-be9d-28d6969bcd94/id-preview-e13feb57--979f9354-1264-44b5-98cf-67632936a535.lovable.app-1782799638887.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
