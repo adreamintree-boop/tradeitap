@@ -1,33 +1,33 @@
-import consultant from "@/assets/who-consultant.jpg";
-import creator from "@/assets/who-creator.jpg";
-import association from "@/assets/who-association.jpg";
-import social from "@/assets/who-social.jpg";
-import marketer from "@/assets/who-marketer.jpg";
+import consultant from "@/assets/who-consultant-realistic.png.asset.json";
+import creator from "@/assets/who-creator-realistic.png.asset.json";
+import association from "@/assets/who-association-realistic.png.asset.json";
+import social from "@/assets/who-social-realistic.png.asset.json";
+import marketer from "@/assets/who-marketer-realistic.png.asset.json";
 import { PartnerButton } from "./Logo";
 
 const people = [
   {
-    img: consultant,
+    img: consultant.url,
     title: "Business Consultants",
     body: "Recommend TradeIt to the companies you advise and already trust.",
   },
   {
-    img: creator,
+    img: creator.url,
     title: "Content Creators",
     body: "Share tools your audience loves and earn recurring commissions.",
   },
   {
-    img: association,
+    img: association.url,
     title: "Trade Associations",
     body: "Deliver exclusive value to your members with a trusted global sales platform.",
   },
   {
-    img: social,
+    img: social.url,
     title: "Social Media & Communities",
     body: "Guide your community with insights that drive real business growth.",
   },
   {
-    img: marketer,
+    img: marketer.url,
     title: "Affiliate Marketers",
     body: "Promote a high-value SaaS and build a predictable income stream.",
   },
