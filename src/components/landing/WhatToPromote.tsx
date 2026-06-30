@@ -60,7 +60,7 @@ export function WhatToPromote() {
   const [active, setActive] = useState<FeatureKey>("search");
 
   return (
-    <section className="mx-auto max-w-[90rem] px-5 py-24 sm:px-8">
+    <section className="mx-auto max-w-[110rem] px-4 py-24 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           What you promote
@@ -74,8 +74,8 @@ export function WhatToPromote() {
         </p>
       </div>
 
-      <div className="mt-16 grid items-center gap-10 lg:grid-cols-[38%_1fr] lg:gap-20">
-        <div className="grid gap-4">
+      <div className="mt-16 grid items-start gap-8 lg:grid-cols-[35%_1fr] lg:gap-16">
+        <div className="grid gap-3">
           {features.map((f) => {
             const isActive = active === f.key;
             return (
@@ -86,14 +86,14 @@ export function WhatToPromote() {
                 onFocus={() => setActive(f.key)}
                 onClick={() => setActive(f.key)}
                 aria-pressed={isActive}
-                className={`flex items-start gap-4 rounded-2xl border p-5 text-left transition-all duration-300 ${
+                className={`flex items-start gap-4 rounded-2xl border p-4 text-left transition-all duration-300 ${
                   isActive
                     ? "border-primary/60 bg-accent/60 shadow-float ring-1 ring-primary/20"
                     : "border-border bg-card shadow-sm hover:border-primary/40"
                 }`}
               >
                 <span
-                  className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors duration-300 ${
+                  className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors duration-300 ${
                     isActive
                       ? "bg-primary text-primary-foreground"
                       : "bg-accent text-primary"
@@ -109,9 +109,9 @@ export function WhatToPromote() {
             );
           })}
         </div>
-        <div>
-          <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-elevated">
-            <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-muted/30">
+        <div className="lg:sticky lg:top-24">
+          <div className="overflow-hidden rounded-3xl border border-border/60 bg-white shadow-elevated">
+            <div className="relative aspect-video w-full overflow-hidden rounded-3xl">
               {features.map((f) => {
                 const isActive = active === f.key;
                 return (
@@ -119,7 +119,7 @@ export function WhatToPromote() {
                     key={f.key}
                     src={previews[f.key].src}
                     alt={previews[f.key].alt}
-                    loading="lazy"
+                    loading="eager"
                     className={`absolute inset-0 h-full w-full object-contain transition-all duration-300 ease-out ${
                       isActive ? "scale-100 opacity-100" : "pointer-events-none scale-[0.97] opacity-0"
                     }`}
