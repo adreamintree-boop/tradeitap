@@ -54,7 +54,7 @@ export function TrustStats() {
             <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary">
               <s.icon className="h-6 w-6" />
             </span>
-            <div className="mt-6 font-display text-5xl font-extrabold tracking-tight bg-gradient-to-br from-primary to-[oklch(0.45_0.18_278)] bg-clip-text text-transparent">
+            <div className="mt-6 font-display text-5xl font-extrabold tracking-tight bg-gradient-to-br from-primary to-[oklch(0.45_0.17_250)] bg-clip-text text-transparent">
               {s.value}
             </div>
             <div className="mt-2 font-display text-lg font-bold">{s.label}</div>
