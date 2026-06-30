@@ -65,9 +65,9 @@ function FloatingBadges() {
   }, []);
 
   const pills = [
-    { v: "+$350", cls: "bg-mint text-mint-foreground", pos: "right-6 top-20 sm:-right-4" },
-    { v: "+$200", cls: "gradient-purple text-primary-foreground", pos: "left-4 top-1/2 sm:-left-7" },
-    { v: "+$120", cls: "bg-lavender text-lavender-foreground", pos: "left-6 bottom-40 sm:-left-4" },
+    { v: "+$350", cls: "bg-badge-mint text-navy", pos: "right-6 top-20 sm:-right-4" },
+    { v: "+$200", cls: "bg-primary text-primary-foreground", pos: "left-4 top-1/2 sm:-left-7" },
+    { v: "+$120", cls: "bg-badge-lavender text-navy", pos: "left-6 bottom-40 sm:-left-4" },
   ];
 
   return (
