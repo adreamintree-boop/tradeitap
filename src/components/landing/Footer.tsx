@@ -10,7 +10,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-7 sm:px-10 md:flex-row md:justify-between md:gap-4">
+      <div className="mx-auto flex max-w-7xl min-h-[140px] flex-col items-center gap-5 px-6 py-12 sm:px-10 md:flex-row md:justify-between md:gap-4">
         <div className="flex items-center gap-4">
           <img src={tradeitLogo.url} alt="TradeIt" className="h-6 w-auto" />
           <p className="text-sm text-muted-foreground">
