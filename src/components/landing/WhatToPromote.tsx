@@ -60,7 +60,7 @@ export function WhatToPromote() {
   const [active, setActive] = useState<FeatureKey>("search");
 
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+    <section className="mx-auto max-w-[90rem] px-5 py-24 sm:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           What you promote
@@ -74,7 +74,7 @@ export function WhatToPromote() {
         </p>
       </div>
 
-      <div className="mt-14 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="mt-14 grid items-center gap-10 lg:grid-cols-[42%_1fr] lg:gap-16">
         <div className="grid gap-4">
           {features.map((f) => {
             const isActive = active === f.key;
@@ -109,9 +109,9 @@ export function WhatToPromote() {
             );
           })}
         </div>
-        <div className="lg:pl-2">
-          <div className="overflow-hidden rounded-3xl border border-border bg-card p-2 shadow-elevated sm:p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted/30">
+        <div>
+          <div className="overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-elevated">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-muted/30">
               {features.map((f) => {
                 const isActive = active === f.key;
                 return (
