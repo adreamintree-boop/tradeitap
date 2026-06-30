@@ -75,7 +75,7 @@ function FloatingBadges() {
       {pills.map((p, i) => (
         <span
           key={p.v}
-          className={`absolute ${p.pos} inline-flex items-center rounded-full px-4 py-2 font-display text-base font-black shadow-float transition-all duration-500 ease-out ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"}`}
+          className={`absolute ${p.pos} inline-flex items-center rounded-full px-[18px] py-[10px] font-display text-base font-bold shadow-badge transition-all duration-500 ease-out ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"} ${p.cls}`}
           style={{ transitionDelay: show ? `${i * 180}ms` : "0ms" }}
         >
           {p.v}
