@@ -1054,8 +1054,9 @@ const ja: Copy = {
 };
 
 const zh: Copy = zhRaw;
+const ru: Copy = ruRaw;
 
-const dict: Record<Lang, Copy> = { en, ko, ja, zh };
+const dict: Record<Lang, Copy> = { en, ko, ja, zh, ru };
 
 type LangContextValue = {
   code: string;
