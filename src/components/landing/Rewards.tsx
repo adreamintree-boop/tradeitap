@@ -55,8 +55,9 @@ function FlowArrow() {
 }
 
 function TierDiagram() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const r = t.rewards;
+  const isRu = lang === "ru";
   return (
     <div className="rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8">
       <div className="mb-6 flex items-center gap-2">
@@ -104,25 +105,55 @@ function TierDiagram() {
         <p className="mb-4 text-sm text-muted-foreground">
           {r.indirectCommissionDesc}
         </p>
-        <div className="flex flex-col items-stretch gap-2 sm:flex-row">
-          <FlowNode icon={User} label={r.you} sub={r.inviteAPartner} highlight="navy" />
-          <FlowArrow />
-          <FlowNode
-            icon={UserPlus}
-            label={r.invitedPartner}
-            sub={r.refersCustomers}
-            highlight="mint"
-          />
-          <FlowArrow />
-          <FlowNode icon={Users} label={r.partnersCustomers} sub={r.subscribe} />
-          <FlowArrow />
-          <FlowNode
-            icon={CircleDollarSign}
-            label={r.commission5}
-            sub={r.recurringMonthly}
-            highlight="purple"
-          />
-        </div>
+        {isRu ? (
+          <div className="space-y-2">
+            <div className="flex items-stretch gap-2">
+              <FlowNode icon={User} label={r.you} sub={r.inviteAPartner} highlight="navy" />
+              <FlowArrow />
+              <FlowNode
+                icon={UserPlus}
+                label={r.invitedPartner}
+                sub={r.refersCustomers}
+                highlight="mint"
+              />
+              <FlowArrow />
+              <FlowNode icon={Users} label={r.partnersCustomers} sub={r.subscribe} />
+            </div>
+            <div className="flex justify-center py-1">
+              <ArrowDown className="h-5 w-5 text-muted-foreground" />
+            </div>
+            <div className="flex justify-center">
+              <div className="w-full max-w-[220px]">
+                <FlowNode
+                  icon={CircleDollarSign}
+                  label={r.commission5}
+                  sub={r.recurringMonthly}
+                  highlight="purple"
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-stretch gap-2 sm:flex-row">
+            <FlowNode icon={User} label={r.you} sub={r.inviteAPartner} highlight="navy" />
+            <FlowArrow />
+            <FlowNode
+              icon={UserPlus}
+              label={r.invitedPartner}
+              sub={r.refersCustomers}
+              highlight="mint"
+            />
+            <FlowArrow />
+            <FlowNode icon={Users} label={r.partnersCustomers} sub={r.subscribe} />
+            <FlowArrow />
+            <FlowNode
+              icon={CircleDollarSign}
+              label={r.commission5}
+              sub={r.recurringMonthly}
+              highlight="purple"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
