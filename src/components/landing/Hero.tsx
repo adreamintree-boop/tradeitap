@@ -43,8 +43,8 @@ function IncomeGraphCard() {
         <circle cx="200" cy="6" r="3.5" fill="oklch(0.62 0.13 188)" />
       </svg>
       <div className="mt-1 flex items-end justify-between">
-        <span className="font-display text-lg font-extrabold leading-none">$2,480</span>
-        <span className="text-[10px] font-medium text-muted-foreground">{t.hero.incomeMonth}</span>
+        <span className="font-display text-base font-extrabold leading-none sm:text-lg">$2,480</span>
+        <span className="text-[9px] font-medium text-muted-foreground sm:text-[10px]">{t.hero.incomeMonth}</span>
       </div>
     </div>
   );
