@@ -1,8 +1,9 @@
 import { PartnerButton } from "./Logo";
-
-const badges = ["15% Direct Commission", "5% Indirect Commission", "Tier 2 Partner Rewards"];
+import { useLang } from "./i18n";
 
 export function CtaSection() {
+  const { t } = useLang();
+  const badges = t.cta.badges;
   return (
     <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
       <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-6 py-16 sm:px-12 sm:py-20">
