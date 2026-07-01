@@ -1075,7 +1075,7 @@ const LangContext = createContext<LangContextValue>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [code, setCode] = useState("en");
   const value = useMemo<LangContextValue>(() => {
-    const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : "en";
+    const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : code === "ru" ? "ru" : "en";
     return { code, setCode, lang, t: dict[lang] };
   }, [code]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
