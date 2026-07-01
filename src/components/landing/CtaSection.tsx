@@ -54,7 +54,7 @@ export function CtaSection() {
           <h2 className="font-display text-[26px] font-extrabold leading-[1.2] tracking-tight text-balance text-foreground sm:text-5xl">
             {t.cta.title}
           </h2>
-          <p className="mt-5 text-lg text-foreground/70">
+          <p className="mt-4 text-lg text-foreground/70 sm:mt-5">
             {t.cta.subcopy}
           </p>
           <div className="mt-8 flex justify-center">
