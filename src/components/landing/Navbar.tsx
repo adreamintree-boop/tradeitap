@@ -120,10 +120,40 @@ function LanguageDropdown({
   );
 }
 
+const SHORT_NAV: Record<string, { whyJoin: string; whoCanJoin: string; rewards: string; stories: string; faq: string; cta: string }> = {
+  ru: {
+    whyJoin: "Почему TradeIt",
+    whoCanJoin: "Кто подходит",
+    rewards: "Комиссии",
+    stories: "Отзывы",
+    faq: "FAQ",
+    cta: "Стать партнёром",
+  },
+  es: {
+    whyJoin: "Por qué TradeIt",
+    whoCanJoin: "Para quién",
+    rewards: "Comisiones",
+    stories: "Historias",
+    faq: "FAQ",
+    cta: "Ser partner",
+  },
+  vi: {
+    whyJoin: "Vì sao chọn TradeIt",
+    whoCanJoin: "Dành cho ai",
+    rewards: "Hoa hồng",
+    stories: "Câu chuyện",
+    faq: "FAQ",
+    cta: "Trở thành đối tác",
+  },
+};
+
 export function Navbar() {
   const { code, setCode, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const short = SHORT_NAV[code];
+  const isCompact = Boolean(short);
 
   const navLinks = [
     { label: t.nav.whyJoin, href: "#why-join" },
@@ -132,6 +162,16 @@ export function Navbar() {
     { label: t.nav.stories, href: "#stories" },
     { label: t.nav.faq, href: "#faq" },
   ];
+
+  const desktopNavLinks = short
+    ? [
+        { label: short.whyJoin, href: "#why-join" },
+        { label: short.whoCanJoin, href: "#who-can-join" },
+        { label: short.rewards, href: "#rewards" },
+        { label: short.stories, href: "#stories" },
+        { label: short.faq, href: "#faq" },
+      ]
+    : navLinks;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -149,29 +189,38 @@ export function Navbar() {
       }`}
     >
       <div className="border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-[0_1px_20px_-12px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 md:h-[68px]">
-          <a href="#" aria-label="TradeIt home" className="flex items-center">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8 md:h-[68px]">
+          <a href="#" aria-label="TradeIt home" className="flex shrink-0 items-center pr-2">
             <img
               src={tradeitLogo.url}
               alt="TradeIt"
               className="h-3.5 w-auto object-contain md:h-4"
             />
           </a>
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((l) => (
+          <nav
+            className={`hidden items-center lg:flex ${
+              isCompact ? "gap-6 xl:gap-7" : "gap-8"
+            }`}
+          >
+            {desktopNavLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className={`whitespace-nowrap font-medium text-muted-foreground transition-colors hover:text-foreground ${
+                  isCompact ? "text-[13px]" : "text-sm"
+                }`}
               >
                 {l.label}
               </a>
             ))}
           </nav>
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className={`hidden shrink-0 items-center lg:flex ${isCompact ? "gap-3" : "gap-4"}`}>
             <LanguageDropdown selected={code} onSelect={setCode} />
-            <PartnerButton size="md" />
+            <PartnerButton size="md" className={isCompact ? "px-4" : undefined}>
+              {short?.cta}
+            </PartnerButton>
           </div>
+
 
           {/* Mobile hamburger toggle */}
           <button
