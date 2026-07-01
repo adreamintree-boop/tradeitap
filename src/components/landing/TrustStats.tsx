@@ -30,7 +30,7 @@ const badges = [
 
 export function TrustStats() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+    <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           Proof you can stand behind
@@ -44,7 +44,27 @@ export function TrustStats() {
         </p>
       </div>
 
-      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+      {/* Mobile: compact unified card */}
+      <div className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-card lg:hidden">
+        <div className="grid grid-cols-3 gap-3">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center text-center">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-primary">
+                <s.icon className="h-4 w-4" />
+              </span>
+              <div className="mt-2.5 font-display text-2xl font-extrabold tracking-tight bg-gradient-to-br from-primary to-[oklch(0.45_0.17_250)] bg-clip-text text-transparent">
+                {s.value}
+              </div>
+              <div className="mt-1 text-xs font-semibold leading-tight text-foreground">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: large individual cards */}
+      <div className="mt-14 hidden gap-6 lg:grid lg:grid-cols-3">
         {stats.map((s) => (
           <article
             key={s.label}
@@ -63,7 +83,21 @@ export function TrustStats() {
         ))}
       </div>
 
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+      {/* Mobile: compact 2-col badge grid */}
+      <div className="mt-6 grid grid-cols-2 gap-2 sm:gap-3 lg:hidden">
+        {badges.map((b) => (
+          <span
+            key={b.label}
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-3 py-1.5 text-xs font-semibold text-foreground"
+          >
+            <b.icon className="h-3.5 w-3.5 text-primary" />
+            {b.label}
+          </span>
+        ))}
+      </div>
+
+      {/* Desktop: flex badge row */}
+      <div className="mt-10 hidden flex-wrap items-center justify-center gap-3 lg:flex">
         {badges.map((b) => (
           <span
             key={b.label}
