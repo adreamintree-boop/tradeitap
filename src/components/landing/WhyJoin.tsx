@@ -36,7 +36,7 @@ export function WhyJoin() {
         </p>
       </div>
 
-      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 md:mt-14 md:gap-6 lg:grid-cols-3">
         {cards.map((c) => {
           const isNavy = c.theme === "navy";
           const bg =
@@ -48,27 +48,29 @@ export function WhyJoin() {
           return (
             <article
               key={c.title}
-              className={`group relative flex flex-col overflow-hidden rounded-3xl border p-8 transition-transform duration-300 hover:-translate-y-1 ${bg} ${
+              className={`group relative flex flex-row gap-4 overflow-hidden rounded-2xl border p-5 transition-transform duration-300 hover:-translate-y-1 md:flex-col md:rounded-3xl md:p-8 ${bg} ${
                 isNavy ? "border-transparent shadow-elevated" : "border-border/60 shadow-card"
               }`}
             >
               <span
-                className={`grid h-14 w-14 place-items-center rounded-2xl ${
+                className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl md:h-14 md:w-14 md:rounded-2xl ${
                   isNavy ? "bg-background/15 text-navy-foreground" : "bg-background text-primary shadow-sm"
                 }`}
               >
-                <c.icon className="h-7 w-7" strokeWidth={2} />
+                <c.icon className="h-5 w-5 md:h-7 md:w-7" strokeWidth={2} />
               </span>
-              <h3 className="mt-6 font-display text-xl font-bold">{c.title}</h3>
-              <p
-                className={`mt-3 leading-relaxed ${
-                  isNavy ? "text-navy-foreground/80" : "opacity-80"
-                }`}
-              >
-                {c.body}
-              </p>
+              <div className="flex min-w-0 flex-1 flex-col">
+                <h3 className="font-display text-base font-bold md:mt-6 md:text-xl">{c.title}</h3>
+                <p
+                  className={`mt-1 text-sm leading-relaxed md:mt-3 md:text-base ${
+                    isNavy ? "text-navy-foreground/80" : "opacity-80"
+                  }`}
+                >
+                  {c.body}
+                </p>
+              </div>
               <ArrowUpRight
-                className={`mt-6 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                className={`ml-auto h-4 w-4 shrink-0 self-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:ml-0 md:mt-6 md:h-5 md:w-5 md:self-auto ${
                   isNavy ? "text-navy-foreground/70" : "text-primary"
                 }`}
               />
