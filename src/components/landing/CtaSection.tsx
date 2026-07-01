@@ -5,7 +5,7 @@ export function CtaSection() {
   const { t } = useLang();
   const badges = t.cta.badges;
   return (
-    <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
+    <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-20">
       <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-5 py-10 sm:px-12 sm:py-20">
         {/* abstract trade-route network pattern */}
         <svg
