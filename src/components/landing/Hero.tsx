@@ -15,8 +15,8 @@ function IncomeGraphCard() {
   return (
     <div className="w-36 rounded-2xl border border-border bg-card p-3 shadow-float sm:w-56 sm:p-4">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-foreground">{t.hero.incomeTitle}</span>
-        <span className="inline-flex items-center text-[11px] font-semibold text-primary">
+        <span className="text-[10px] font-semibold text-foreground sm:text-xs">{t.hero.incomeTitle}</span>
+        <span className="inline-flex items-center text-[10px] font-semibold text-primary sm:text-[11px]">
           <ArrowUpRight className="h-3 w-3" />
           +42%
         </span>
