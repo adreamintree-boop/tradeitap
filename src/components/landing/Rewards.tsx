@@ -53,35 +53,37 @@ function FlowArrow() {
 }
 
 function TierDiagram() {
+  const { t } = useLang();
+  const r = t.rewards;
   return (
     <div className="rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8">
       <div className="mb-6 flex items-center gap-2">
         <Network className="h-5 w-5 text-primary" />
-        <h3 className="font-display text-lg font-bold">How Tier 2 commissions work</h3>
+        <h3 className="font-display text-lg font-bold">{r.diagTitle}</h3>
       </div>
 
       {/* Direct path */}
       <div className="rounded-2xl border border-border bg-muted/30 p-5">
         <div className="mb-1 flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Direct commission
+            {r.directCommission}
           </span>
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
             15%
           </span>
         </div>
         <p className="mb-4 text-sm text-muted-foreground">
-          Refer customers directly and earn 15% recurring commission.
+          {r.directCommissionDesc}
         </p>
         <div className="flex flex-col items-stretch gap-2 sm:flex-row">
-          <FlowNode icon={User} label="You" sub="Refer customers" highlight="navy" />
+          <FlowNode icon={User} label={r.you} sub={r.referCustomers} highlight="navy" />
           <FlowArrow />
-          <FlowNode icon={Users} label="Direct Customers" sub="Subscribe to TradeIt" />
+          <FlowNode icon={Users} label={r.directCustomersNode} sub={r.subscribe} />
           <FlowArrow />
           <FlowNode
             icon={CircleDollarSign}
-            label="15% Commission"
-            sub="Recurring, monthly"
+            label={r.commission15}
+            sub={r.recurringMonthly}
             highlight="purple"
           />
         </div>
@@ -91,32 +93,31 @@ function TierDiagram() {
       <div className="mt-4 rounded-2xl border border-border bg-muted/30 p-5">
         <div className="mb-1 flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Indirect commission
+            {r.indirectCommission}
           </span>
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
             5%
           </span>
         </div>
         <p className="mb-4 text-sm text-muted-foreground">
-          Invite partners. When they bring paying customers, you earn 5% recurring indirect
-          commission.
+          {r.indirectCommissionDesc}
         </p>
         <div className="flex flex-col items-stretch gap-2 sm:flex-row">
-          <FlowNode icon={User} label="You" sub="Invite a partner" highlight="navy" />
+          <FlowNode icon={User} label={r.you} sub={r.inviteAPartner} highlight="navy" />
           <FlowArrow />
           <FlowNode
             icon={UserPlus}
-            label="Invited Partner"
-            sub="Refers customers"
+            label={r.invitedPartner}
+            sub={r.refersCustomers}
             highlight="mint"
           />
           <FlowArrow />
-          <FlowNode icon={Users} label="Partner's Customers" sub="Subscribe to TradeIt" />
+          <FlowNode icon={Users} label={r.partnersCustomers} sub={r.subscribe} />
           <FlowArrow />
           <FlowNode
             icon={CircleDollarSign}
-            label="5% Commission"
-            sub="Recurring, monthly"
+            label={r.commission5}
+            sub={r.recurringMonthly}
             highlight="purple"
           />
         </div>
