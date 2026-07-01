@@ -124,13 +124,13 @@ function HeroVisual() {
       <FloatingBadges />
 
       {/* monthly commission summary card */}
-      <div className="absolute -left-4 top-6 hidden w-40 rounded-2xl border border-border bg-card p-3.5 shadow-float sm:block">
-        <div className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+      <div className="absolute left-2 top-3 w-32 rounded-2xl border border-border bg-card p-2.5 shadow-float sm:-left-4 sm:top-6 sm:w-40 sm:p-3.5">
+        <div className="text-[9px] font-medium uppercase tracking-wide text-muted-foreground sm:text-[10px]">
           {t.hero.indirectCommission}
         </div>
         <div className="mt-1 flex items-end gap-1.5">
-          <span className="font-display text-xl font-extrabold leading-none">$1,800</span>
-          <span className="inline-flex items-center text-[11px] font-semibold text-primary">
+          <span className="font-display text-base font-extrabold leading-none sm:text-xl">$1,800</span>
+          <span className="inline-flex items-center text-[10px] font-semibold text-primary sm:text-[11px]">
             <TrendingUp className="h-3 w-3" />
             +23%
           </span>
@@ -138,7 +138,7 @@ function HeroVisual() {
       </div>
 
       {/* income graph card overlapping lower-right */}
-      <div className="absolute -bottom-6 -right-4 hidden sm:block">
+      <div className="absolute -bottom-4 right-1 sm:-bottom-6 sm:-right-4">
         <IncomeGraphCard />
       </div>
     </div>
