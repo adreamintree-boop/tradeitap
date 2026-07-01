@@ -42,7 +42,7 @@ export function Footer() {
         </div>
 
         {/* Mobile: second row (logo + copyright). Desktop: left side. */}
-        <div className="order-2 flex items-center gap-2 md:order-none md:gap-4">
+        <div className="order-2 flex items-center gap-2 md:order-1 md:gap-4">
           <img
             src={tradeitLogo.url}
             alt="TradeIt"
