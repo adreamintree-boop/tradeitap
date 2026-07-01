@@ -160,7 +160,7 @@ export function Hero() {
               <Sparkles className="h-3.5 w-3.5 text-primary" />
               {t.hero.badge}
             </span>
-            <h1 className="mt-5 mx-auto max-w-[320px] font-display text-[clamp(28px,7.5vw,34px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-balance sm:mt-6 sm:mx-0 sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:text-[3.5rem] lg:leading-[1.05]">
+            <h1 className="mt-5 mx-auto max-w-[320px] font-display text-[clamp(28px,7.5vw,34px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-balance whitespace-pre-line sm:mt-6 sm:mx-0 sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:text-[3.5rem] lg:leading-[1.05]">
               {t.hero.headBefore}
               <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.18_250)] bg-clip-text text-transparent">
                 {t.hero.headHighlight}
