@@ -77,7 +77,7 @@ function FloatingBadges() {
       v: "+$200",
       cls: "bg-primary text-primary-foreground",
       pos: "left-4 top-1/2 sm:-left-7",
-      hide: "hidden sm:inline-flex",
+      hide: "!hidden sm:!inline-flex",
     },
     {
       v: "+$120",
