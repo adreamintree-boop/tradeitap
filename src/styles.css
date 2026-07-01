@@ -170,7 +170,10 @@
  * --font-heading drives H1/H2/H3/section & card titles (font-display).
  * --font-body drives body, paragraphs, buttons, nav, FAQ, cards (font-sans).
  */
-[data-language="en"],
+[data-language="en"] {
+  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
 [data-language="ru"],
 [data-language="es"] {
   --font-heading: "Manrope", "Inter", "Noto Sans", sans-serif;
