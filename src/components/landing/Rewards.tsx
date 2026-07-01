@@ -431,21 +431,22 @@ function MobileAccordions() {
 }
 
 export function Rewards() {
+  const { t } = useLang();
   return (
     <section id="rewards" className="scroll-mt-20 bg-muted/30 py-10 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-            Tier 2 partner rewards
+            {t.rewards.eyebrow}
           </span>
           <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-            Grow Your Network. Multiply Your Rewards.
+            {t.rewards.title}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Earn recurring commissions from both your direct referrals and the partners you
-            introduce. As your network grows, so does your recurring revenue.
+            {t.rewards.subtitle}
           </p>
         </div>
+
 
         {/* ── Mobile layout ── */}
         <div className="mt-8 space-y-6 lg:hidden">
