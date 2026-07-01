@@ -61,12 +61,16 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading);
+  --font-sans: var(--font-body);
 }
 
 :root {
   --radius: 0.9rem;
+
+  /* Language-specific typography (default: English) */
+  --font-heading: "Manrope", "Inter", "Noto Sans", sans-serif;
+  --font-body: "Inter", "Noto Sans", sans-serif;
 
   --background: oklch(1 0 0);
   --foreground: oklch(0.23 0.04 264);
@@ -160,6 +164,33 @@
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.7 0.16 255);
+}
+
+/* ── Language-specific font families ─────────────────────────────
+ * --font-heading drives H1/H2/H3/section & card titles (font-display).
+ * --font-body drives body, paragraphs, buttons, nav, FAQ, cards (font-sans).
+ */
+[data-language="en"],
+[data-language="ru"],
+[data-language="es"] {
+  --font-heading: "Manrope", "Inter", "Noto Sans", sans-serif;
+  --font-body: "Inter", "Noto Sans", sans-serif;
+}
+[data-language="ko"] {
+  --font-heading: "Noto Sans KR", "Inter", sans-serif;
+  --font-body: "Noto Sans KR", "Inter", sans-serif;
+}
+[data-language="ja"] {
+  --font-heading: "M PLUS 1p", "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP", "Noto Sans", sans-serif;
+}
+[data-language="zh"] {
+  --font-heading: "Noto Sans SC", "Noto Sans", sans-serif;
+  --font-body: "Noto Sans SC", "Noto Sans", sans-serif;
+}
+[data-language="vi"] {
+  --font-heading: "Be Vietnam Pro", "Inter", "Noto Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", "Inter", "Noto Sans", sans-serif;
 }
 
 @layer base {
