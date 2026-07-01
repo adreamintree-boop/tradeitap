@@ -167,10 +167,10 @@ export function Hero() {
               </span>
               {t.hero.headAfter}
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg lg:mx-0">
               {t.hero.subcopy}
             </p>
-            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
+            <div className="mt-6 flex flex-col items-stretch gap-3.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:justify-start">
               <PartnerButton className="w-full sm:w-auto" />
               <a
                 href="#rewards"
@@ -180,7 +180,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground lg:justify-start">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground sm:mt-7 lg:justify-start">
               <span className="inline-flex items-center gap-1.5">
                 <BadgeCheck className="h-4 w-4 text-primary" /> {t.hero.freeToJoin}
               </span>
