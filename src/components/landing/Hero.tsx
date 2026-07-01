@@ -144,33 +144,33 @@ export function Hero() {
 
       <div className="mx-auto max-w-7xl px-5 pb-24 pt-14 sm:px-8 lg:pb-32 lg:pt-20">
         <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-          <div>
+          <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-4 py-1.5 text-xs font-semibold text-foreground backdrop-blur">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
               TradeIt Affiliate Partner Program
             </span>
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-6 font-display text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
               Earn Recurring Revenue by Helping Companies Grow Their{" "}
               <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.18_250)] bg-clip-text text-transparent">
                 Global Sales
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
               TradeIt enables exporters, manufacturers, and overseas sales teams to discover buyers
               faster with global trade data and AI. Recommend TradeIt and earn recurring commissions
               every month.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <PartnerButton />
+            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
+              <PartnerButton className="w-full sm:w-auto" />
               <a
                 href="#rewards"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                className="inline-flex min-h-11 items-center justify-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
               >
                 See how rewards work
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
-            <div className="mt-7 flex items-center gap-5 text-sm text-muted-foreground">
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground lg:justify-start">
               <span className="inline-flex items-center gap-1.5">
                 <BadgeCheck className="h-4 w-4 text-primary" /> Free to join
               </span>
