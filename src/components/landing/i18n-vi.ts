@@ -278,6 +278,10 @@ export const vi: Copy = {
         a: "Bạn có thể nhận 15% hoa hồng định kỳ từ mỗi khách hàng đăng ký qua link giới thiệu của mình. Ngoài ra, bạn cũng nhận 5% hoa hồng định kỳ từ khách hàng do các đối tác mà bạn trực tiếp mời vào Chương trình Đối tác của TradeIt giới thiệu.\u00a0\n\n\nKhi mạng lưới khách hàng và đối tác của bạn tiếp tục mở rộng, cơ hội tạo thu nhập định kỳ cũng tăng theo.",
       },
       {
+        q: "Tôi có thể nhận hoa hồng từ một khách hàng được giới thiệu trong bao lâu?",
+        a: "Bạn có thể nhận hoa hồng miễn là khách hàng bạn giới thiệu vẫn duy trì gói TradeIt trả phí, tối đa 3 năm kể từ ngày khách hàng đó bắt đầu đăng ký trả phí lần đầu. Nếu khách hàng tiếp tục đăng ký sau 3 năm, hoa hồng cho khách hàng đó sẽ không còn được chi trả sau khi thời hạn hoa hồng 3 năm kết thúc.",
+      },
+      {
         q: "Khi nào hoa hồng được thanh toán?",
         a: "Hoa hồng được xử lý thanh toán hàng tháng sau khi yêu cầu thanh toán của bạn được phê duyệt và đạt ngưỡng thanh toán tối thiểu.",
       },

@@ -390,6 +390,10 @@ const en: Copy = {
         a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program.\u00a0\n\n\nAs your customer base and partner network continue to grow, so does your recurring earning potential.",
       },
       {
+        q: "How long can I earn commissions from a referred customer?",
+        a: "You can earn commissions for as long as your referred customer remains on a paid TradeIt subscription, up to a maximum of 3 years from the customer’s first paid subscription date. If the customer continues subscribing beyond 3 years, commissions for that customer will no longer be paid after the 3-year commission period ends.",
+      },
+      {
         q: "When do I get paid?",
         a: "Commission payouts are processed monthly once your payout request has been approved and the minimum payout threshold has been reached.",
       },
@@ -692,6 +696,10 @@ const ko: Copy = {
       {
         q: "커미션은 얼마나 받을 수 있나요?",
         a: "추천 링크를 통해 구독한 모든 고객에게서 15% 반복 커미션을 받을 수 있습니다. 또한 회원님이 직접 초대한 파트너가 유치한 고객으로부터 5% 반복 커미션도 받을 수 있습니다.\u00a0\n\n\n고객과 파트너 네트워크가 늘어날수록 반복 수익 기회도 함께 커집니다.",
+      },
+      {
+        q: "추천 고객으로부터 커미션은 얼마나 오래 받을 수 있나요?",
+        a: "추천한 고객이 TradeIt 유료 플랜을 유지하는 동안 커미션을 받을 수 있으며, 커미션 지급 기간은 해당 고객의 최초 유료 구독 시작일로부터 최대 3년까지입니다. 고객이 3년 이후에도 계속 구독을 유지하더라도, 해당 고객에 대한 커미션은 3년의 지급 기간이 종료된 이후에는 더 이상 지급되지 않습니다.",
       },
       {
         q: "정산은 언제 받을 수 있나요?",
@@ -1009,6 +1017,10 @@ const ja: Copy = {
       {
         q: "どれくらいのコミッションを受け取れますか？",
         a: "紹介リンク経由で契約したすべての顧客から、15%の継続コミッションを受け取れます。さらに、あなたが直接招待したパートナーが獲得した顧客からも、5%の継続コミッションを受け取れます。\u00a0\n\n\n顧客とパートナーネットワークが広がるほど、継続的な収益の可能性も高まります。",
+      },
+      {
+        q: "紹介した顧客からのコミッションはどのくらいの期間受け取れますか？",
+        a: "紹介した顧客がTradeItの有料プランを継続している間、コミッションを受け取ることができます。ただし、コミッションの対象期間は、その顧客が最初に有料プランを開始した日から最大3年間です。顧客が3年を超えて利用を継続した場合でも、その顧客に対するコミッションは3年間の対象期間終了後には支払われません。",
       },
       {
         q: "報酬はいつ支払われますか？",
