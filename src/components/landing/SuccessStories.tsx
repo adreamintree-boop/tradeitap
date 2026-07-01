@@ -82,7 +82,7 @@ const testimonials: Testimonial[] = [
 function TestimonialCard({ t }: { t: Testimonial }) {
   const isPartner = t.type === "Partner";
   return (
-    <article className="flex w-[330px] shrink-0 flex-col rounded-3xl border border-border bg-card p-7 shadow-card sm:w-[380px]">
+    <article className="flex w-[300px] shrink-0 flex-col rounded-3xl border border-border bg-card p-6 shadow-card sm:w-[380px] sm:p-7">
       <div className="flex items-center justify-between gap-3">
         <span
           className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
@@ -114,7 +114,7 @@ export function SuccessStories() {
   const loop = [...testimonials, ...testimonials];
 
   return (
-    <section id="stories" className="scroll-mt-20 py-24">
+    <section id="stories" className="scroll-mt-20 py-16 sm:py-24">
       <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           Trusted on both sides
