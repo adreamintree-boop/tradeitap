@@ -60,7 +60,7 @@ export function CtaSection() {
           <div className="mt-5 flex justify-center sm:mt-8">
             <PartnerButton variant="navy" className="w-full sm:w-auto" />
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 max-w-[320px] mx-auto sm:mt-8 sm:gap-3 sm:max-w-none">
             {badges.map((b) => (
               <span
                 key={b}
