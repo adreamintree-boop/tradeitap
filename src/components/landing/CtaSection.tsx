@@ -57,7 +57,7 @@ export function CtaSection() {
           <p className="mt-4 text-lg text-foreground/70 sm:mt-5">
             {t.cta.subcopy}
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-5 flex justify-center sm:mt-8">
             <PartnerButton variant="navy" className="w-full sm:w-auto" />
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
