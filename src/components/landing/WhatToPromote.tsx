@@ -61,7 +61,7 @@ export function WhatToPromote() {
   const [active, setActive] = useState<FeatureKey>("search");
 
   const toggleFeature = (key: FeatureKey) => {
-    setActive((prev) => (prev === key ? prev : key));
+    setActive((prev) => (prev === key ? undefined : key) as FeatureKey);
   };
 
   return (
