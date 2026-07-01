@@ -1082,6 +1082,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : code === "ru" ? "ru" : code === "es" ? "es" : code === "vi" ? "vi" : "en";
     return { code, setCode, lang, t: dict[lang] };
   }, [code]);
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-language", value.lang);
+    }
+  }, [value.lang]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
 
