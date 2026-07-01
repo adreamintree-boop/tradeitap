@@ -62,7 +62,7 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faq" className="scroll-mt-20 bg-muted/30 py-24">
+    <section id="faq" className="scroll-mt-20 bg-muted/30 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <div className="text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">

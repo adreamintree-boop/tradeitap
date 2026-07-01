@@ -56,7 +56,7 @@ function PersonCard({ img, title, body }: { img: string; title: string; body: st
 
 export function WhoCanJoin() {
   return (
-    <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-24">
+    <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* 3-column desktop grid: title top-left, 5 cards filling the rest */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
