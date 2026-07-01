@@ -1,9 +1,10 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import { zh as zhRaw } from "./i18n-zh";
+import { ru as ruRaw } from "./i18n-ru";
 
 
 
-export type Lang = "en" | "ko" | "ja" | "zh";
+export type Lang = "en" | "ko" | "ja" | "zh" | "ru";
 
 type Person = { title: string; body: string };
 type Feature = { title: string; body: string };
