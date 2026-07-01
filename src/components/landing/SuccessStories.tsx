@@ -87,8 +87,8 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         <span
           className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
             isPartner
-              ? "bg-lavender text-lavender-foreground"
-              : "bg-accent text-accent-foreground"
+              ? "bg-emerald-100 text-emerald-700"
+              : "bg-sky-100 text-sky-700"
           }`}
         >
           {isPartner ? "Recommended by Partners" : "Loved by Users"}
