@@ -167,7 +167,8 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="hidden items-center lg:flex">
+          <div className="hidden items-center gap-4 lg:flex">
+            <LanguageDropdown selected={selectedLang} onSelect={setSelectedLang} />
             <PartnerButton size="md" />
           </div>
 
