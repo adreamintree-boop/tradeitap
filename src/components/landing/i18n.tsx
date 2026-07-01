@@ -6,7 +6,7 @@ import { vi as viRaw } from "./i18n-vi";
 
 
 
-export type Lang = "en" | "ko" | "ja" | "zh" | "ru" | "es";
+export type Lang = "en" | "ko" | "ja" | "zh" | "ru" | "es" | "vi";
 
 type Person = { title: string; body: string };
 type Feature = { title: string; body: string };
@@ -1058,8 +1058,9 @@ const ja: Copy = {
 const zh: Copy = zhRaw;
 const ru: Copy = ruRaw;
 const es: Copy = esRaw;
+const vi: Copy = viRaw;
 
-const dict: Record<Lang, Copy> = { en, ko, ja, zh, ru, es };
+const dict: Record<Lang, Copy> = { en, ko, ja, zh, ru, es, vi };
 
 type LangContextValue = {
   code: string;
