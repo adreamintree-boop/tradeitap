@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Globe, Menu, X } from "lucide-react";
 import { PartnerButton } from "./Logo";
+import { useLang } from "./i18n";
 import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 
 const languages = [
