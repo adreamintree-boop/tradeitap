@@ -6,7 +6,7 @@ export function CtaSection() {
   const badges = t.cta.badges;
   return (
     <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-6 py-16 sm:px-12 sm:py-20">
+      <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-5 py-10 sm:px-12 sm:py-20">
         {/* abstract trade-route network pattern */}
         <svg
           aria-hidden="true"
