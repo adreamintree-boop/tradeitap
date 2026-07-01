@@ -51,7 +51,7 @@ export function CtaSection() {
         </svg>
 
         <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-extrabold tracking-tight text-balance text-foreground sm:text-5xl">
+          <h2 className="font-display text-[26px] font-extrabold leading-[1.2] tracking-tight text-balance text-foreground sm:text-5xl">
             {t.cta.title}
           </h2>
           <p className="mt-5 text-lg text-foreground/70">
