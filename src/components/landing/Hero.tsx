@@ -44,7 +44,7 @@ function IncomeGraphCard() {
       </svg>
       <div className="mt-1 flex items-end justify-between">
         <span className="font-display text-lg font-extrabold leading-none">$2,480</span>
-        <span className="text-[10px] font-medium text-muted-foreground">this month</span>
+        <span className="text-[10px] font-medium text-muted-foreground">{t.hero.incomeMonth}</span>
       </div>
     </div>
   );
