@@ -1,7 +1,123 @@
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Globe, Menu, X } from "lucide-react";
 import { PartnerButton } from "./Logo";
 import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
+
+const languages = [
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "ko", label: "한국어", flag: "🇰🇷" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
+  { code: "zh", label: "中文", flag: "🇨🇳" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "vi", label: "Tiếng Việt", flag: "🇻🇳" },
+];
+
+function LanguageDropdown({
+  selected,
+  onSelect,
+  variant = "desktop",
+}: {
+  selected: string;
+  onSelect: (code: string) => void;
+  variant?: "desktop" | "mobile";
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const selectedLang = languages.find((l) => l.code === selected) ?? languages[0];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  if (variant === "mobile") {
+    return (
+      <div ref={ref} className="relative">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-muted"
+        >
+          <span className="flex items-center gap-2.5">
+            <Globe className="h-4 w-4 text-muted-foreground" />
+            <span className="text-lg leading-none">{selectedLang.flag}</span>
+            <span>{selectedLang.label}</span>
+          </span>
+          <ChevronDown
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        {open && (
+          <div className="mt-1 rounded-xl border border-border bg-popover p-1.5 shadow-lg">
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                type="button"
+                onClick={() => {
+                  onSelect(lang.code);
+                  setOpen(false);
+                }}
+                className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-colors ${
+                  selected === lang.code
+                    ? "bg-primary/10 font-medium text-primary"
+                    : "text-foreground hover:bg-muted"
+                }`}
+              >
+                <span className="text-lg leading-none">{lang.flag}</span>
+                <span>{lang.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted"
+      >
+        <span className="text-base leading-none">{selectedLang.flag}</span>
+        <span className="hidden sm:inline">{selectedLang.label}</span>
+        <ChevronDown
+          className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-border bg-popover p-1.5 shadow-lg">
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              type="button"
+              onClick={() => {
+                onSelect(lang.code);
+                setOpen(false);
+              }}
+              className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-colors ${
+                selected === lang.code
+                  ? "bg-primary/10 font-medium text-primary"
+                  : "text-foreground hover:bg-muted"
+              }`}
+            >
+              <span className="text-lg leading-none">{lang.flag}</span>
+              <span>{lang.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 const navLinks = [
   { label: "Why Join", href: "#why-join" },
@@ -14,6 +130,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState("en");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,7 +167,8 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="hidden items-center lg:flex">
+          <div className="hidden items-center gap-4 lg:flex">
+            <LanguageDropdown selected={selectedLang} onSelect={setSelectedLang} />
             <PartnerButton size="md" />
           </div>
 
@@ -69,7 +187,7 @@ export function Navbar() {
         {/* Mobile dropdown menu */}
         <div
           className={`overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
-            menuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+            menuOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
@@ -83,6 +201,13 @@ export function Navbar() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-1 border-t border-border/60 pt-2">
+              <LanguageDropdown
+                selected={selectedLang}
+                onSelect={setSelectedLang}
+                variant="mobile"
+              />
+            </div>
             <PartnerButton
               size="md"
               className="mt-3 w-full"
