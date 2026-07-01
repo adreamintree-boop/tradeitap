@@ -5,8 +5,8 @@ export function CtaSection() {
   const { t } = useLang();
   const badges = t.cta.badges;
   return (
-    <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-20">
-      <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-6 py-16 sm:px-12 sm:py-20">
+    <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-20">
+      <div className="relative overflow-hidden rounded-[2rem] gradient-cta px-5 py-10 sm:px-12 sm:py-20">
         {/* abstract trade-route network pattern */}
         <svg
           aria-hidden="true"
@@ -51,20 +51,20 @@ export function CtaSection() {
         </svg>
 
         <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-extrabold tracking-tight text-balance text-foreground sm:text-5xl">
+          <h2 className="font-display text-[26px] font-extrabold leading-[1.2] tracking-tight text-balance text-foreground sm:text-5xl">
             {t.cta.title}
           </h2>
-          <p className="mt-5 text-lg text-foreground/70">
+          <p className="mt-4 text-lg text-foreground/70 sm:mt-5">
             {t.cta.subcopy}
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-5 flex justify-center sm:mt-8">
             <PartnerButton variant="navy" className="w-full sm:w-auto" />
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 max-w-[340px] mx-auto sm:mt-8 sm:gap-3 sm:max-w-none">
             {badges.map((b) => (
               <span
                 key={b}
-                className="rounded-full border border-foreground/10 bg-background/70 px-4 py-2 text-sm font-semibold text-foreground backdrop-blur"
+                className="rounded-full border border-foreground/10 bg-background/70 px-2 py-[9px] text-[11px] font-semibold text-foreground backdrop-blur sm:px-4 sm:py-2 sm:text-sm"
               >
                 {b}
               </span>
