@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { PartnerButton } from "./Logo";
 import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 
@@ -12,6 +13,7 @@ const navLinks = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -48,9 +50,44 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center">
+          <div className="hidden items-center lg:flex">
             <PartnerButton size="md" />
           </div>
+
+          {/* Mobile hamburger toggle */}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-background/70 text-foreground lg:hidden"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* Mobile dropdown menu */}
+        <div
+          className={`overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
+            menuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="flex min-h-11 items-center rounded-xl px-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
+              >
+                {l.label}
+              </a>
+            ))}
+            <PartnerButton
+              size="md"
+              className="mt-3 w-full"
+            />
+          </nav>
         </div>
       </div>
     </header>
