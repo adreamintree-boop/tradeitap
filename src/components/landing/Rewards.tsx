@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { User, Users, UserPlus, ArrowRight, ArrowDown, CircleDollarSign, Network } from "lucide-react";
+import {
+  User,
+  Users,
+  UserPlus,
+  ArrowRight,
+  ArrowDown,
+  CircleDollarSign,
+  Network,
+  ChevronDown,
+} from "lucide-react";
 
 function FlowNode({
   icon: Icon,
@@ -68,7 +77,12 @@ function TierDiagram() {
           <FlowArrow />
           <FlowNode icon={Users} label="Direct Customers" sub="Subscribe to TradeIt" />
           <FlowArrow />
-          <FlowNode icon={CircleDollarSign} label="15% Commission" sub="Recurring, monthly" highlight="purple" />
+          <FlowNode
+            icon={CircleDollarSign}
+            label="15% Commission"
+            sub="Recurring, monthly"
+            highlight="purple"
+          />
         </div>
       </div>
 
@@ -89,11 +103,21 @@ function TierDiagram() {
         <div className="flex flex-col items-stretch gap-2 sm:flex-row">
           <FlowNode icon={User} label="You" sub="Invite a partner" highlight="navy" />
           <FlowArrow />
-          <FlowNode icon={UserPlus} label="Invited Partner" sub="Refers customers" highlight="mint" />
+          <FlowNode
+            icon={UserPlus}
+            label="Invited Partner"
+            sub="Refers customers"
+            highlight="mint"
+          />
           <FlowArrow />
           <FlowNode icon={Users} label="Partner's Customers" sub="Subscribe to TradeIt" />
           <FlowArrow />
-          <FlowNode icon={CircleDollarSign} label="5% Commission" sub="Recurring, monthly" highlight="purple" />
+          <FlowNode
+            icon={CircleDollarSign}
+            label="5% Commission"
+            sub="Recurring, monthly"
+            highlight="purple"
+          />
         </div>
       </div>
     </div>
@@ -157,12 +181,14 @@ function ResultCard({
         </span>
       </div>
       <p className="mt-1 text-sm text-muted-foreground">{formula}</p>
-      <div className="mt-3 flex items-baseline justify-between">
-        <span className="font-display text-2xl font-extrabold">
+      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <span className="whitespace-nowrap font-display text-2xl font-extrabold">
           {formatMoney(monthly)}
           <span className="text-base font-semibold text-muted-foreground">/mo</span>
         </span>
-        <span className="text-sm text-muted-foreground">{formatMoney(annual)}/yr</span>
+        <span className="whitespace-nowrap text-sm text-muted-foreground">
+          {formatMoney(annual)}/yr
+        </span>
       </div>
     </div>
   );
@@ -244,11 +270,11 @@ function Calculator() {
             Total recurring earnings
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
-            <span className="font-display text-4xl font-extrabold leading-none">
+            <span className="whitespace-nowrap font-display text-4xl font-extrabold leading-none">
               {formatMoney(totalMonthly)}
               <span className="text-xl font-bold opacity-90">/mo</span>
             </span>
-            <span className="ml-auto font-display text-2xl font-bold">
+            <span className="ml-auto whitespace-nowrap font-display text-2xl font-bold">
               {formatMoney(totalAnnual)}/yr
             </span>
           </div>
@@ -263,9 +289,127 @@ function Calculator() {
   );
 }
 
+/* ── Mobile-only components ── */
+
+function MobileSummaryCards() {
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {/* Direct */}
+      <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+        <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          Direct Commission
+        </div>
+        <div className="mt-1 font-display text-3xl font-extrabold text-primary">15%</div>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          Refer customers directly and earn recurring monthly commission.
+        </p>
+      </div>
+
+      {/* Indirect */}
+      <div className="rounded-2xl border border-border bg-sky-50 p-4 shadow-sm">
+        <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Indirect Commission
+        </div>
+        <div className="mt-1 font-display text-3xl font-extrabold text-sky-700">5%</div>
+        <p className="mt-1 text-xs leading-relaxed text-sky-800/80">
+          Invite partners and earn commission when their customers subscribe.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function MiniFlow({
+  steps,
+}: {
+  steps: { label: string; highlight?: boolean; navy?: boolean }[];
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 py-2">
+      {steps.map((step, i) => (
+        <div key={i} className="flex items-center gap-2">
+          <span
+            className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${
+              step.navy
+                ? "bg-navy text-navy-foreground"
+                : step.highlight
+                  ? "bg-primary/10 text-primary"
+                  : "bg-muted text-foreground"
+            }`}
+          >
+            {step.label}
+          </span>
+          {i < steps.length - 1 && (
+            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MobileAccordions() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const toggle = (idx: number) => {
+    setOpen((prev) => (prev === idx ? null : idx));
+  };
+
+  const items = [
+    {
+      title: "How direct commissions work",
+      steps: [
+        { label: "You", navy: true },
+        { label: "Direct Customers" },
+        { label: "15% recurring commission", highlight: true },
+      ],
+    },
+    {
+      title: "How indirect commissions work",
+      steps: [
+        { label: "You", navy: true },
+        { label: "Invited Partner" },
+        { label: "Partner's Customers" },
+        { label: "5% recurring commission", highlight: true },
+      ],
+    },
+  ];
+
+  return (
+    <div className="space-y-3">
+      {items.map((item, idx) => {
+        const isOpen = open === idx;
+        return (
+          <div
+            key={idx}
+            className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+          >
+            <button
+              onClick={() => toggle(idx)}
+              className="flex w-full items-center justify-between px-4 py-3.5 text-left"
+            >
+              <span className="text-sm font-semibold text-foreground">{item.title}</span>
+              <ChevronDown
+                className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {isOpen && (
+              <div className="border-t border-border px-4 pb-4 pt-1">
+                <MiniFlow steps={item.steps} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Rewards() {
   return (
-    <section id="rewards" className="scroll-mt-20 bg-muted/30 py-16 sm:py-24">
+    <section id="rewards" className="scroll-mt-20 bg-muted/30 py-10 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
@@ -280,7 +424,15 @@ export function Rewards() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
+        {/* ── Mobile layout ── */}
+        <div className="mt-8 space-y-6 lg:hidden">
+          <MobileSummaryCards />
+          <Calculator />
+          <MobileAccordions />
+        </div>
+
+        {/* ── Desktop layout ── */}
+        <div className="mt-14 hidden gap-6 lg:grid lg:grid-cols-2 lg:gap-8">
           <TierDiagram />
           <Calculator />
         </div>
