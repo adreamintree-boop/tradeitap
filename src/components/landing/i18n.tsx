@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from "re
 import { zh as zhRaw } from "./i18n-zh";
 import { ru as ruRaw } from "./i18n-ru";
 import { es as esRaw } from "./i18n-es";
+import { vi as viRaw } from "./i18n-vi";
 
 
 
