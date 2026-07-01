@@ -74,7 +74,7 @@ export function WhoCanJoin() {
               </p>
             </div>
             <div className="mt-8">
-              <PartnerButton />
+              <PartnerButton className="w-full sm:w-auto" />
             </div>
           </div>
 
