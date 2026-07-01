@@ -204,8 +204,8 @@ export function Navbar() {
             ))}
             <div className="mt-1 border-t border-border/60 pt-2">
               <LanguageDropdown
-                selected={selectedLang}
-                onSelect={setSelectedLang}
+                selected={code}
+                onSelect={setCode}
                 variant="mobile"
               />
             </div>
