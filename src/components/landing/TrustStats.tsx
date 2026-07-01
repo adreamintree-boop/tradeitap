@@ -1,46 +1,28 @@
 import { Database, Globe2, Users, Sparkles, BarChart3, ShieldCheck, KanbanSquare } from "lucide-react";
+import { useLang } from "./i18n";
 
-const stats = [
-  {
-    value: "8B+",
-    label: "Trade Records",
-    body: "Access one of the world's largest global trade intelligence databases.",
-    icon: Database,
-  },
-  {
-    value: "200+",
-    label: "Countries & Regions",
-    body: "Explore import and export data from markets around the world.",
-    icon: Globe2,
-  },
-  {
-    value: "230M+",
-    label: "Verified Companies & Contacts",
-    body: "Reach decision-makers through a global B2B contact database.",
-    icon: Users,
-  },
-];
-
-const badges = [
-  { icon: Sparkles, label: "AI-Powered Buyer Analysis" },
-  { icon: BarChart3, label: "Global Trade Intelligence" },
-  { icon: ShieldCheck, label: "Verified B2B Contacts" },
-  { icon: KanbanSquare, label: "CRM & Sales Workflow" },
-];
+const statIcons = [Database, Globe2, Users];
+const badgeIcons = [Sparkles, BarChart3, ShieldCheck, KanbanSquare];
 
 export function TrustStats() {
+  const { t } = useLang();
+  const stats = t.proof.stats.map((s, i) => ({ ...s, icon: statIcons[i] ?? Database }));
+  const badges = t.proof.badges.map((label, i) => ({
+    label,
+    icon: badgeIcons[i] ?? Sparkles,
+  }));
+
   return (
     <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          Proof you can stand behind
+          {t.proof.eyebrow}
         </span>
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          Built on Data. Trusted Worldwide.
+          {t.proof.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          TradeIt combines one of the world's largest trade databases with verified business contacts
-          and AI-powered insights.
+          {t.proof.subtitle}
         </p>
       </div>
 
