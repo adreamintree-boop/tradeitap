@@ -215,9 +215,9 @@ function Calculator() {
         </p>
       </div>
 
-      <div className="space-y-4 p-6">
+      <div className="space-y-3 p-4 sm:space-y-4 sm:p-6">
         {/* Inputs */}
-        <div className="grid gap-3 rounded-2xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-muted/30 p-3 sm:gap-3 sm:p-4 sm:grid-cols-3">
           <CalcInput
             label="Direct customers"
             value={directCustomers}
@@ -228,7 +228,7 @@ function Calculator() {
             value={partnerCustomers}
             onChange={setPartnerCustomers}
           />
-          <div className="flex flex-col gap-1.5">
+          <div className="col-span-2 flex flex-col gap-1.5 sm:col-span-1">
             <span className="text-xs font-semibold text-muted-foreground">Monthly plan price</span>
             <div className="flex gap-2">
               {[20, 50, 100].map((price) => (
@@ -236,7 +236,7 @@ function Calculator() {
                   key={price}
                   type="button"
                   onClick={() => setPlanPrice(price)}
-                  className={`flex-1 rounded-xl border py-2.5 text-sm font-bold transition-all ${
+                  className={`flex-1 rounded-xl border py-2 text-sm font-bold transition-all sm:py-2.5 ${
                     planPrice === price
                       ? "gradient-purple border-transparent text-primary-foreground shadow-float"
                       : "border-border bg-background text-foreground hover:border-primary/40 hover:shadow-sm"
