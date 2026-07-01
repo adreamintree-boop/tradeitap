@@ -77,14 +77,13 @@ export function SuccessStories() {
     <section id="stories" className="scroll-mt-20 py-16 sm:py-24">
       <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          Trusted on both sides
+          {copy.stories.eyebrow}
         </span>
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          A Platform Businesses Trust. A Program Partners Love.
+          {copy.stories.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          When businesses achieve better global sales, partners build recurring income. TradeIt
-          creates value for both sides.
+          {copy.stories.subtitle}
         </p>
       </div>
 
@@ -98,7 +97,12 @@ export function SuccessStories() {
           style={{ ["--marquee-duration" as string]: "55s" }}
         >
           {loop.map((t, i) => (
-            <TestimonialCard key={`${t.role}-${i}`} t={t} />
+            <TestimonialCard
+              key={`${t.role}-${i}`}
+              t={t}
+              lovedLabel={copy.stories.lovedByUsers}
+              recommendedLabel={copy.stories.recommendedByPartners}
+            />
           ))}
         </div>
       </div>
