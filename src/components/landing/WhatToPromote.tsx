@@ -5,6 +5,7 @@ import {
   Sparkles,
   KanbanSquare,
   Mail,
+  ChevronDown,
   type LucideIcon,
 } from "lucide-react";
 import promoteSearch from "@/assets/promote-search.png.asset.json";
