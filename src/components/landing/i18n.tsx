@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 
-export type Lang = "en" | "ko";
+export type Lang = "en" | "ko" | "ja";
 
 type Person = { title: string; body: string };
 type Feature = { title: string; body: string };
