@@ -49,6 +49,8 @@ function MobilePersonCard({ img, title, body, className }: { img: string; title:
 }
 
 export function WhoCanJoin() {
+  const { t } = useLang();
+  const people = t.who.people.map((p, i) => ({ img: images[i], title: p.title, body: p.body }));
   return (
     <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-10 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -56,13 +58,13 @@ export function WhoCanJoin() {
         <div className="sm:hidden">
           <div className="mb-6 text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-              Open to everyone
+              {t.who.eyebrow}
             </span>
             <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-balance">
-              Who Can Join As A Partner?
+              {t.who.title}
             </h2>
             <p className="mt-2 text-base leading-relaxed text-muted-foreground">
-              Anyone with a business network can become a partner.
+              {t.who.subtitle}
             </p>
             <div className="mt-4 flex justify-center">
               <PartnerButton />
