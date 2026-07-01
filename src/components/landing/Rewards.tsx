@@ -368,6 +368,8 @@ function MiniFlow({
 }
 
 function MobileAccordions() {
+  const { t } = useLang();
+  const r = t.rewards;
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (idx: number) => {
@@ -376,23 +378,25 @@ function MobileAccordions() {
 
   const items = [
     {
-      title: "How direct commissions work",
+      title: r.howDirect,
       steps: [
-        { label: "You", navy: true },
-        { label: "Direct Customers" },
-        { label: "15% recurring commission", highlight: true },
+        { label: r.you, navy: true },
+        { label: r.directCustomersNode },
+        { label: r.commission15recurring, highlight: true },
       ],
     },
     {
-      title: "How indirect commissions work",
+      title: r.howIndirect,
       steps: [
-        { label: "You", navy: true },
-        { label: "Invited Partner" },
-        { label: "Partner's Customers" },
-        { label: "5% recurring commission", highlight: true },
+        { label: r.you, navy: true },
+        { label: r.invitedPartner },
+        { label: r.partnersCustomers },
+        { label: r.commission5recurring, highlight: true },
       ],
     },
   ];
+
+
 
   return (
     <div className="space-y-3">
