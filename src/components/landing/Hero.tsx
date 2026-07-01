@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 function IncomeGraphCard() {
   const { t } = useLang();
   return (
-    <div className="w-56 rounded-2xl border border-border bg-card p-4 shadow-float">
+    <div className="w-36 rounded-2xl border border-border bg-card p-3 shadow-float sm:w-56 sm:p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold text-foreground">{t.hero.incomeTitle}</span>
         <span className="inline-flex items-center text-[11px] font-semibold text-primary">
