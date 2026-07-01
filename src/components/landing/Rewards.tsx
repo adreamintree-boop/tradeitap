@@ -249,32 +249,34 @@ function Calculator() {
           </div>
         </div>
 
-        <ResultCard
-          tier="Direct"
-          rate="15%"
-          formula={`${directCustomers} customers × $${planPrice} × 15%`}
-          monthly={directMonthly}
-          annual={directAnnual}
-        />
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-1 sm:gap-3">
+          <ResultCard
+            tier="Direct"
+            rate="15%"
+            formula={`${directCustomers} customers × $${planPrice} × 15%`}
+            monthly={directMonthly}
+            annual={directAnnual}
+          />
 
-        <ResultCard
-          tier="Indirect"
-          rate="5%"
-          formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
-          monthly={indirectMonthly}
-          annual={indirectAnnual}
-        />
+          <ResultCard
+            tier="Indirect"
+            rate="5%"
+            formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
+            monthly={indirectMonthly}
+            annual={indirectAnnual}
+          />
+        </div>
 
-        <div className="rounded-2xl gradient-purple p-5 text-primary-foreground shadow-float">
+        <div className="rounded-2xl gradient-purple p-4 text-primary-foreground shadow-float sm:p-5">
           <div className="text-xs font-semibold uppercase tracking-wide opacity-90">
             Total recurring earnings
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
-            <span className="whitespace-nowrap font-display text-4xl font-extrabold leading-none">
+            <span className="whitespace-nowrap font-display text-3xl font-extrabold leading-none sm:text-4xl">
               {formatMoney(totalMonthly)}
-              <span className="text-xl font-bold opacity-90">/mo</span>
+              <span className="text-lg font-bold opacity-90 sm:text-xl">/mo</span>
             </span>
-            <span className="ml-auto whitespace-nowrap font-display text-2xl font-bold">
+            <span className="ml-auto whitespace-nowrap font-display text-xl font-bold sm:text-2xl">
               {formatMoney(totalAnnual)}/yr
             </span>
           </div>
