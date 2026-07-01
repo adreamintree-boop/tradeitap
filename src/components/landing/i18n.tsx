@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { zh as zhRaw } from "./i18n-zh";
 import { ru as ruRaw } from "./i18n-ru";
 import { es as esRaw } from "./i18n-es";
