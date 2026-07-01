@@ -130,6 +130,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState("en");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
