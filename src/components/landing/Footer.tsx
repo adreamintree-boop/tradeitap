@@ -14,7 +14,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-8 sm:px-10 md:min-h-[140px] md:flex-row md:justify-between md:gap-4 md:py-12">
         {/* Mobile: first row (links + socials). Desktop: right side. */}
-        <div className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:order-none md:gap-x-6 md:gap-y-3">
+        <div className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:order-2 md:gap-x-6 md:gap-y-3">
           <a
             href="#"
             className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
