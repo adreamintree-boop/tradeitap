@@ -16,11 +16,13 @@ function FlowNode({
   label,
   sub,
   highlight,
+  className,
 }: {
   icon: React.ElementType;
   label: string;
   sub?: string;
   highlight?: "purple" | "navy" | "mint" | "muted";
+  className?: string;
 }) {
   const styles = {
     purple: "gradient-purple text-primary-foreground border-transparent",
@@ -30,7 +32,7 @@ function FlowNode({
   } as const;
   return (
     <div
-      className={`flex flex-1 flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center shadow-sm ${styles[highlight ?? "muted"]}`}
+      className={`flex flex-1 flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center shadow-sm ${styles[highlight ?? "muted"]} ${className ?? ""}`}
     >
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-background/20">
         <Icon className="h-5 w-5" />
