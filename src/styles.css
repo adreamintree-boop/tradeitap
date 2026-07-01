@@ -260,3 +260,19 @@
 @utility animate-marquee {
   animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
 }
+
+/* ── Russian-specific TierDiagram compact layout ─────────────── */
+[data-language="ru"] .tier-diagram .flow-card {
+  min-width: 0;
+  flex: 1 1 120px;
+}
+
+[data-language="ru"] .tier-diagram .flow-card-title {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+[data-language="ru"] .tier-diagram .flow-card-sub {
+  font-size: 11px;
+  line-height: 1.35;
+}
