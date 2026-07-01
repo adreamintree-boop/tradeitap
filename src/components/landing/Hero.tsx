@@ -13,15 +13,15 @@ import { useState, useEffect } from "react";
 function IncomeGraphCard() {
   const { t } = useLang();
   return (
-    <div className="w-56 rounded-2xl border border-border bg-card p-4 shadow-float">
+    <div className="w-36 rounded-2xl border border-border bg-card p-3 shadow-float sm:w-56 sm:p-4">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-foreground">{t.hero.incomeTitle}</span>
-        <span className="inline-flex items-center text-[11px] font-semibold text-primary">
+        <span className="text-[10px] font-semibold text-foreground sm:text-xs">{t.hero.incomeTitle}</span>
+        <span className="inline-flex items-center text-[10px] font-semibold text-primary sm:text-[11px]">
           <ArrowUpRight className="h-3 w-3" />
           +42%
         </span>
       </div>
-      <svg viewBox="0 0 200 80" className="mt-3 h-16 w-full" preserveAspectRatio="none">
+      <svg viewBox="0 0 200 80" className="mt-2 h-11 w-full sm:mt-3 sm:h-16" preserveAspectRatio="none">
         <defs>
           <linearGradient id="incomeFill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="oklch(0.7 0.12 190)" stopOpacity="0.28" />
@@ -43,8 +43,8 @@ function IncomeGraphCard() {
         <circle cx="200" cy="6" r="3.5" fill="oklch(0.62 0.13 188)" />
       </svg>
       <div className="mt-1 flex items-end justify-between">
-        <span className="font-display text-lg font-extrabold leading-none">$2,480</span>
-        <span className="text-[10px] font-medium text-muted-foreground">{t.hero.incomeMonth}</span>
+        <span className="font-display text-base font-extrabold leading-none sm:text-lg">$2,480</span>
+        <span className="text-[9px] font-medium text-muted-foreground sm:text-[10px]">{t.hero.incomeMonth}</span>
       </div>
     </div>
   );
@@ -67,9 +67,24 @@ function FloatingBadges() {
   }, []);
 
   const pills = [
-    { v: "+$350", cls: "bg-badge-mint text-navy", pos: "right-6 top-20 sm:-right-4" },
-    { v: "+$200", cls: "bg-primary text-primary-foreground", pos: "left-4 top-1/2 sm:-left-7" },
-    { v: "+$120", cls: "bg-badge-lavender text-navy", pos: "left-6 bottom-40 sm:-left-4" },
+    {
+      v: "+$350",
+      cls: "bg-badge-mint text-navy",
+      pos: "right-2 top-3 sm:right-auto sm:-right-4 sm:top-20",
+      disp: "inline-flex",
+    },
+    {
+      v: "+$200",
+      cls: "bg-primary text-primary-foreground",
+      pos: "left-4 top-1/2 sm:-left-7",
+      disp: "hidden sm:inline-flex",
+    },
+    {
+      v: "+$120",
+      cls: "bg-badge-lavender text-navy",
+      pos: "left-2 top-[46%] sm:left-auto sm:-left-4 sm:top-auto sm:bottom-40",
+      disp: "inline-flex",
+    },
   ];
 
   return (
@@ -77,7 +92,7 @@ function FloatingBadges() {
       {pills.map((p, i) => (
         <span
           key={p.v}
-          className={`absolute ${p.pos} inline-flex items-center rounded-full px-[18px] py-[10px] font-display text-base font-bold shadow-badge transition-all duration-500 ease-out ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"} ${p.cls}`}
+          className={`absolute ${p.pos} ${p.disp} items-center rounded-full px-3.5 py-2 font-display text-sm font-bold shadow-badge transition-all duration-500 ease-out sm:px-[18px] sm:py-[10px] sm:text-base ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"} ${p.cls}`}
           style={{ transitionDelay: show ? `${i * 180}ms` : "0ms" }}
         >
           {p.v}
@@ -109,13 +124,13 @@ function HeroVisual() {
       <FloatingBadges />
 
       {/* monthly commission summary card */}
-      <div className="absolute -left-4 top-6 hidden w-40 rounded-2xl border border-border bg-card p-3.5 shadow-float sm:block">
-        <div className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+      <div className="absolute left-2 top-3 w-32 rounded-2xl border border-border bg-card p-2.5 shadow-float sm:-left-4 sm:top-6 sm:w-40 sm:p-3.5">
+        <div className="text-[9px] font-medium uppercase tracking-wide text-muted-foreground sm:text-[10px]">
           {t.hero.indirectCommission}
         </div>
         <div className="mt-1 flex items-end gap-1.5">
-          <span className="font-display text-xl font-extrabold leading-none">$1,800</span>
-          <span className="inline-flex items-center text-[11px] font-semibold text-primary">
+          <span className="font-display text-base font-extrabold leading-none sm:text-xl">$1,800</span>
+          <span className="inline-flex items-center text-[10px] font-semibold text-primary sm:text-[11px]">
             <TrendingUp className="h-3 w-3" />
             +23%
           </span>
@@ -123,7 +138,7 @@ function HeroVisual() {
       </div>
 
       {/* income graph card overlapping lower-right */}
-      <div className="absolute -bottom-6 -right-4 hidden sm:block">
+      <div className="absolute -bottom-4 right-1 sm:-bottom-6 sm:-right-4">
         <IncomeGraphCard />
       </div>
     </div>
@@ -145,17 +160,17 @@ export function Hero() {
               <Sparkles className="h-3.5 w-3.5 text-primary" />
               {t.hero.badge}
             </span>
-            <h1 className="mt-6 mx-auto max-w-[340px] font-display text-[clamp(34px,9vw,42px)] font-extrabold leading-[1.08] tracking-[-0.03em] text-balance sm:mx-0 sm:max-w-none sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+            <h1 className="mt-5 mx-auto max-w-[320px] font-display text-[clamp(28px,7.5vw,34px)] font-extrabold leading-[1.1] tracking-[-0.03em] text-balance sm:mt-6 sm:mx-0 sm:max-w-none sm:text-5xl sm:leading-[1.08] lg:text-[3.5rem] lg:leading-[1.05]">
               {t.hero.headBefore}
               <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.18_250)] bg-clip-text text-transparent">
                 {t.hero.headHighlight}
               </span>
               {t.hero.headAfter}
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg lg:mx-0">
               {t.hero.subcopy}
             </p>
-            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
+            <div className="mt-6 flex flex-col items-stretch gap-3.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4 lg:justify-start">
               <PartnerButton className="w-full sm:w-auto" />
               <a
                 href="#rewards"
@@ -165,7 +180,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground lg:justify-start">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground sm:mt-7 lg:justify-start">
               <span className="inline-flex items-center gap-1.5">
                 <BadgeCheck className="h-4 w-4 text-primary" /> {t.hero.freeToJoin}
               </span>
