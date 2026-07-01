@@ -130,16 +130,9 @@ function HeroVisual() {
   );
 }
 
-const trustItems = [
-  "Exporters",
-  "Manufacturers",
-  "Trading Companies",
-  "Sourcing Teams",
-  "Procurement Teams",
-  "Importers",
-];
-
 export function Hero() {
+  const { t } = useLang();
+  const trustItems = t.hero.trustItems;
   return (
     <section className="relative overflow-hidden gradient-hero">
       <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
@@ -150,18 +143,17 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-4 py-1.5 text-xs font-semibold text-foreground backdrop-blur">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
-              Affiliate Partner Program
+              {t.hero.badge}
             </span>
             <h1 className="mt-6 font-display text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
-              Earn Recurring Revenue by Helping Companies Grow Their{" "}
+              {t.hero.headBefore}
               <span className="bg-gradient-to-r from-primary to-[oklch(0.5_0.18_250)] bg-clip-text text-transparent">
-                Global Sales
+                {t.hero.headHighlight}
               </span>
+              {t.hero.headAfter}
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
-              TradeIt enables exporters, manufacturers, and overseas sales teams to discover buyers
-              faster with global trade data and AI. Recommend TradeIt and earn recurring commissions
-              every month.
+              {t.hero.subcopy}
             </p>
             <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
               <PartnerButton className="w-full sm:w-auto" />
@@ -169,16 +161,16 @@ export function Hero() {
                 href="#rewards"
                 className="inline-flex min-h-11 items-center justify-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
               >
-                See how rewards work
+                {t.hero.seeRewards}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground lg:justify-start">
               <span className="inline-flex items-center gap-1.5">
-                <BadgeCheck className="h-4 w-4 text-primary" /> Free to join
+                <BadgeCheck className="h-4 w-4 text-primary" /> {t.hero.freeToJoin}
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <CircleDollarSign className="h-4 w-4 text-primary" /> 15% + 5% commissions
+                <CircleDollarSign className="h-4 w-4 text-primary" /> {t.hero.commissions}
               </span>
             </div>
           </div>
@@ -191,12 +183,12 @@ export function Hero() {
         {/* trust strip */}
         <div className="mt-20 border-t border-border/70 pt-8">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Trusted by professionals across global trade
+            {t.hero.trustLabel}
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-sm font-semibold text-foreground/70 sm:gap-x-10">
-            {trustItems.map((t, i) => (
-              <span key={t} className="flex items-center gap-6 sm:gap-10">
-                {t}
+            {trustItems.map((item, i) => (
+              <span key={item} className="flex items-center gap-6 sm:gap-10">
+                {item}
                 {i < trustItems.length - 1 && (
                   <span className="hidden h-1 w-1 rounded-full bg-primary/40 sm:inline-block" />
                 )}
