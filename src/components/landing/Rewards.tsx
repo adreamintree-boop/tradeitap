@@ -143,16 +143,16 @@ function CalcInput({
   prefix?: string;
 }) {
   return (
-    <label className="flex flex-col gap-1.5">
+    <label className="flex flex-col gap-1 sm:gap-1.5">
       <span className="text-xs font-semibold text-muted-foreground">{label}</span>
-      <div className="flex items-center rounded-xl border border-border bg-background px-3 focus-within:ring-2 focus-within:ring-ring">
+      <div className="flex items-center rounded-xl border border-border bg-background px-2.5 sm:px-3 focus-within:ring-2 focus-within:ring-ring">
         {prefix && <span className="text-sm font-semibold text-muted-foreground">{prefix}</span>}
         <input
           type="number"
           min={0}
           value={value}
           onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
-          className="w-full bg-transparent py-2.5 text-sm font-bold text-foreground outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="w-full bg-transparent py-2 text-sm font-bold text-foreground outline-none [appearance:textfield] sm:py-2.5 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
       </div>
     </label>
@@ -173,20 +173,20 @@ function ResultCard({
   annual: number;
 }) {
   return (
-    <div className="rounded-2xl border border-border p-4">
+    <div className="rounded-2xl border border-border p-3 sm:p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
-        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary sm:px-2.5 sm:text-xs">
           {rate} recurring
         </span>
       </div>
-      <p className="mt-1 text-sm text-muted-foreground">{formula}</p>
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <span className="whitespace-nowrap font-display text-2xl font-extrabold">
+      <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{formula}</p>
+      <div className="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 sm:mt-3 sm:gap-x-4">
+        <span className="whitespace-nowrap font-display text-xl font-extrabold sm:text-2xl">
           {formatMoney(monthly)}
-          <span className="text-base font-semibold text-muted-foreground">/mo</span>
+          <span className="text-sm font-semibold text-muted-foreground sm:text-base">/mo</span>
         </span>
-        <span className="whitespace-nowrap text-sm text-muted-foreground">
+        <span className="whitespace-nowrap text-xs text-muted-foreground sm:text-sm">
           {formatMoney(annual)}/yr
         </span>
       </div>
@@ -208,16 +208,16 @@ function Calculator() {
 
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
-      <div className="border-b border-border bg-muted/40 px-6 py-5">
+      <div className="border-b border-border bg-muted/40 px-4 py-4 sm:px-6 sm:py-5">
         <h3 className="font-display text-lg font-bold">Earnings calculator</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Adjust the numbers to estimate your recurring earnings.
         </p>
       </div>
 
-      <div className="space-y-4 p-6">
+      <div className="space-y-3 p-4 sm:space-y-4 sm:p-6">
         {/* Inputs */}
-        <div className="grid gap-3 rounded-2xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-muted/30 p-3 sm:gap-3 sm:p-4 sm:grid-cols-3">
           <CalcInput
             label="Direct customers"
             value={directCustomers}
@@ -228,7 +228,7 @@ function Calculator() {
             value={partnerCustomers}
             onChange={setPartnerCustomers}
           />
-          <div className="flex flex-col gap-1.5">
+          <div className="col-span-2 flex flex-col gap-1.5 sm:col-span-1">
             <span className="text-xs font-semibold text-muted-foreground">Monthly plan price</span>
             <div className="flex gap-2">
               {[20, 50, 100].map((price) => (
@@ -236,7 +236,7 @@ function Calculator() {
                   key={price}
                   type="button"
                   onClick={() => setPlanPrice(price)}
-                  className={`flex-1 rounded-xl border py-2.5 text-sm font-bold transition-all ${
+                  className={`flex-1 rounded-xl border py-2 text-sm font-bold transition-all sm:py-2.5 ${
                     planPrice === price
                       ? "gradient-purple border-transparent text-primary-foreground shadow-float"
                       : "border-border bg-background text-foreground hover:border-primary/40 hover:shadow-sm"
@@ -249,32 +249,34 @@ function Calculator() {
           </div>
         </div>
 
-        <ResultCard
-          tier="Direct"
-          rate="15%"
-          formula={`${directCustomers} customers × $${planPrice} × 15%`}
-          monthly={directMonthly}
-          annual={directAnnual}
-        />
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-1 sm:gap-3">
+          <ResultCard
+            tier="Direct"
+            rate="15%"
+            formula={`${directCustomers} customers × $${planPrice} × 15%`}
+            monthly={directMonthly}
+            annual={directAnnual}
+          />
 
-        <ResultCard
-          tier="Indirect"
-          rate="5%"
-          formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
-          monthly={indirectMonthly}
-          annual={indirectAnnual}
-        />
+          <ResultCard
+            tier="Indirect"
+            rate="5%"
+            formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
+            monthly={indirectMonthly}
+            annual={indirectAnnual}
+          />
+        </div>
 
-        <div className="rounded-2xl gradient-purple p-5 text-primary-foreground shadow-float">
+        <div className="rounded-2xl gradient-purple p-4 text-primary-foreground shadow-float sm:p-5">
           <div className="text-xs font-semibold uppercase tracking-wide opacity-90">
             Total recurring earnings
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
-            <span className="whitespace-nowrap font-display text-4xl font-extrabold leading-none">
+            <span className="whitespace-nowrap font-display text-3xl font-extrabold leading-none sm:text-4xl">
               {formatMoney(totalMonthly)}
-              <span className="text-xl font-bold opacity-90">/mo</span>
+              <span className="text-lg font-bold opacity-90 sm:text-xl">/mo</span>
             </span>
-            <span className="ml-auto whitespace-nowrap font-display text-2xl font-bold">
+            <span className="ml-auto whitespace-nowrap font-display text-xl font-bold sm:text-2xl">
               {formatMoney(totalAnnual)}/yr
             </span>
           </div>
