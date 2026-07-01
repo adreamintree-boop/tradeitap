@@ -166,7 +166,33 @@
   --ring: oklch(0.7 0.16 255);
 }
 
-@layer base {
+/* ── Language-specific font families ─────────────────────────────
+ * --font-heading drives H1/H2/H3/section & card titles (font-display).
+ * --font-body drives body, paragraphs, buttons, nav, FAQ, cards (font-sans).
+ */
+[data-language="en"],
+[data-language="ru"],
+[data-language="es"] {
+  --font-heading: "Manrope", "Inter", "Noto Sans", sans-serif;
+  --font-body: "Inter", "Noto Sans", sans-serif;
+}
+[data-language="ko"] {
+  --font-heading: "Noto Sans KR", "Inter", sans-serif;
+  --font-body: "Noto Sans KR", "Inter", sans-serif;
+}
+[data-language="ja"] {
+  --font-heading: "M PLUS 1p", "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP", "Noto Sans", sans-serif;
+}
+[data-language="zh"] {
+  --font-heading: "Noto Sans SC", "Noto Sans", sans-serif;
+  --font-body: "Noto Sans SC", "Noto Sans", sans-serif;
+}
+[data-language="vi"] {
+  --font-heading: "Be Vietnam Pro", "Inter", "Noto Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", "Inter", "Noto Sans", sans-serif;
+}
+
   * {
     border-color: var(--color-border);
   }
