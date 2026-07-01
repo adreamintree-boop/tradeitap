@@ -185,7 +185,8 @@ function ResultCard({
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary sm:px-2.5 sm:text-xs">
-          {rate} {recurringLabel}
+          {rate}
+          <span className="hidden sm:inline"> {recurringLabel}</span>
         </span>
       </div>
       <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{formula}</p>
@@ -314,9 +315,15 @@ function MobileSummaryCards() {
   return (
     <div className="grid grid-cols-2 gap-3">
       {/* Direct */}
-      <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {r.directLabel}
+          {r.directLabel.split(" ")[0]}
+          {r.directLabel.includes(" ") && (
+            <>
+              <br />
+              {r.directLabel.split(" ").slice(1).join(" ")}
+            </>
+          )}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-primary">15%</div>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
@@ -325,9 +332,15 @@ function MobileSummaryCards() {
       </div>
 
       {/* Indirect */}
-      <div className="rounded-2xl border border-border bg-sky-50 p-4 shadow-sm">
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-sky-50 p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
-          {r.indirectLabel}
+          {r.indirectLabel.split(" ")[0]}
+          {r.indirectLabel.includes(" ") && (
+            <>
+              <br />
+              {r.indirectLabel.split(" ").slice(1).join(" ")}
+            </>
+          )}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-sky-700">5%</div>
         <p className="mt-1 text-xs leading-relaxed text-sky-800/80">
@@ -449,10 +462,9 @@ export function Rewards() {
 
 
         {/* ── Mobile layout ── */}
-        <div className="mt-8 space-y-6 lg:hidden">
+        <div className="mt-8 space-y-5 lg:hidden">
           <MobileSummaryCards />
           <Calculator />
-          <MobileAccordions />
         </div>
 
         {/* ── Desktop layout ── */}
