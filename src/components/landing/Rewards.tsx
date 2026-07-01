@@ -143,16 +143,16 @@ function CalcInput({
   prefix?: string;
 }) {
   return (
-    <label className="flex flex-col gap-1.5">
+    <label className="flex flex-col gap-1 sm:gap-1.5">
       <span className="text-xs font-semibold text-muted-foreground">{label}</span>
-      <div className="flex items-center rounded-xl border border-border bg-background px-3 focus-within:ring-2 focus-within:ring-ring">
+      <div className="flex items-center rounded-xl border border-border bg-background px-2.5 sm:px-3 focus-within:ring-2 focus-within:ring-ring">
         {prefix && <span className="text-sm font-semibold text-muted-foreground">{prefix}</span>}
         <input
           type="number"
           min={0}
           value={value}
           onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
-          className="w-full bg-transparent py-2.5 text-sm font-bold text-foreground outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="w-full bg-transparent py-2 text-sm font-bold text-foreground outline-none [appearance:textfield] sm:py-2.5 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
       </div>
     </label>
