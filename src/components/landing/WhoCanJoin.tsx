@@ -4,34 +4,9 @@ import association from "@/assets/who-association-realistic.png.asset.json";
 import social from "@/assets/who-social-realistic.png.asset.json";
 import marketer from "@/assets/who-marketer-realistic.png.asset.json";
 import { PartnerButton } from "./Logo";
+import { useLang } from "./i18n";
 
-const people = [
-  {
-    img: consultant.url,
-    title: "Business Consultants",
-    body: "Recommend TradeIt to companies you advise.",
-  },
-  {
-    img: creator.url,
-    title: "Content Creators",
-    body: "Share tools your audience loves.",
-  },
-  {
-    img: association.url,
-    title: "Trade Associations",
-    body: "Deliver value to your members.",
-  },
-  {
-    img: social.url,
-    title: "Social Media & Communities",
-    body: "Guide your community to better tools.",
-  },
-  {
-    img: marketer.url,
-    title: "Affiliate Marketers",
-    body: "Promote SaaS and earn recurring income.",
-  },
-];
+const images = [consultant.url, creator.url, association.url, social.url, marketer.url];
 
 function PersonCard({ img, title, body }: { img: string; title: string; body: string }) {
   return (
