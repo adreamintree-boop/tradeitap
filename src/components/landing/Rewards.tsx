@@ -167,29 +167,35 @@ function ResultCard({
   formula,
   monthly,
   annual,
+  recurringLabel,
+  perMo,
+  perYr,
 }: {
   tier: string;
   rate: string;
   formula: string;
   monthly: number;
   annual: number;
+  recurringLabel: string;
+  perMo: string;
+  perYr: string;
 }) {
   return (
     <div className="rounded-2xl border border-border p-3 sm:p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary sm:px-2.5 sm:text-xs">
-          {rate} recurring
+          {rate} {recurringLabel}
         </span>
       </div>
       <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{formula}</p>
       <div className="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 sm:mt-3 sm:gap-x-4">
         <span className="whitespace-nowrap font-display text-xl font-extrabold sm:text-2xl">
           {formatMoney(monthly)}
-          <span className="text-sm font-semibold text-muted-foreground sm:text-base">/mo</span>
+          <span className="text-sm font-semibold text-muted-foreground sm:text-base">{perMo}</span>
         </span>
         <span className="whitespace-nowrap text-xs text-muted-foreground sm:text-sm">
-          {formatMoney(annual)}/yr
+          {formatMoney(annual)}{perYr}
         </span>
       </div>
     </div>
