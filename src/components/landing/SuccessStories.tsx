@@ -23,7 +23,15 @@ type Testimonial = {
   context: string;
 };
 
-function TestimonialCard({ t }: { t: Testimonial }) {
+function TestimonialCard({
+  t,
+  lovedLabel,
+  recommendedLabel,
+}: {
+  t: Testimonial;
+  lovedLabel: string;
+  recommendedLabel: string;
+}) {
   const isPartner = t.type === "Partner";
   return (
     <article className="flex w-[300px] shrink-0 flex-col rounded-3xl border border-border bg-card p-6 shadow-card sm:w-[380px] sm:p-7">
@@ -35,7 +43,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
               : "bg-sky-100 text-sky-700"
           }`}
         >
-          {isPartner ? "Recommended by Partners" : "Loved by Users"}
+          {isPartner ? recommendedLabel : lovedLabel}
         </span>
         <div className="flex gap-0.5">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -55,7 +63,15 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 }
 
 export function SuccessStories() {
+  const { t: copy } = useLang();
+  const testimonials: Testimonial[] = copy.stories.items.map((item, i) => ({
+    type: kinds[i] ?? "User",
+    role: item.role,
+    context: item.context,
+    quote: item.quote,
+  }));
   const loop = [...testimonials, ...testimonials];
+
 
   return (
     <section id="stories" className="scroll-mt-20 py-16 sm:py-24">
