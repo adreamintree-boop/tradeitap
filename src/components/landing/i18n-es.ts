@@ -276,6 +276,10 @@ export const es = {
         a: "Puedes ganar un 15% de comisión recurrente por cada cliente que se suscriba a través de tu enlace de referido. También ganas un 5% de comisión recurrente por los clientes recomendados por los partners que invitas personalmente al Programa de Partners de TradeIt.\u00a0\n\n\nA medida que crece tu base de clientes y tu red de partners, también crece tu potencial de ingresos recurrentes.",
       },
       {
+        q: "¿Durante cuánto tiempo puedo ganar comisiones por un cliente referido?",
+        a: "Puedes ganar comisiones mientras el cliente que referiste mantenga una suscripción paga de TradeIt, hasta un máximo de 3 años desde la fecha de su primera suscripción paga. Si el cliente continúa suscrito después de los 3 años, las comisiones por ese cliente dejarán de pagarse una vez finalizado el período de comisión de 3 años.",
+      },
+      {
         q: "¿Cuándo se pagan las comisiones?",
         a: "Los pagos de comisiones se procesan mensualmente una vez que tu solicitud de pago ha sido aprobada y se ha alcanzado el importe mínimo de pago.",
       },
