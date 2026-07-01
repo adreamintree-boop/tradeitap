@@ -9,6 +9,7 @@ import {
   Network,
   ChevronDown,
 } from "lucide-react";
+import { useLang } from "./i18n";
 
 function FlowNode({
   icon: Icon,
