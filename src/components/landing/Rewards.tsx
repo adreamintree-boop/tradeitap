@@ -309,27 +309,29 @@ function Calculator() {
 /* ── Mobile-only components ── */
 
 function MobileSummaryCards() {
+  const { t } = useLang();
+  const r = t.rewards;
   return (
     <div className="grid grid-cols-2 gap-3">
       {/* Direct */}
       <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Direct Commission
+          {r.directLabel}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-primary">15%</div>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Refer customers directly and earn recurring monthly commission.
+          {r.directDesc}
         </p>
       </div>
 
       {/* Indirect */}
       <div className="rounded-2xl border border-border bg-sky-50 p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
-          Indirect Commission
+          {r.indirectLabel}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-sky-700">5%</div>
         <p className="mt-1 text-xs leading-relaxed text-sky-800/80">
-          Invite partners and earn commission when their customers subscribe.
+          {r.indirectDesc}
         </p>
       </div>
     </div>
