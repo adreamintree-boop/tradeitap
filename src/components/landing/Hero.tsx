@@ -88,6 +88,7 @@ function FloatingBadges() {
 }
 
 function HeroVisual() {
+  const { t } = useLang();
   return (
     <div className="relative mx-auto max-w-md lg:max-w-none">
       {/* glow */}
@@ -110,7 +111,7 @@ function HeroVisual() {
       {/* monthly commission summary card */}
       <div className="absolute -left-4 top-6 hidden w-40 rounded-2xl border border-border bg-card p-3.5 shadow-float sm:block">
         <div className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-          Indirect Commission
+          {t.hero.indirectCommission}
         </div>
         <div className="mt-1 flex items-end gap-1.5">
           <span className="font-display text-xl font-extrabold leading-none">$1,800</span>
