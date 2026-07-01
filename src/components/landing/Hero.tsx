@@ -70,19 +70,19 @@ function FloatingBadges() {
     {
       v: "+$350",
       cls: "bg-badge-mint text-navy",
-      pos: "right-2 top-3 sm:right-auto sm:-right-4 sm:top-20",
+      pos: "right-2 top-3 lg:right-16 lg:top-24",
       disp: "inline-flex",
     },
     {
       v: "+$200",
       cls: "bg-primary text-primary-foreground",
-      pos: "left-4 top-1/2 sm:-left-7",
+      pos: "left-4 top-1/2 lg:left-6 lg:top-[42%]",
       disp: "hidden sm:inline-flex",
     },
     {
       v: "+$120",
       cls: "bg-badge-lavender text-navy",
-      pos: "left-2 top-[46%] sm:left-auto sm:-left-4 sm:top-auto sm:bottom-40",
+      pos: "left-2 top-[46%] lg:left-4 lg:top-auto lg:bottom-24",
       disp: "inline-flex",
     },
   ];
