@@ -21,7 +21,7 @@ function IncomeGraphCard() {
           +42%
         </span>
       </div>
-      <svg viewBox="0 0 200 80" className="mt-3 h-16 w-full" preserveAspectRatio="none">
+      <svg viewBox="0 0 200 80" className="mt-2 h-11 w-full sm:mt-3 sm:h-16" preserveAspectRatio="none">
         <defs>
           <linearGradient id="incomeFill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="oklch(0.7 0.12 190)" stopOpacity="0.28" />
