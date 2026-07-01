@@ -5,6 +5,7 @@ import {
   Sparkles,
   KanbanSquare,
   Mail,
+  ChevronDown,
   type LucideIcon,
 } from "lucide-react";
 import promoteSearch from "@/assets/promote-search.png.asset.json";
@@ -57,7 +58,11 @@ const previews: Record<FeatureKey, { src: string; alt: string }> = {
 };
 
 export function WhatToPromote() {
-  const [active, setActive] = useState<FeatureKey>("search");
+  const [active, setActive] = useState<FeatureKey | undefined>("search");
+
+  const toggleFeature = (key: FeatureKey) => {
+    setActive((prev) => (prev === key ? undefined : key));
+  };
 
   return (
     <section className="mx-auto max-w-[110rem] px-5 py-16 sm:px-6 sm:py-24 lg:px-10">
@@ -74,7 +79,8 @@ export function WhatToPromote() {
         </p>
       </div>
 
-      <div className="mt-16 grid items-start gap-8 lg:grid-cols-[35%_1fr] lg:gap-16">
+      {/* Desktop: hover-driven split grid */}
+      <div className="mt-16 hidden items-start gap-8 lg:grid lg:grid-cols-[35%_1fr] lg:gap-16">
         <div className="grid gap-3 lg:mt-14">
           {features.map((f) => {
             const isActive = active === f.key;
@@ -129,6 +135,61 @@ export function WhatToPromote() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile: accordion with inline previews */}
+      <div className="mt-10 grid gap-3 lg:hidden">
+        {features.map((f) => {
+          const isActive = active === f.key;
+          return (
+            <div
+              key={f.key}
+              className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                isActive
+                  ? "border-primary/60 bg-accent/60 shadow-float ring-1 ring-primary/20"
+                  : "border-border bg-card shadow-sm"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => toggleFeature(f.key)}
+                aria-expanded={isActive}
+                className="flex w-full items-start gap-3 p-4 text-left"
+              >
+                <span
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-colors duration-300 ${
+                    isActive ? "bg-primary text-primary-foreground" : "bg-accent text-primary"
+                  }`}
+                >
+                  <f.icon className="h-[18px] w-[18px]" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display text-sm font-bold sm:text-base">{f.title}</h3>
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                    {f.body}
+                  </p>
+                </div>
+                <ChevronDown
+                  className={`mt-0.5 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                    isActive ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {isActive && (
+                <div className="px-4 pb-4">
+                  <div className="overflow-hidden rounded-xl border border-border/60 bg-white shadow-card">
+                    <img
+                      src={previews[f.key].src}
+                      alt={previews[f.key].alt}
+                      loading="eager"
+                      className="h-auto max-h-[220px] w-full object-contain"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
