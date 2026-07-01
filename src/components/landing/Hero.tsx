@@ -71,19 +71,19 @@ function FloatingBadges() {
       v: "+$350",
       cls: "bg-badge-mint text-navy",
       pos: "right-2 top-3 sm:right-auto sm:-right-4 sm:top-20",
-      hide: "",
+      disp: "inline-flex",
     },
     {
       v: "+$200",
       cls: "bg-primary text-primary-foreground",
       pos: "left-4 top-1/2 sm:-left-7",
-      hide: "!hidden sm:!inline-flex",
+      disp: "hidden sm:inline-flex",
     },
     {
       v: "+$120",
       cls: "bg-badge-lavender text-navy",
       pos: "left-2 top-[46%] sm:left-auto sm:-left-4 sm:top-auto sm:bottom-40",
-      hide: "",
+      disp: "inline-flex",
     },
   ];
 
@@ -92,7 +92,7 @@ function FloatingBadges() {
       {pills.map((p, i) => (
         <span
           key={p.v}
-          className={`absolute ${p.pos} ${p.hide} inline-flex items-center rounded-full px-3.5 py-2 font-display text-sm font-bold shadow-badge transition-all duration-500 ease-out sm:px-[18px] sm:py-[10px] sm:text-base ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"} ${p.cls}`}
+          className={`absolute ${p.pos} ${p.disp} items-center rounded-full px-3.5 py-2 font-display text-sm font-bold shadow-badge transition-all duration-500 ease-out sm:px-[18px] sm:py-[10px] sm:text-base ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-2 scale-95"} ${p.cls}`}
           style={{ transitionDelay: show ? `${i * 180}ms` : "0ms" }}
         >
           {p.v}
