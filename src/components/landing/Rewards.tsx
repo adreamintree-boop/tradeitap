@@ -9,6 +9,7 @@ import {
   Network,
   ChevronDown,
 } from "lucide-react";
+import { useLang } from "./i18n";
 
 function FlowNode({
   icon: Icon,
@@ -52,35 +53,37 @@ function FlowArrow() {
 }
 
 function TierDiagram() {
+  const { t } = useLang();
+  const r = t.rewards;
   return (
     <div className="rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8">
       <div className="mb-6 flex items-center gap-2">
         <Network className="h-5 w-5 text-primary" />
-        <h3 className="font-display text-lg font-bold">How Tier 2 commissions work</h3>
+        <h3 className="font-display text-lg font-bold">{r.diagTitle}</h3>
       </div>
 
       {/* Direct path */}
       <div className="rounded-2xl border border-border bg-muted/30 p-5">
         <div className="mb-1 flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Direct commission
+            {r.directCommission}
           </span>
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
             15%
           </span>
         </div>
         <p className="mb-4 text-sm text-muted-foreground">
-          Refer customers directly and earn 15% recurring commission.
+          {r.directCommissionDesc}
         </p>
         <div className="flex flex-col items-stretch gap-2 sm:flex-row">
-          <FlowNode icon={User} label="You" sub="Refer customers" highlight="navy" />
+          <FlowNode icon={User} label={r.you} sub={r.referCustomers} highlight="navy" />
           <FlowArrow />
-          <FlowNode icon={Users} label="Direct Customers" sub="Subscribe to TradeIt" />
+          <FlowNode icon={Users} label={r.directCustomersNode} sub={r.subscribe} />
           <FlowArrow />
           <FlowNode
             icon={CircleDollarSign}
-            label="15% Commission"
-            sub="Recurring, monthly"
+            label={r.commission15}
+            sub={r.recurringMonthly}
             highlight="purple"
           />
         </div>
@@ -90,32 +93,31 @@ function TierDiagram() {
       <div className="mt-4 rounded-2xl border border-border bg-muted/30 p-5">
         <div className="mb-1 flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-            Indirect commission
+            {r.indirectCommission}
           </span>
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
             5%
           </span>
         </div>
         <p className="mb-4 text-sm text-muted-foreground">
-          Invite partners. When they bring paying customers, you earn 5% recurring indirect
-          commission.
+          {r.indirectCommissionDesc}
         </p>
         <div className="flex flex-col items-stretch gap-2 sm:flex-row">
-          <FlowNode icon={User} label="You" sub="Invite a partner" highlight="navy" />
+          <FlowNode icon={User} label={r.you} sub={r.inviteAPartner} highlight="navy" />
           <FlowArrow />
           <FlowNode
             icon={UserPlus}
-            label="Invited Partner"
-            sub="Refers customers"
+            label={r.invitedPartner}
+            sub={r.refersCustomers}
             highlight="mint"
           />
           <FlowArrow />
-          <FlowNode icon={Users} label="Partner's Customers" sub="Subscribe to TradeIt" />
+          <FlowNode icon={Users} label={r.partnersCustomers} sub={r.subscribe} />
           <FlowArrow />
           <FlowNode
             icon={CircleDollarSign}
-            label="5% Commission"
-            sub="Recurring, monthly"
+            label={r.commission5}
+            sub={r.recurringMonthly}
             highlight="purple"
           />
         </div>
@@ -165,29 +167,35 @@ function ResultCard({
   formula,
   monthly,
   annual,
+  recurringLabel,
+  perMo,
+  perYr,
 }: {
   tier: string;
   rate: string;
   formula: string;
   monthly: number;
   annual: number;
+  recurringLabel: string;
+  perMo: string;
+  perYr: string;
 }) {
   return (
     <div className="rounded-2xl border border-border p-3 sm:p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary sm:px-2.5 sm:text-xs">
-          {rate} recurring
+          {rate} {recurringLabel}
         </span>
       </div>
       <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{formula}</p>
       <div className="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 sm:mt-3 sm:gap-x-4">
         <span className="whitespace-nowrap font-display text-xl font-extrabold sm:text-2xl">
           {formatMoney(monthly)}
-          <span className="text-sm font-semibold text-muted-foreground sm:text-base">/mo</span>
+          <span className="text-sm font-semibold text-muted-foreground sm:text-base">{perMo}</span>
         </span>
         <span className="whitespace-nowrap text-xs text-muted-foreground sm:text-sm">
-          {formatMoney(annual)}/yr
+          {formatMoney(annual)}{perYr}
         </span>
       </div>
     </div>
@@ -195,6 +203,8 @@ function ResultCard({
 }
 
 function Calculator() {
+  const { t } = useLang();
+  const r = t.rewards;
   const [directCustomers, setDirectCustomers] = useState(10);
   const [partnerCustomers, setPartnerCustomers] = useState(30);
   const [planPrice, setPlanPrice] = useState(50);
@@ -209,9 +219,9 @@ function Calculator() {
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
       <div className="border-b border-border bg-muted/40 px-4 py-4 sm:px-6 sm:py-5">
-        <h3 className="font-display text-lg font-bold">Earnings calculator</h3>
+        <h3 className="font-display text-lg font-bold">{r.calcTitle}</h3>
         <p className="mt-1 text-sm text-muted-foreground">
-          Adjust the numbers to estimate your recurring earnings.
+          {r.calcSubtitle}
         </p>
       </div>
 
@@ -219,17 +229,17 @@ function Calculator() {
         {/* Inputs */}
         <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-muted/30 p-3 sm:gap-3 sm:p-4 sm:grid-cols-3">
           <CalcInput
-            label="Direct customers"
+            label={r.directCustomers}
             value={directCustomers}
             onChange={setDirectCustomers}
           />
           <CalcInput
-            label="Partner's customers"
+            label={r.partnerCustomers}
             value={partnerCustomers}
             onChange={setPartnerCustomers}
           />
           <div className="col-span-2 flex flex-col gap-1.5 sm:col-span-1">
-            <span className="text-xs font-semibold text-muted-foreground">Monthly plan price</span>
+            <span className="text-xs font-semibold text-muted-foreground">{r.monthlyPlanPrice}</span>
             <div className="flex gap-2">
               {[20, 50, 100].map((price) => (
                 <button
@@ -251,40 +261,45 @@ function Calculator() {
 
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-1 sm:gap-3">
           <ResultCard
-            tier="Direct"
+            tier={r.directTier}
             rate="15%"
-            formula={`${directCustomers} customers × $${planPrice} × 15%`}
+            formula={`${directCustomers} × $${planPrice} × 15%`}
             monthly={directMonthly}
             annual={directAnnual}
+            recurringLabel={r.recurring}
+            perMo={r.perMo}
+            perYr={r.perYr}
           />
 
           <ResultCard
-            tier="Indirect"
+            tier={r.indirectTier}
             rate="5%"
-            formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
+            formula={`${partnerCustomers} × $${planPrice} × 5%`}
             monthly={indirectMonthly}
             annual={indirectAnnual}
+            recurringLabel={r.recurring}
+            perMo={r.perMo}
+            perYr={r.perYr}
           />
         </div>
 
         <div className="rounded-2xl gradient-purple p-4 text-primary-foreground shadow-float sm:p-5">
           <div className="text-xs font-semibold uppercase tracking-wide opacity-90">
-            Total recurring earnings
+            {r.totalRecurring}
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
             <span className="whitespace-nowrap font-display text-3xl font-extrabold leading-none sm:text-4xl">
               {formatMoney(totalMonthly)}
-              <span className="text-lg font-bold opacity-90 sm:text-xl">/mo</span>
+              <span className="text-lg font-bold opacity-90 sm:text-xl">{r.perMo}</span>
             </span>
             <span className="ml-auto whitespace-nowrap font-display text-xl font-bold sm:text-2xl">
-              {formatMoney(totalAnnual)}/yr
+              {formatMoney(totalAnnual)}{r.perYr}
             </span>
           </div>
         </div>
 
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Example earnings are for illustration only. Actual earnings may vary depending on
-          subscription plans, customer retention, and partner status.
+          {r.disclaimer}
         </p>
       </div>
     </div>
@@ -294,27 +309,29 @@ function Calculator() {
 /* ── Mobile-only components ── */
 
 function MobileSummaryCards() {
+  const { t } = useLang();
+  const r = t.rewards;
   return (
     <div className="grid grid-cols-2 gap-3">
       {/* Direct */}
       <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Direct Commission
+          {r.directLabel}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-primary">15%</div>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Refer customers directly and earn recurring monthly commission.
+          {r.directDesc}
         </p>
       </div>
 
       {/* Indirect */}
       <div className="rounded-2xl border border-border bg-sky-50 p-4 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wide text-sky-700">
-          Indirect Commission
+          {r.indirectLabel}
         </div>
         <div className="mt-1 font-display text-3xl font-extrabold text-sky-700">5%</div>
         <p className="mt-1 text-xs leading-relaxed text-sky-800/80">
-          Invite partners and earn commission when their customers subscribe.
+          {r.indirectDesc}
         </p>
       </div>
     </div>
@@ -351,6 +368,8 @@ function MiniFlow({
 }
 
 function MobileAccordions() {
+  const { t } = useLang();
+  const r = t.rewards;
   const [open, setOpen] = useState<number | null>(null);
 
   const toggle = (idx: number) => {
@@ -359,23 +378,25 @@ function MobileAccordions() {
 
   const items = [
     {
-      title: "How direct commissions work",
+      title: r.howDirect,
       steps: [
-        { label: "You", navy: true },
-        { label: "Direct Customers" },
-        { label: "15% recurring commission", highlight: true },
+        { label: r.you, navy: true },
+        { label: r.directCustomersNode },
+        { label: r.commission15recurring, highlight: true },
       ],
     },
     {
-      title: "How indirect commissions work",
+      title: r.howIndirect,
       steps: [
-        { label: "You", navy: true },
-        { label: "Invited Partner" },
-        { label: "Partner's Customers" },
-        { label: "5% recurring commission", highlight: true },
+        { label: r.you, navy: true },
+        { label: r.invitedPartner },
+        { label: r.partnersCustomers },
+        { label: r.commission5recurring, highlight: true },
       ],
     },
   ];
+
+
 
   return (
     <div className="space-y-3">
@@ -410,21 +431,22 @@ function MobileAccordions() {
 }
 
 export function Rewards() {
+  const { t } = useLang();
   return (
     <section id="rewards" className="scroll-mt-20 bg-muted/30 py-10 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-            Tier 2 partner rewards
+            {t.rewards.eyebrow}
           </span>
           <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-            Grow Your Network. Multiply Your Rewards.
+            {t.rewards.title}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Earn recurring commissions from both your direct referrals and the partners you
-            introduce. As your network grows, so does your recurring revenue.
+            {t.rewards.subtitle}
           </p>
         </div>
+
 
         {/* ── Mobile layout ── */}
         <div className="mt-8 space-y-6 lg:hidden">

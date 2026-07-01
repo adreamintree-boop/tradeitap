@@ -1,85 +1,37 @@
 import { Star } from "lucide-react";
+import { useLang } from "./i18n";
+
+type Kind = "User" | "Partner";
+
+const kinds: Kind[] = [
+  "User",
+  "User",
+  "Partner",
+  "Partner",
+  "User",
+  "User",
+  "Partner",
+  "Partner",
+  "User",
+  "Partner",
+];
 
 type Testimonial = {
-  type: "User" | "Partner";
+  type: Kind;
   quote: string;
   role: string;
   context: string;
 };
 
-const testimonials: Testimonial[] = [
-  {
-    type: "User",
-    role: "Export Manager",
-    context: "Food Manufacturer",
-    quote:
-      "Finding verified buyers used to take days. With TradeIt, we can identify qualified prospects in minutes.",
-  },
-  {
-    type: "User",
-    role: "International Sales Manager",
-    context: "Industrial Equipment",
-    quote:
-      "Buyer Enrichment helped us reach the right decision-makers instead of generic company emails.",
-  },
-  {
-    type: "Partner",
-    role: "Business Consultant",
-    context: "Independent Advisor",
-    quote: "TradeIt is easy to recommend because clients immediately understand the value.",
-  },
-  {
-    type: "Partner",
-    role: "Content Creator",
-    context: "B2B Growth Channel",
-    quote:
-      "My audience is always looking for practical global sales tools. TradeIt has become one of the products I recommend most.",
-  },
-  {
-    type: "User",
-    role: "Sourcing Lead",
-    context: "Consumer Goods",
-    quote:
-      "TradeIt helps us understand who is buying, who is supplying, and where new opportunities are emerging.",
-  },
-  {
-    type: "User",
-    role: "Overseas Sales Team",
-    context: "Manufacturing",
-    quote:
-      "We can manage buyer discovery, contact enrichment, and outreach in one workflow instead of switching between tools.",
-  },
-  {
-    type: "Partner",
-    role: "Affiliate Marketer",
-    context: "SaaS Partnership",
-    quote:
-      "The recurring commission structure makes TradeIt much more attractive than one-time referral programs.",
-  },
-  {
-    type: "Partner",
-    role: "Trade Association Manager",
-    context: "Member Benefits",
-    quote:
-      "TradeIt gives our members a practical way to explore global markets with real trade data.",
-  },
-  {
-    type: "User",
-    role: "Procurement Manager",
-    context: "Import Business",
-    quote:
-      "TradeIt gives us visibility into global suppliers and trade relationships that are difficult to find elsewhere.",
-  },
-  {
-    type: "Partner",
-    role: "Community Operator",
-    context: "Global Business Community",
-    quote:
-      "It is a strong fit for communities focused on export, sourcing, and international sales.",
-  },
-];
-
-function TestimonialCard({ t }: { t: Testimonial }) {
+function TestimonialCard({
+  t,
+  lovedLabel,
+  recommendedLabel,
+}: {
+  t: Testimonial;
+  lovedLabel: string;
+  recommendedLabel: string;
+}) {
   const isPartner = t.type === "Partner";
   return (
     <article className="flex w-[300px] shrink-0 flex-col rounded-3xl border border-border bg-card p-6 shadow-card sm:w-[380px] sm:p-7">
@@ -91,7 +43,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
               : "bg-sky-100 text-sky-700"
           }`}
         >
-          {isPartner ? "Recommended by Partners" : "Loved by Users"}
+          {isPartner ? recommendedLabel : lovedLabel}
         </span>
         <div className="flex gap-0.5">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -111,20 +63,27 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 }
 
 export function SuccessStories() {
+  const { t: copy } = useLang();
+  const testimonials: Testimonial[] = copy.stories.items.map((item, i) => ({
+    type: kinds[i] ?? "User",
+    role: item.role,
+    context: item.context,
+    quote: item.quote,
+  }));
   const loop = [...testimonials, ...testimonials];
+
 
   return (
     <section id="stories" className="scroll-mt-20 py-16 sm:py-24">
       <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          Trusted on both sides
+          {copy.stories.eyebrow}
         </span>
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          A Platform Businesses Trust. A Program Partners Love.
+          {copy.stories.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          When businesses achieve better global sales, partners build recurring income. TradeIt
-          creates value for both sides.
+          {copy.stories.subtitle}
         </p>
       </div>
 
@@ -138,7 +97,12 @@ export function SuccessStories() {
           style={{ ["--marquee-duration" as string]: "55s" }}
         >
           {loop.map((t, i) => (
-            <TestimonialCard key={`${t.role}-${i}`} t={t} />
+            <TestimonialCard
+              key={`${t.role}-${i}`}
+              t={t}
+              lovedLabel={copy.stories.lovedByUsers}
+              recommendedLabel={copy.stories.recommendedByPartners}
+            />
           ))}
         </div>
       </div>

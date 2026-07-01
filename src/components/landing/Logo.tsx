@@ -1,6 +1,7 @@
 import { Globe } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
+import { useLang } from "./i18n";
 
 export function Logo({
   className,
@@ -30,13 +31,14 @@ export function PartnerButton({
   className,
   variant = "primary",
   size = "lg",
-  children = "Become a Partner",
+  children,
 }: {
   className?: string;
   variant?: "primary" | "navy" | "light";
   size?: "lg" | "md";
   children?: React.ReactNode;
 }) {
+  const { t } = useLang();
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
   const sizes = {
@@ -56,7 +58,7 @@ export function PartnerButton({
       search={{ type: "partner" }}
       className={cn(base, sizes[size], variants[variant], className)}
     >
-      {children}
+      {children ?? t.becomeAPartner}
     </Link>
   );
 }

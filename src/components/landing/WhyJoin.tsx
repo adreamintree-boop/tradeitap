@@ -1,38 +1,26 @@
 import { Globe2, RefreshCw, Handshake, ArrowUpRight } from "lucide-react";
+import { useLang } from "./i18n";
 
-const cards = [
-  {
-    icon: Globe2,
-    title: "Help Companies Grow Globally",
-    body: "Introduce businesses to verified buyers using global trade data and AI-powered sales tools.",
-    theme: "navy",
-  },
-  {
-    icon: RefreshCw,
-    title: "Earn While They Grow",
-    body: "Receive recurring commissions every month as your referrals continue using TradeIt.",
-    theme: "lavender",
-  },
-  {
-    icon: Handshake,
-    title: "Partner With Us, Not Just Promote Us",
-    body: "Get continuous product updates, marketing support and resources to help you grow together.",
-    theme: "mint",
-  },
+const cardMeta = [
+  { icon: Globe2, theme: "navy" },
+  { icon: RefreshCw, theme: "lavender" },
+  { icon: Handshake, theme: "mint" },
 ] as const;
 
 export function WhyJoin() {
+  const { t } = useLang();
+  const cards = cardMeta.map((m, i) => ({ ...m, ...t.why.cards[i] }));
   return (
     <section id="why-join" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          Why partner with TradeIt
+          {t.why.eyebrow}
         </span>
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          Why Join the TradeIt Affiliate Program?
+          {t.why.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          A partnership built for long-term, recurring income — not one-off payouts.
+          {t.why.subtitle}
         </p>
       </div>
 

@@ -14,39 +14,16 @@ import promoteAi from "@/assets/promote-ai.png.asset.json";
 import promoteCrm from "@/assets/promote-crm.png.asset.json";
 import promoteEmail from "@/assets/promote-email.png.asset.json";
 
+import { useLang } from "./i18n";
+
 type FeatureKey = "search" | "enrich" | "ai" | "crm" | "email";
 
-const features: { key: FeatureKey; icon: LucideIcon; title: string; body: string }[] = [
-  {
-    key: "search",
-    icon: Database,
-    title: "B/L Trade Data Search",
-    body: "Search billions of bill-of-lading records to find active importers and exporters.",
-  },
-  {
-    key: "enrich",
-    icon: UserPlus,
-    title: "Buyer Enrichment",
-    body: "Enrich companies with verified decision-maker contacts and firmographics.",
-  },
-  {
-    key: "ai",
-    icon: Sparkles,
-    title: "AI Buyer Analysis",
-    body: "Let AI score and prioritize the buyers most likely to convert.",
-  },
-  {
-    key: "crm",
-    icon: KanbanSquare,
-    title: "CRM",
-    body: "Manage every opportunity and pipeline stage in one global workspace.",
-  },
-  {
-    key: "email",
-    icon: Mail,
-    title: "Email Integration",
-    body: "Reach decision-makers directly with connected outreach and tracking.",
-  },
+const featureMeta: { key: FeatureKey; icon: LucideIcon }[] = [
+  { key: "search", icon: Database },
+  { key: "enrich", icon: UserPlus },
+  { key: "ai", icon: Sparkles },
+  { key: "crm", icon: KanbanSquare },
+  { key: "email", icon: Mail },
 ];
 
 const previews: Record<FeatureKey, { src: string; alt: string }> = {
@@ -58,7 +35,13 @@ const previews: Record<FeatureKey, { src: string; alt: string }> = {
 };
 
 export function WhatToPromote() {
+  const { t } = useLang();
   const [active, setActive] = useState<FeatureKey | undefined>("search");
+  const features = featureMeta.map((m, i) => ({
+    ...m,
+    title: t.promote.features[i].title,
+    body: t.promote.features[i].body,
+  }));
 
   const toggleFeature = (key: FeatureKey) => {
     setActive((prev) => (prev === key ? undefined : key));
@@ -68,16 +51,16 @@ export function WhatToPromote() {
     <section className="mx-auto max-w-[110rem] px-5 py-16 sm:px-6 sm:py-24 lg:px-10">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          What you promote
+          {t.promote.eyebrow}
         </span>
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          Promote Solutions Every Business Actually Needs
+          {t.promote.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Help businesses find verified buyers, enrich company and contact data, and manage global
-          sales — all in one platform.
+          {t.promote.subtitle}
         </p>
       </div>
+
 
       {/* Desktop: hover-driven split grid */}
       <div className="mt-16 hidden items-start gap-8 lg:grid lg:grid-cols-[35%_1fr] lg:gap-16">

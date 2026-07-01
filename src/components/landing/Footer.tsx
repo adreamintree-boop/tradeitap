@@ -1,5 +1,6 @@
 import { Linkedin, Youtube, Facebook } from "lucide-react";
 import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
+import { useLang } from "./i18n";
 
 const socials = [
   { Icon: Linkedin, label: "LinkedIn" },
@@ -8,13 +9,14 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl min-h-[140px] flex-col items-center gap-5 px-6 py-12 sm:px-10 md:flex-row md:justify-between md:gap-4">
         <div className="flex items-center gap-4">
           <img src={tradeitLogo.url} alt="TradeIt" className="h-6 w-auto" />
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} TradeIt. All rights reserved.
+            © {new Date().getFullYear()} TradeIt. {t.footer.rights}
           </p>
         </div>
 
@@ -23,13 +25,13 @@ export function Footer() {
             href="#"
             className="text-sm font-medium text-foreground transition-colors hover:text-primary"
           >
-            Terms of Service
+            {t.footer.terms}
           </a>
           <a
             href="#"
             className="text-sm font-medium text-foreground transition-colors hover:text-primary"
           >
-            Privacy Policy
+            {t.footer.privacy}
           </a>
           <div className="flex items-center gap-4">
             {socials.map(({ Icon, label }) => (

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Globe, Menu, X } from "lucide-react";
 import { PartnerButton } from "./Logo";
+import { useLang } from "./i18n";
 import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 
 const languages = [
@@ -119,18 +120,18 @@ function LanguageDropdown({
   );
 }
 
-const navLinks = [
-  { label: "Why Join", href: "#why-join" },
-  { label: "Who Can Join", href: "#who-can-join" },
-  { label: "Rewards", href: "#rewards" },
-  { label: "Stories", href: "#stories" },
-  { label: "FAQ", href: "#faq" },
-];
-
 export function Navbar() {
+  const { code, setCode, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("en");
+
+  const navLinks = [
+    { label: t.nav.whyJoin, href: "#why-join" },
+    { label: t.nav.whoCanJoin, href: "#who-can-join" },
+    { label: t.nav.rewards, href: "#rewards" },
+    { label: t.nav.stories, href: "#stories" },
+    { label: t.nav.faq, href: "#faq" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -168,7 +169,7 @@ export function Navbar() {
             ))}
           </nav>
           <div className="hidden items-center gap-4 lg:flex">
-            <LanguageDropdown selected={selectedLang} onSelect={setSelectedLang} />
+            <LanguageDropdown selected={code} onSelect={setCode} />
             <PartnerButton size="md" />
           </div>
 
@@ -203,8 +204,8 @@ export function Navbar() {
             ))}
             <div className="mt-1 border-t border-border/60 pt-2">
               <LanguageDropdown
-                selected={selectedLang}
-                onSelect={setSelectedLang}
+                selected={code}
+                onSelect={setCode}
                 variant="mobile"
               />
             </div>
