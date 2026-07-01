@@ -173,20 +173,20 @@ function ResultCard({
   annual: number;
 }) {
   return (
-    <div className="rounded-2xl border border-border p-4">
+    <div className="rounded-2xl border border-border p-3 sm:p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-primary">{tier}</span>
-        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary sm:px-2.5 sm:text-xs">
           {rate} recurring
         </span>
       </div>
-      <p className="mt-1 text-sm text-muted-foreground">{formula}</p>
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <span className="whitespace-nowrap font-display text-2xl font-extrabold">
+      <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{formula}</p>
+      <div className="mt-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 sm:mt-3 sm:gap-x-4">
+        <span className="whitespace-nowrap font-display text-xl font-extrabold sm:text-2xl">
           {formatMoney(monthly)}
-          <span className="text-base font-semibold text-muted-foreground">/mo</span>
+          <span className="text-sm font-semibold text-muted-foreground sm:text-base">/mo</span>
         </span>
-        <span className="whitespace-nowrap text-sm text-muted-foreground">
+        <span className="whitespace-nowrap text-xs text-muted-foreground sm:text-sm">
           {formatMoney(annual)}/yr
         </span>
       </div>
@@ -208,7 +208,7 @@ function Calculator() {
 
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
-      <div className="border-b border-border bg-muted/40 px-6 py-5">
+      <div className="border-b border-border bg-muted/40 px-4 py-4 sm:px-6 sm:py-5">
         <h3 className="font-display text-lg font-bold">Earnings calculator</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Adjust the numbers to estimate your recurring earnings.
