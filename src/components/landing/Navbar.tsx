@@ -187,7 +187,7 @@ export function Navbar() {
         {/* Mobile dropdown menu */}
         <div
           className={`overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
-            menuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+            menuOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
@@ -201,6 +201,13 @@ export function Navbar() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-1 border-t border-border/60 pt-2">
+              <LanguageDropdown
+                selected={selectedLang}
+                onSelect={setSelectedLang}
+                variant="mobile"
+              />
+            </div>
             <PartnerButton
               size="md"
               className="mt-3 w-full"
