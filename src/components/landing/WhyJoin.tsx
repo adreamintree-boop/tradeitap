@@ -20,7 +20,7 @@ export function WhyJoin() {
           {t.why.title}
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          {t.why.subcopy}
+          {t.why.subtitle}
         </p>
       </div>
 
