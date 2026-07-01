@@ -64,7 +64,7 @@ export function CtaSection() {
             {badges.map((b) => (
               <span
                 key={b}
-                className="rounded-full border border-foreground/10 bg-background/70 px-4 py-2 text-sm font-semibold text-foreground backdrop-blur"
+                className="rounded-full border border-foreground/10 bg-background/70 px-3.5 py-[9px] text-[13px] font-semibold text-foreground backdrop-blur sm:px-4 sm:py-2 sm:text-sm"
               >
                 {b}
               </span>
