@@ -203,6 +203,8 @@ function ResultCard({
 }
 
 function Calculator() {
+  const { t } = useLang();
+  const r = t.rewards;
   const [directCustomers, setDirectCustomers] = useState(10);
   const [partnerCustomers, setPartnerCustomers] = useState(30);
   const [planPrice, setPlanPrice] = useState(50);
@@ -217,9 +219,9 @@ function Calculator() {
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
       <div className="border-b border-border bg-muted/40 px-4 py-4 sm:px-6 sm:py-5">
-        <h3 className="font-display text-lg font-bold">Earnings calculator</h3>
+        <h3 className="font-display text-lg font-bold">{r.calcTitle}</h3>
         <p className="mt-1 text-sm text-muted-foreground">
-          Adjust the numbers to estimate your recurring earnings.
+          {r.calcSubtitle}
         </p>
       </div>
 
@@ -227,17 +229,17 @@ function Calculator() {
         {/* Inputs */}
         <div className="grid grid-cols-2 gap-2 rounded-2xl border border-border bg-muted/30 p-3 sm:gap-3 sm:p-4 sm:grid-cols-3">
           <CalcInput
-            label="Direct customers"
+            label={r.directCustomers}
             value={directCustomers}
             onChange={setDirectCustomers}
           />
           <CalcInput
-            label="Partner's customers"
+            label={r.partnerCustomers}
             value={partnerCustomers}
             onChange={setPartnerCustomers}
           />
           <div className="col-span-2 flex flex-col gap-1.5 sm:col-span-1">
-            <span className="text-xs font-semibold text-muted-foreground">Monthly plan price</span>
+            <span className="text-xs font-semibold text-muted-foreground">{r.monthlyPlanPrice}</span>
             <div className="flex gap-2">
               {[20, 50, 100].map((price) => (
                 <button
@@ -259,40 +261,45 @@ function Calculator() {
 
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-1 sm:gap-3">
           <ResultCard
-            tier="Direct"
+            tier={r.directTier}
             rate="15%"
-            formula={`${directCustomers} customers × $${planPrice} × 15%`}
+            formula={`${directCustomers} × $${planPrice} × 15%`}
             monthly={directMonthly}
             annual={directAnnual}
+            recurringLabel={r.recurring}
+            perMo={r.perMo}
+            perYr={r.perYr}
           />
 
           <ResultCard
-            tier="Indirect"
+            tier={r.indirectTier}
             rate="5%"
-            formula={`${partnerCustomers} partner customers × $${planPrice} × 5%`}
+            formula={`${partnerCustomers} × $${planPrice} × 5%`}
             monthly={indirectMonthly}
             annual={indirectAnnual}
+            recurringLabel={r.recurring}
+            perMo={r.perMo}
+            perYr={r.perYr}
           />
         </div>
 
         <div className="rounded-2xl gradient-purple p-4 text-primary-foreground shadow-float sm:p-5">
           <div className="text-xs font-semibold uppercase tracking-wide opacity-90">
-            Total recurring earnings
+            {r.totalRecurring}
           </div>
           <div className="mt-2 flex flex-wrap items-end gap-x-4 gap-y-1">
             <span className="whitespace-nowrap font-display text-3xl font-extrabold leading-none sm:text-4xl">
               {formatMoney(totalMonthly)}
-              <span className="text-lg font-bold opacity-90 sm:text-xl">/mo</span>
+              <span className="text-lg font-bold opacity-90 sm:text-xl">{r.perMo}</span>
             </span>
             <span className="ml-auto whitespace-nowrap font-display text-xl font-bold sm:text-2xl">
-              {formatMoney(totalAnnual)}/yr
+              {formatMoney(totalAnnual)}{r.perYr}
             </span>
           </div>
         </div>
 
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Example earnings are for illustration only. Actual earnings may vary depending on
-          subscription plans, customer retention, and partner status.
+          {r.disclaimer}
         </p>
       </div>
     </div>
