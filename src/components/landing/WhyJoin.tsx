@@ -23,7 +23,7 @@ const cards = [
 
 export function WhyJoin() {
   return (
-    <section id="why-join" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24 sm:px-8">
+    <section id="why-join" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           Why partner with TradeIt

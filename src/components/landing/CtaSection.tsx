@@ -59,7 +59,7 @@ export function CtaSection() {
             into recurring monthly revenue.
           </p>
           <div className="mt-8 flex justify-center">
-            <PartnerButton variant="navy" />
+            <PartnerButton variant="navy" className="w-full sm:w-auto" />
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {badges.map((b) => (

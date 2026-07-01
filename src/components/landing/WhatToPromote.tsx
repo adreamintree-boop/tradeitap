@@ -60,7 +60,7 @@ export function WhatToPromote() {
   const [active, setActive] = useState<FeatureKey>("search");
 
   return (
-    <section className="mx-auto max-w-[110rem] px-4 py-24 sm:px-6 lg:px-10">
+    <section className="mx-auto max-w-[110rem] px-5 py-16 sm:px-6 sm:py-24 lg:px-10">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           What you promote

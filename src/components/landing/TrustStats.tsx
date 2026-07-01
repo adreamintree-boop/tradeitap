@@ -30,7 +30,7 @@ const badges = [
 
 export function TrustStats() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           Proof you can stand behind
