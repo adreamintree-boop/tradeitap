@@ -52,12 +52,10 @@ export function CtaSection() {
 
         <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-balance text-foreground sm:text-5xl">
-            Start Monetizing Your Global Network
+            {t.cta.title}
           </h2>
           <p className="mt-5 text-lg text-foreground/70">
-            Join the TradeIt Partner Program and turn your business connections{"\u00a0"}
-            <br />
-            into recurring monthly revenue.
+            {t.cta.subcopy}
           </p>
           <div className="mt-8 flex justify-center">
             <PartnerButton variant="navy" className="w-full sm:w-auto" />
