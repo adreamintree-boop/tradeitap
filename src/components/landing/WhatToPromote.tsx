@@ -58,10 +58,10 @@ const previews: Record<FeatureKey, { src: string; alt: string }> = {
 };
 
 export function WhatToPromote() {
-  const [active, setActive] = useState<FeatureKey>("search");
+  const [active, setActive] = useState<FeatureKey | undefined>("search");
 
   const toggleFeature = (key: FeatureKey) => {
-    setActive((prev) => (prev === key ? undefined : key) as FeatureKey);
+    setActive((prev) => (prev === key ? undefined : key));
   };
 
   return (
