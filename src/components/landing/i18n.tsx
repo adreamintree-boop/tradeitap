@@ -390,6 +390,10 @@ const en: Copy = {
         a: "You can earn 15% recurring direct commissions from every customer who subscribes through your referral link. You'll also earn 5% recurring indirect commissions from customers referred by the partners you personally invite into the TradeIt Partner Program.\u00a0\n\n\nAs your customer base and partner network continue to grow, so does your recurring earning potential.",
       },
       {
+        q: "How long can I earn commissions from a referred customer?",
+        a: "You can earn commissions for as long as your referred customer remains on a paid TradeIt subscription, up to a maximum of 3 years from the customer’s first paid subscription date. If the customer continues subscribing beyond 3 years, commissions for that customer will no longer be paid after the 3-year commission period ends.",
+      },
+      {
         q: "When do I get paid?",
         a: "Commission payouts are processed monthly once your payout request has been approved and the minimum payout threshold has been reached.",
       },
