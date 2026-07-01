@@ -147,7 +147,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-4 py-1.5 text-xs font-semibold text-foreground backdrop-blur">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
-              TradeIt Affiliate Partner Program
+              Affiliate Partner Program
             </span>
             <h1 className="mt-6 font-display text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
               Earn Recurring Revenue by Helping Companies Grow Their{" "}
