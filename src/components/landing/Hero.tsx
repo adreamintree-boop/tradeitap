@@ -6,6 +6,7 @@ import {
   BadgeCheck,
 } from "lucide-react";
 import { PartnerButton } from "./Logo";
+import { useLang } from "./i18n";
 import heroImage from "@/assets/hero-affiliate.jpg";
 import { useState, useEffect } from "react";
 
