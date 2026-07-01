@@ -83,13 +83,13 @@ export function WhoCanJoin() {
           <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-card sm:col-span-2 lg:col-span-1">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-                Open to everyone
+                {t.who.eyebrow}
               </span>
               <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-                Who Can Join As A Partner?
+                {t.who.title}
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                Anyone with a business network can become a partner.
+                {t.who.subtitle}
               </p>
             </div>
             <div className="mt-8">
