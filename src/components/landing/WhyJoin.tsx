@@ -19,7 +19,7 @@ export function WhyJoin() {
         <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
           {t.why.title}
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lg text-muted-foreground sm:whitespace-pre-line">
           {t.why.subtitle}
         </p>
       </div>
@@ -48,7 +48,7 @@ export function WhyJoin() {
                 <c.icon className="h-5 w-5 md:h-7 md:w-7" strokeWidth={2} />
               </span>
               <div className="flex min-w-0 flex-1 flex-col">
-                <h3 className="font-display text-base font-bold md:mt-6 md:text-xl">{c.title}</h3>
+                <h3 className="font-display text-base font-bold whitespace-pre-line md:mt-6 md:text-xl">{c.title}</h3>
                 <p
                   className={`mt-1 text-sm leading-relaxed md:mt-3 md:text-base ${
                     isNavy ? "text-navy-foreground/80" : "opacity-80"

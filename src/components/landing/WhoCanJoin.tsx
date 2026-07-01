@@ -46,7 +46,7 @@ function PersonCard({ img, title, body }: { img: string; title: string; body: st
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-lg font-bold leading-tight">{title}</h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground whitespace-pre-line">{body}</p>
       </div>
     </article>
   );
@@ -65,7 +65,7 @@ function MobilePersonCard({ img, title, body, className }: { img: string; title:
       </div>
       <div className="flex flex-1 flex-col p-3">
         <h3 className="font-display text-sm font-bold leading-tight min-h-[2.5em]">{title}</h3>
-        <p className="mt-1 text-xs leading-relaxed text-muted-foreground line-clamp-2">{body}</p>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground whitespace-pre-line line-clamp-2">{body}</p>
       </div>
     </article>
   );
@@ -86,7 +86,7 @@ export function WhoCanJoin() {
             <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-balance">
               {t.who.title}
             </h2>
-            <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:whitespace-pre-line">
               {t.who.subtitle}
             </p>
           </div>
@@ -108,7 +108,7 @@ export function WhoCanJoin() {
               <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
                 {t.who.title}
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground sm:whitespace-pre-line">
                 {t.who.subtitle}
               </p>
             </div>

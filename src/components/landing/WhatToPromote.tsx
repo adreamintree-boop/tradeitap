@@ -53,10 +53,10 @@ export function WhatToPromote() {
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           {t.promote.eyebrow}
         </span>
-        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:whitespace-pre-line sm:text-4xl">
           {t.promote.title}
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lg text-muted-foreground sm:whitespace-pre-line">
           {t.promote.subtitle}
         </p>
       </div>
@@ -92,7 +92,7 @@ export function WhatToPromote() {
                 </span>
                 <div>
                   <h3 className="font-display text-base font-bold">{f.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground whitespace-pre-line">{f.body}</p>
                 </div>
               </button>
             );
@@ -148,7 +148,7 @@ export function WhatToPromote() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <h3 className="font-display text-sm font-bold sm:text-base">{f.title}</h3>
-                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground sm:whitespace-pre-line sm:text-sm">
                     {f.body}
                   </p>
                 </div>
