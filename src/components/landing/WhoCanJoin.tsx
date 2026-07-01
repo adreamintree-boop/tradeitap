@@ -5,8 +5,31 @@ import social from "@/assets/who-social-realistic.png.asset.json";
 import marketer from "@/assets/who-marketer-realistic.png.asset.json";
 import { PartnerButton } from "./Logo";
 import { useLang } from "./i18n";
+import type { ReactNode } from "react";
 
 const images = [consultant.url, creator.url, association.url, social.url, marketer.url];
+
+const enMobileBreaks: Record<string, [string, string]> = {
+  "Business Consultants": ["Business", "Consultants"],
+  "Content Creators": ["Content", "Creators"],
+  "Trade Associations": ["Trade", "Associations"],
+  "Social Media & Communities": ["Social Media", "& Communities"],
+  "Affiliate Marketers": ["Affiliate", "Marketers"],
+};
+
+function MobileTitle({ title }: { title: string }) {
+  const { lang } = useLang();
+  if (lang !== "en") return <>{title}</>;
+  const pair = enMobileBreaks[title];
+  if (!pair) return <>{title}</>;
+  return (
+    <>
+      {pair[0]}
+      <br />
+      {pair[1]}
+    </>
+  );
+}
 
 function PersonCard({ img, title, body }: { img: string; title: string; body: string }) {
   return (
@@ -29,19 +52,19 @@ function PersonCard({ img, title, body }: { img: string; title: string; body: st
   );
 }
 
-function MobilePersonCard({ img, title, body, className }: { img: string; title: string; body: string; className?: string }) {
+function MobilePersonCard({ img, title, body, className }: { img: string; title: ReactNode; body: string; className?: string }) {
   return (
     <article className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card ${className || ""}`}>
       <div className="h-[120px] overflow-hidden bg-muted">
         <img
           src={img}
-          alt={title}
+          alt={typeof title === "string" ? title : ""}
           loading="lazy"
           className="h-full w-full object-cover"
         />
       </div>
       <div className="flex flex-1 flex-col p-3">
-        <h3 className="font-display text-sm font-bold leading-tight">{title}</h3>
+        <h3 className="font-display text-sm font-bold leading-tight min-h-[2.5em]">{title}</h3>
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground line-clamp-2">{body}</p>
       </div>
     </article>
@@ -56,7 +79,7 @@ export function WhoCanJoin() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* Mobile layout */}
         <div className="sm:hidden">
-          <div className="mb-6 text-center">
+          <div className="mb-5 text-center">
             <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
               {t.who.eyebrow}
             </span>
@@ -66,15 +89,12 @@ export function WhoCanJoin() {
             <p className="mt-2 text-base leading-relaxed text-muted-foreground">
               {t.who.subtitle}
             </p>
-            <div className="mt-4 flex justify-center">
-              <PartnerButton />
-            </div>
           </div>
           <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-3">
             {people.slice(0, 4).map((p, i) => (
-              <MobilePersonCard key={i} {...p} />
+              <MobilePersonCard key={i} img={p.img} title={<MobileTitle title={p.title} />} body={p.body} />
             ))}
-            <MobilePersonCard {...people[4]} className="min-[360px]:col-span-2" />
+            <MobilePersonCard img={people[4].img} title={<MobileTitle title={people[4].title} />} body={people[4].body} className="min-[360px]:col-span-2" />
           </div>
         </div>
 
