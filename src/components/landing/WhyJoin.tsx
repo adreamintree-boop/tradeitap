@@ -1,24 +1,10 @@
 import { Globe2, RefreshCw, Handshake, ArrowUpRight } from "lucide-react";
+import { useLang } from "./i18n";
 
-const cards = [
-  {
-    icon: Globe2,
-    title: "Help Companies Grow Globally",
-    body: "Introduce businesses to verified buyers using global trade data and AI-powered sales tools.",
-    theme: "navy",
-  },
-  {
-    icon: RefreshCw,
-    title: "Earn While They Grow",
-    body: "Receive recurring commissions every month as your referrals continue using TradeIt.",
-    theme: "lavender",
-  },
-  {
-    icon: Handshake,
-    title: "Partner With Us, Not Just Promote Us",
-    body: "Get continuous product updates, marketing support and resources to help you grow together.",
-    theme: "mint",
-  },
+const cardMeta = [
+  { icon: Globe2, theme: "navy" },
+  { icon: RefreshCw, theme: "lavender" },
+  { icon: Handshake, theme: "mint" },
 ] as const;
 
 export function WhyJoin() {
