@@ -2,10 +2,11 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from "re
 import { zh as zhRaw } from "./i18n-zh";
 import { ru as ruRaw } from "./i18n-ru";
 import { es as esRaw } from "./i18n-es";
+import { vi as viRaw } from "./i18n-vi";
 
 
 
-export type Lang = "en" | "ko" | "ja" | "zh" | "ru" | "es";
+export type Lang = "en" | "ko" | "ja" | "zh" | "ru" | "es" | "vi";
 
 type Person = { title: string; body: string };
 type Feature = { title: string; body: string };
@@ -1057,8 +1058,9 @@ const ja: Copy = {
 const zh: Copy = zhRaw;
 const ru: Copy = ruRaw;
 const es: Copy = esRaw;
+const vi: Copy = viRaw;
 
-const dict: Record<Lang, Copy> = { en, ko, ja, zh, ru, es };
+const dict: Record<Lang, Copy> = { en, ko, ja, zh, ru, es, vi };
 
 type LangContextValue = {
   code: string;
@@ -1077,7 +1079,7 @@ const LangContext = createContext<LangContextValue>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [code, setCode] = useState("en");
   const value = useMemo<LangContextValue>(() => {
-    const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : code === "ru" ? "ru" : code === "es" ? "es" : "en";
+    const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : code === "ru" ? "ru" : code === "es" ? "es" : code === "vi" ? "vi" : "en";
     return { code, setCode, lang, t: dict[lang] };
   }, [code]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
