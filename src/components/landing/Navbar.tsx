@@ -120,18 +120,18 @@ function LanguageDropdown({
   );
 }
 
-const navLinks = [
-  { label: "Why Join", href: "#why-join" },
-  { label: "Who Can Join", href: "#who-can-join" },
-  { label: "Rewards", href: "#rewards" },
-  { label: "Stories", href: "#stories" },
-  { label: "FAQ", href: "#faq" },
-];
-
 export function Navbar() {
+  const { code, setCode, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("en");
+
+  const navLinks = [
+    { label: t.nav.whyJoin, href: "#why-join" },
+    { label: t.nav.whoCanJoin, href: "#who-can-join" },
+    { label: t.nav.rewards, href: "#rewards" },
+    { label: t.nav.stories, href: "#stories" },
+    { label: t.nav.faq, href: "#faq" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
