@@ -12,24 +12,18 @@ export function Footer() {
   const { t } = useLang();
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto flex max-w-7xl min-h-[140px] flex-col items-center gap-5 px-6 py-12 sm:px-10 md:flex-row md:justify-between md:gap-4">
-        <div className="flex items-center gap-4">
-          <img src={tradeitLogo.url} alt="TradeIt" className="h-6 w-auto" />
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} TradeIt. {t.footer.rights}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-8 sm:px-10 md:min-h-[140px] md:flex-row md:justify-between md:gap-4 md:py-12">
+        {/* Mobile: first row (links + socials). Desktop: right side. */}
+        <div className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:order-none md:gap-x-6 md:gap-y-3">
           <a
             href="#"
-            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+            className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.terms}
           </a>
           <a
             href="#"
-            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+            className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.privacy}
           </a>
@@ -41,10 +35,22 @@ export function Footer() {
                 aria-label={label}
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
-                <Icon className="h-[18px] w-[18px]" />
+                <Icon className="h-4 w-4 md:h-[18px] md:w-[18px]" />
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Mobile: second row (logo + copyright). Desktop: left side. */}
+        <div className="order-2 flex items-center gap-2 md:order-none md:gap-4">
+          <img
+            src={tradeitLogo.url}
+            alt="TradeIt"
+            className="h-auto w-[100px] md:h-6 md:w-auto"
+          />
+          <p className="whitespace-nowrap text-xs text-muted-foreground md:text-sm">
+            © {new Date().getFullYear()} TradeIt. {t.footer.rights}
+          </p>
         </div>
       </div>
     </footer>
