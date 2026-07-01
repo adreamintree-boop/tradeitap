@@ -9,27 +9,27 @@ const people = [
   {
     img: consultant.url,
     title: "Business Consultants",
-    body: "Recommend TradeIt to the companies you advise and already trust.",
+    body: "Recommend TradeIt to companies you advise.",
   },
   {
     img: creator.url,
     title: "Content Creators",
-    body: "Share tools your audience loves and earn recurring commissions.",
+    body: "Share tools your audience loves.",
   },
   {
     img: association.url,
     title: "Trade Associations",
-    body: "Deliver exclusive value to your members with a trusted global sales platform.",
+    body: "Deliver value to your members.",
   },
   {
     img: social.url,
     title: "Social Media & Communities",
-    body: "Guide your community with insights that drive real business growth.",
+    body: "Guide your community to better tools.",
   },
   {
     img: marketer.url,
     title: "Affiliate Marketers",
-    body: "Promote a high-value SaaS and build a predictable income stream.",
+    body: "Promote SaaS and earn recurring income.",
   },
 ];
 
@@ -54,13 +54,55 @@ function PersonCard({ img, title, body }: { img: string; title: string; body: st
   );
 }
 
+function MobilePersonCard({ img, title, body, className }: { img: string; title: string; body: string; className?: string }) {
+  return (
+    <article className={`group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card ${className || ""}`}>
+      <div className="h-[120px] overflow-hidden bg-muted">
+        <img
+          src={img}
+          alt={title}
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-3">
+        <h3 className="font-display text-sm font-bold leading-tight">{title}</h3>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground line-clamp-2">{body}</p>
+      </div>
+    </article>
+  );
+}
+
 export function WhoCanJoin() {
   return (
-    <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-16 sm:py-24">
+    <section id="who-can-join" className="scroll-mt-20 bg-muted/30 py-10 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        {/* 3-column desktop grid: title top-left, 5 cards filling the rest */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Title block — top-left */}
+        {/* Mobile layout */}
+        <div className="sm:hidden">
+          <div className="mb-6 text-center">
+            <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+              Open to everyone
+            </span>
+            <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-balance">
+              Who Can Join As A Partner?
+            </h2>
+            <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+              Anyone with a business network can become a partner.
+            </p>
+            <div className="mt-4 flex justify-center">
+              <PartnerButton />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-3">
+            {people.slice(0, 4).map((p, i) => (
+              <MobilePersonCard key={i} {...p} />
+            ))}
+            <MobilePersonCard {...people[4]} className="min-[360px]:col-span-2" />
+          </div>
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden sm:grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col justify-between rounded-3xl border border-border bg-card p-8 shadow-card sm:col-span-2 lg:col-span-1">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
@@ -77,12 +119,8 @@ export function WhoCanJoin() {
               <PartnerButton className="w-full sm:w-auto" />
             </div>
           </div>
-
-          {/* Row 1 — cards 1 & 2 */}
           <PersonCard {...people[0]} />
           <PersonCard {...people[1]} />
-
-          {/* Row 2 — cards 3, 4 & 5 */}
           <PersonCard {...people[2]} />
           <PersonCard {...people[3]} />
           <PersonCard {...people[4]} />
