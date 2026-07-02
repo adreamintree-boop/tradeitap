@@ -5,12 +5,12 @@ export const vi: Copy = {
     whyJoin: "Vì sao nên tham gia",
     whoCanJoin: "Ai có thể tham gia",
     rewards: "Cơ chế hoa hồng",
-    stories: "Câu chuyện từ đối tác",
+    stories: "Câu chuyện từ cộng tác viên",
     faq: "Câu hỏi thường gặp",
   },
-  becomeAPartner: "Trở thành đối tác",
+  becomeAPartner: "Trở thành cộng tác viên",
   hero: {
-    badge: "Chương trình Đối tác của TradeIt",
+    badge: "Chương trình Cộng tác viên của TradeIt",
     headBefore: "",
     headHighlight: "Giúp doanh nghiệp phát triển bán hàng toàn cầu và tạo nguồn thu định kỳ",
     headAfter: "",
@@ -28,13 +28,13 @@ export const vi: Copy = {
       "Đội ngũ mua hàng",
       "Doanh nghiệp nhập khẩu",
     ],
-    incomeTitle: "Thu nhập đối tác của bạn",
+    incomeTitle: "Thu nhập cộng tác viên của bạn",
     incomeMonth: "tháng này",
     indirectCommission: "Hoa hồng gián tiếp",
   },
   why: {
     eyebrow: "Vì sao nên hợp tác cùng TradeIt",
-    title: "Vì sao nên tham gia chương trình đối tác của TradeIt?",
+    title: "Vì sao nên tham gia chương trình cộng tác viên của TradeIt?",
     subtitle:
       "Đây không chỉ là khoản thưởng giới thiệu một lần, mà là mô hình hoa hồng định kỳ có thể tăng trưởng cùng với khách hàng bạn giới thiệu.",
     cards: [
@@ -48,15 +48,15 @@ export const vi: Copy = {
       },
       {
         title: "Không chỉ quảng bá, mà cùng TradeIt phát triển",
-        body: "Nhận các cập nhật sản phẩm, tài liệu marketing và hỗ trợ dành cho đối tác để cùng phát triển với TradeIt.",
+        body: "Nhận các cập nhật sản phẩm, tài liệu marketing và hỗ trợ dành cho cộng tác viên để cùng phát triển với TradeIt.",
       },
     ],
   },
   who: {
-    eyebrow: "Dành cho nhiều nhóm đối tác khác nhau",
-    title: "Ai có thể trở thành đối tác?",
+    eyebrow: "Dành cho nhiều nhóm cộng tác viên khác nhau",
+    title: "Ai có thể trở thành cộng tác viên?",
     subtitle:
-      "Nếu bạn có mạng lưới kinh doanh hoặc tệp khách hàng chuyên nghiệp, bạn có thể bắt đầu với vai trò đối tác của TradeIt.",
+      "Nếu bạn có mạng lưới kinh doanh hoặc tệp khách hàng chuyên nghiệp, bạn có thể bắt đầu với vai trò cộng tác viên của TradeIt.",
     people: [
       {
         title: "Chuyên gia tư vấn doanh nghiệp",
@@ -109,18 +109,18 @@ export const vi: Copy = {
     ],
   },
   rewards: {
-    eyebrow: "Hoa hồng đối tác 2 tầng",
+    eyebrow: "Hoa hồng cộng tác viên 2 tầng",
     title: "Mở rộng mạng lưới và tăng cơ hội thu nhập",
     subtitle:
-      "Nhận hoa hồng định kỳ từ cả khách hàng bạn giới thiệu trực tiếp và khách hàng do các đối tác bạn mời mang lại. Khi mạng lưới của bạn phát triển, cơ hội tạo thu nhập định kỳ cũng tăng theo.",
+      "Nhận hoa hồng định kỳ từ cả khách hàng bạn giới thiệu trực tiếp và khách hàng do các cộng tác viên bạn mời mang lại. Khi mạng lưới của bạn phát triển, cơ hội tạo thu nhập định kỳ cũng tăng theo.",
     directLabel: "Hoa hồng giới thiệu trực tiếp",
     directDesc: "Giới thiệu khách hàng trực tiếp và nhận hoa hồng định kỳ hằng tháng.",
-    indirectLabel: "Hoa hồng từ đối tác được mời",
-    indirectDesc: "Mời đối tác mới và nhận thêm hoa hồng khi khách hàng của họ đăng ký sử dụng TradeIt.",
+    indirectLabel: "Hoa hồng từ cộng tác viên được mời",
+    indirectDesc: "Mời cộng tác viên mới và nhận thêm hoa hồng khi khách hàng của họ đăng ký sử dụng TradeIt.",
     calcTitle: "Công cụ ước tính thu nhập",
     calcSubtitle: "Điều chỉnh số lượng khách hàng và giá gói để ước tính thu nhập định kỳ của bạn.",
     directCustomers: "Khách hàng giới thiệu trực tiếp",
-    partnerCustomers: "Khách hàng từ đối tác của bạn",
+    partnerCustomers: "Khách hàng từ cộng tác viên của bạn",
     monthlyPlanPrice: "Giá gói hằng tháng",
     directTier: "Trực tiếp",
     indirectTier: "Gián tiếp",
@@ -129,36 +129,36 @@ export const vi: Copy = {
     perYr: "/năm",
     totalRecurring: "Tổng thu nhập định kỳ ước tính",
     disclaimer:
-      "Khoản thu nhập hiển thị chỉ là ví dụ tham khảo. Thu nhập thực tế có thể thay đổi tùy theo gói đăng ký, khả năng duy trì khách hàng và trạng thái đối tác.",
+      "Khoản thu nhập hiển thị chỉ là ví dụ tham khảo. Thu nhập thực tế có thể thay đổi tùy theo gói đăng ký, khả năng duy trì khách hàng và trạng thái cộng tác viên.",
     diagTitle: "Cách hoạt động của hoa hồng 2 tầng",
     directCommission: "Hoa hồng giới thiệu trực tiếp",
-    indirectCommission: "Hoa hồng từ đối tác được mời",
+    indirectCommission: "Hoa hồng từ cộng tác viên được mời",
     directCommissionDesc: "Giới thiệu khách hàng trực tiếp và nhận 15% hoa hồng định kỳ.",
     indirectCommissionDesc:
-      "Mời đối tác. Khi họ mang lại khách hàng trả phí, bạn nhận 5% hoa hồng định kỳ gián tiếp.",
+      "Mời cộng tác viên. Khi họ mang lại khách hàng trả phí, bạn nhận 5% hoa hồng định kỳ gián tiếp.",
     you: "Bạn",
     referCustomers: "Giới thiệu khách hàng",
     directCustomersNode: "Khách hàng trực tiếp",
-    subscribe: "Đăng ký TradeIt",
+    subscribe: "Thanh toán cho TradeIt",
     commission15: "Hoa hồng 15%",
     commission5: "Hoa hồng 5%",
     recurringMonthly: "Định kỳ hằng tháng",
-    inviteAPartner: "Mời đối tác",
-    invitedPartner: "Đối tác được mời",
+    inviteAPartner: "Mời cộng tác viên",
+    invitedPartner: "Cộng tác viên được mời",
     refersCustomers: "Giới thiệu khách hàng",
-    partnersCustomers: "Khách hàng của đối tác",
+    partnersCustomers: "Khách hàng của cộng tác viên được mời",
     howDirect: "Cách tính hoa hồng trực tiếp",
     howIndirect: "Cách tính hoa hồng gián tiếp",
     commission15recurring: "Hoa hồng định kỳ 15%",
     commission5recurring: "Hoa hồng định kỳ 5%",
   },
   stories: {
-    eyebrow: "Mang lại giá trị cho cả doanh nghiệp và đối tác",
-    title: "Nền tảng được doanh nghiệp tin dùng, chương trình mà đối tác muốn giới thiệu",
+    eyebrow: "Mang lại giá trị cho cả doanh nghiệp và cộng tác viên",
+    title: "Nền tảng được doanh nghiệp tin dùng, chương trình mà cộng tác viên muốn giới thiệu",
     subtitle:
-      "Doanh nghiệp cải thiện hiệu quả bán hàng quốc tế, còn đối tác xây dựng nguồn thu định kỳ. TradeIt tạo ra giá trị cho cả hai bên.",
+      "Doanh nghiệp cải thiện hiệu quả bán hàng quốc tế, còn cộng tác viên xây dựng nguồn thu định kỳ. TradeIt tạo ra giá trị cho cả hai bên.",
     lovedByUsers: "Phản hồi từ người dùng",
-    recommendedByPartners: "Đối tác khuyên dùng",
+    recommendedByPartners: "Cộng tác viên khuyên dùng",
     items: [
       {
         role: "Quản lý xuất khẩu",
@@ -254,15 +254,15 @@ export const vi: Copy = {
   cta: {
     title: "Biến mạng lưới toàn cầu của bạn thành nguồn thu nhập",
     subcopy:
-      "Tham gia Chương trình Đối tác của TradeIt và nhận hoa hồng định kỳ khi giúp doanh nghiệp phát triển trên thị trường toàn cầu.",
-    badges: ["15% từ giới thiệu trực tiếp", "5% từ đối tác được mời", "Tham gia miễn phí"],
+      "Tham gia Chương trình Cộng tác viên của TradeIt và nhận hoa hồng định kỳ khi giúp doanh nghiệp phát triển trên thị trường toàn cầu.",
+    badges: ["15% từ giới thiệu trực tiếp", "5% từ cộng tác viên được mời", "Tham gia miễn phí"],
   },
   faq: {
     eyebrow: "Bạn còn thắc mắc?",
     title: "Câu hỏi thường gặp",
     items: [
       {
-        q: "Ai có thể trở thành đối tác của TradeIt?",
+        q: "Ai có thể trở thành cộng tác viên của TradeIt?",
         a: "Bất kỳ ai có mạng lưới kinh doanh đều có thể tham gia — bao gồm các chuyên gia tư vấn, nhà sáng tạo nội dung, hiệp hội thương mại, cộng đồng, đại lý, doanh nhân và cả người dùng TradeIt hiện tại.",
       },
       {
@@ -270,12 +270,12 @@ export const vi: Copy = {
         a: "Bạn sẽ nhận được hoa hồng định kỳ mỗi khi khách hàng đăng ký thông qua link giới thiệu của bạn và tiếp tục duy trì đăng ký hoạt động.",
       },
       {
-        q: "Chương trình đối tác 2 tầng là gì?",
-        a: "Ngoài việc nhận hoa hồng từ khách hàng do bạn giới thiệu trực tiếp, bạn còn có thể mời các đối tác khác và nhận hoa hồng gián tiếp từ khách hàng mà các đối tác đó giới thiệu thành công.",
+        q: "Chương trình cộng tác viên 2 tầng là gì?",
+        a: "Ngoài việc nhận hoa hồng từ khách hàng do bạn giới thiệu trực tiếp, bạn còn có thể mời các cộng tác viên khác và nhận hoa hồng gián tiếp từ khách hàng mà các cộng tác viên đó giới thiệu thành công.",
       },
       {
         q: "Tôi có thể nhận được bao nhiêu hoa hồng?",
-        a: "Bạn có thể nhận 15% hoa hồng định kỳ từ mỗi khách hàng đăng ký qua link giới thiệu của mình. Ngoài ra, bạn cũng nhận 5% hoa hồng định kỳ từ khách hàng do các đối tác mà bạn trực tiếp mời vào Chương trình Đối tác của TradeIt giới thiệu.\u00a0\n\n\nKhi mạng lưới khách hàng và đối tác của bạn tiếp tục mở rộng, cơ hội tạo thu nhập định kỳ cũng tăng theo.",
+        a: "Bạn có thể nhận 15% hoa hồng định kỳ từ mỗi khách hàng đăng ký qua link giới thiệu của mình. Ngoài ra, bạn cũng nhận 5% hoa hồng định kỳ từ khách hàng do các cộng tác viên mà bạn trực tiếp mời vào Chương trình Cộng tác viên của TradeIt giới thiệu.\u00a0\n\n\nKhi mạng lưới khách hàng và cộng tác viên của bạn tiếp tục mở rộng, cơ hội tạo thu nhập định kỳ cũng tăng theo.",
       },
       {
         q: "Tôi có thể nhận hoa hồng từ một khách hàng được giới thiệu trong bao lâu?",
@@ -291,31 +291,31 @@ export const vi: Copy = {
       },
       {
         q: "Tôi có thể tìm link giới thiệu của mình ở đâu?",
-        a: "Sau khi đăng ký Chương trình Đối tác của TradeIt, hãy đăng nhập vào tài khoản TradeIt của bạn.\n\nTừ menu thả xuống hồ sơ, truy cập mục “Partners” để tìm URL giới thiệu và thông tin theo dõi liên quan đến đối tác của bạn.\n\nLink giới thiệu rất quan trọng vì nó giúp TradeIt theo dõi lượt đăng ký, gói trả phí và hoa hồng gắn với tài khoản đối tác của bạn.\n\nVui lòng sử dụng link giới thiệu đúng như đã cung cấp, bao gồm các tham số theo dõi. Nếu link bị thay đổi, xóa hoặc chia sẻ không đúng cách, lượt giới thiệu có thể không được theo dõi chính xác.\n\nNếu có bất kỳ thắc mắc nào về link giới thiệu, vui lòng liên hệ đội hỗ trợ của chúng tôi qua support@tradeit.co.kr.",
+        a: "Sau khi đăng ký Chương trình Cộng tác viên của TradeIt, hãy đăng nhập vào tài khoản TradeIt của bạn.\n\nTừ menu thả xuống hồ sơ, truy cập mục “Partners” để tìm URL giới thiệu và thông tin theo dõi liên quan đến cộng tác viên của bạn.\n\nLink giới thiệu rất quan trọng vì nó giúp TradeIt theo dõi lượt đăng ký, gói trả phí và hoa hồng gắn với tài khoản cộng tác viên của bạn.\n\nVui lòng sử dụng link giới thiệu đúng như đã cung cấp, bao gồm các tham số theo dõi. Nếu link bị thay đổi, xóa hoặc chia sẻ không đúng cách, lượt giới thiệu có thể không được theo dõi chính xác.\n\nNếu có bất kỳ thắc mắc nào về link giới thiệu, vui lòng liên hệ đội hỗ trợ của chúng tôi qua support@tradeit.co.kr.",
       },
       {
         q: "Lượt giới thiệu được theo dõi như thế nào?",
-        a: "Mỗi đối tác sẽ nhận được một link giới thiệu duy nhất. Khi khách hàng đăng ký qua link của bạn, lượt giới thiệu đó sẽ được gắn vĩnh viễn vào tài khoản đối tác của bạn.",
+        a: "Mỗi cộng tác viên sẽ nhận được một link giới thiệu duy nhất. Khi khách hàng đăng ký qua link của bạn, lượt giới thiệu đó sẽ được gắn vĩnh viễn vào tài khoản cộng tác viên của bạn.",
       },
       {
-        q: "Đối tác không được làm những gì?",
-        a: "Với tư cách đối tác của TradeIt, bạn cần quảng bá TradeIt một cách công bằng, chính xác và đạo đức. Một số hoạt động quảng bá bị nghiêm cấm. Vui lòng lưu ý các hạn chế chính sau:\n\nHành vi gian lận: Nghiêm cấm mọi hành vi gian lận bao gồm nhấp chuột giả, đăng ký ảo, tự giới thiệu, nhét cookie, thao túng theo dõi trái phép hoặc bất kỳ hoạt động nào nhằm tạo hoa hồng giả tạo.\n\nThông tin sai lệch: Không được bóp mép dịch vụ, tính năng, giá, phạm vi dữ liệu hoặc kết quả mong đợi của TradeIt. Không được đưa ra cam kết doanh số, giới thiệu ưu đãi không tồn tại hoặc sử dụng chiến thuật marketing lừa dối.\n\nQuảng cáo trả phí không được phép: Các chiến dịch quảng cáo trả phí sử dụng từ khóa liên quan đến TradeIt, thương hiệu hoặc biến thể sai chính tả cần được phê duyệt trước bởi đội ngũ TradeIt. Không được đấu giá từ khóa thương hiệu, sử dụng nội dung quảng cáo gây hiểu lầm, liên kết trực tiếp quảng cáo đến TradeIt mà không được phép, hoặc chiếm đoạt quảng cáo.\n\nKênh quảng bá bị hạn chế: Không được quảng bá TradeIt trên các trang web người lớn, cờ bạc, thù địch, bạo lực, nội dung bất hợp pháp hoặc bất kỳ kênh nào có thể làm tổn hại danh tiếng thương hiệu TradeIt. Quảng bá thông qua nguồn traffic kém chất lượng, lừa đảo hoặc trái phép cũng bị cấm.\n\nSpam và tiếp cận trái phép: Đối tác không được gửi email, tin nhắn hoặc chiến dịch quảng bá đến những người chưa đồng ý nhận. Spam, gửi hàng loạt không được phép và sử dụng danh sách liên hệ mua hoặc trái phép đều bị nghiêm cấm.\n\nSử dụng tài sản thương hiệu không được phép: Không được sử dụng nhãn hiệu, logo, tên thương hiệu TradeIt hoặc biến thể tương tự trong tên miền, tài khoản mạng xã hội, tên cộng đồng, quảng cáo trả phí hoặc tài liệu quảng bá gây hiểu lầm mà không có sự chấp thuận bằng văn bản trước.\n\nƯu đãi hoặc giảm giá không được phép: Đối tác không được quảng cáo giảm giá, phiếu giảm giá, dùng thử miễn phí, thưởng hoặc ưu đãi đặc biệt chưa được TradeIt phê duyệt chính thức.\n\n\u00a0Vui lòng đọc kỹ và tuân thủ Điều khoản và Điều kiện của Chương trình Đối tác TradeIt để đảm bảo tuân thủ đầy đủ các quy tắc và hướng dẫn quảng bá. Vi phạm có thể dẫn đến từ chối thanh toán hoa hồng, đình chỉ hoặc chấm dứt tài khoản đối tác.",
+        q: "Cộng tác viên không được làm những gì?",
+        a: "Với tư cách cộng tác viên của TradeIt, bạn cần quảng bá TradeIt một cách công bằng, chính xác và đạo đức. Một số hoạt động quảng bá bị nghiêm cấm. Vui lòng lưu ý các hạn chế chính sau:\n\nHành vi gian lận: Nghiêm cấm mọi hành vi gian lận bao gồm nhấp chuột giả, đăng ký ảo, tự giới thiệu, nhét cookie, thao túng theo dõi trái phép hoặc bất kỳ hoạt động nào nhằm tạo hoa hồng giả tạo.\n\nThông tin sai lệch: Không được bóp mép dịch vụ, tính năng, giá, phạm vi dữ liệu hoặc kết quả mong đợi của TradeIt. Không được đưa ra cam kết doanh số, giới thiệu ưu đãi không tồn tại hoặc sử dụng chiến thuật marketing lừa dối.\n\nQuảng cáo trả phí không được phép: Các chiến dịch quảng cáo trả phí sử dụng từ khóa liên quan đến TradeIt, thương hiệu hoặc biến thể sai chính tả cần được phê duyệt trước bởi đội ngũ TradeIt. Không được đấu giá từ khóa thương hiệu, sử dụng nội dung quảng cáo gây hiểu lầm, liên kết trực tiếp quảng cáo đến TradeIt mà không được phép, hoặc chiếm đoạt quảng cáo.\n\nKênh quảng bá bị hạn chế: Không được quảng bá TradeIt trên các trang web người lớn, cờ bạc, thù địch, bạo lực, nội dung bất hợp pháp hoặc bất kỳ kênh nào có thể làm tổn hại danh tiếng thương hiệu TradeIt. Quảng bá thông qua nguồn traffic kém chất lượng, lừa đảo hoặc trái phép cũng bị cấm.\n\nSpam và tiếp cận trái phép: Cộng tác viên không được gửi email, tin nhắn hoặc chiến dịch quảng bá đến những người chưa đồng ý nhận. Spam, gửi hàng loạt không được phép và sử dụng danh sách liên hệ mua hoặc trái phép đều bị nghiêm cấm.\n\nSử dụng tài sản thương hiệu không được phép: Không được sử dụng nhãn hiệu, logo, tên thương hiệu TradeIt hoặc biến thể tương tự trong tên miền, tài khoản mạng xã hội, tên cộng đồng, quảng cáo trả phí hoặc tài liệu quảng bá gây hiểu lầm mà không có sự chấp thuận bằng văn bản trước.\n\nƯu đãi hoặc giảm giá không được phép: Cộng tác viên không được quảng cáo giảm giá, phiếu giảm giá, dùng thử miễn phí, thưởng hoặc ưu đãi đặc biệt chưa được TradeIt phê duyệt chính thức.\n\n\u00a0Vui lòng đọc kỹ và tuân thủ Điều khoản và Điều kiện của Chương trình Cộng tác viên TradeIt để đảm bảo tuân thủ đầy đủ các quy tắc và hướng dẫn quảng bá. Vi phạm có thể dẫn đến từ chối thanh toán hoa hồng, đình chỉ hoặc chấm dứt tài khoản cộng tác viên.",
       },
       {
         q: "Tham gia có mất phí không?",
-        a: "Không. Tham gia Chương trình Đối tác của TradeIt hoàn toàn miễn phí.",
+        a: "Không. Tham gia Chương trình Cộng tác viên của TradeIt hoàn toàn miễn phí.",
       },
       {
         q: "Tôi có thể quảng bá TradeIt trên toàn cầu không?",
-        a: "Có. TradeIt được xây dựng cho doanh nghiệp toàn cầu, và đối tác có thể quảng bá nền tảng trên phạm vi quốc tế.",
+        a: "Có. TradeIt được xây dựng cho doanh nghiệp toàn cầu, và cộng tác viên có thể quảng bá nền tảng trên phạm vi quốc tế.",
       },
       {
         q: "Tôi có thể theo dõi lượt giới thiệu và hoa hồng không?",
-        a: "Có. Bảng điều khiển đối tác của bạn cung cấp thông tin theo dõi lượt nhấp, đăng ký, khách hàng trả phí, hoa hồng định kỳ và lịch sử thanh toán theo thời gian thực.",
+        a: "Có. Bảng điều khiển cộng tác viên của bạn cung cấp thông tin theo dõi lượt nhấp, đăng ký, khách hàng trả phí, hoa hồng định kỳ và lịch sử thanh toán theo thời gian thực.",
       },
       {
         q: "Tôi có thể liên hệ ai khi cần hỗ trợ?",
-        a: "Đội ngũ thành công đối tác của chúng tôi sẵn sàng hỗ trợ về quá trình onboarding, thắc mắc về hoa hồng và hỗ trợ kỹ thuật. Vui lòng liên hệ support@tradeit.co.kr để biết thêm chi tiết.",
+        a: "Đội ngũ thành công cộng tác viên của chúng tôi sẵn sàng hỗ trợ về quá trình onboarding, thắc mắc về hoa hồng và hỗ trợ kỹ thuật. Vui lòng liên hệ support@tradeit.co.kr để biết thêm chi tiết.",
       },
     ],
   },
