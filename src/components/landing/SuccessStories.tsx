@@ -79,10 +79,10 @@ export function SuccessStories() {
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           {copy.stories.eyebrow}
         </span>
-        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl sm:whitespace-pre-line">
           {copy.stories.title}
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lg text-muted-foreground sm:whitespace-pre-line">
           {copy.stories.subtitle}
         </p>
       </div>
