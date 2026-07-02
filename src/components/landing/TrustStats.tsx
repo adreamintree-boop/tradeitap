@@ -60,7 +60,7 @@ export function TrustStats() {
               {s.value}
             </div>
             <div className="mt-2 font-display text-lg font-bold">{s.label}</div>
-            <p className="mt-2 leading-relaxed text-muted-foreground">{s.body}</p>
+            <p className="mt-2 leading-relaxed whitespace-pre-line text-muted-foreground">{s.body}</p>
           </article>
         ))}
       </div>
