@@ -3,9 +3,9 @@ import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 import { useLang } from "./i18n";
 
 const socials = [
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Facebook, label: "Facebook" },
-  { Icon: Youtube, label: "YouTube" },
+  { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/tradeitnow/" },
+  { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/people/Trade-it/100072312823472/#" },
+  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@Trade.It.2026" },
 ];
 
 export function Footer() {
@@ -16,22 +16,22 @@ export function Footer() {
         {/* Mobile: first row (links + socials). Desktop: right side. */}
         <div className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:order-2 md:gap-x-6 md:gap-y-3">
           <a
-            href="#"
+            href="https://www.tradeit.global/en/terms-of-use"
             className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.terms}
           </a>
           <a
-            href="#"
+            href="https://www.tradeit.global/en/privacy-policy"
             className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.privacy}
           </a>
           <div className="flex items-center gap-4">
-            {socials.map(({ Icon, label }) => (
+            {socials.map(({ Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
