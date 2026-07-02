@@ -3,9 +3,9 @@ import tradeitLogo from "@/assets/tradeit-logo-low.png.asset.json";
 import { useLang } from "./i18n";
 
 const socials = [
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Facebook, label: "Facebook" },
-  { Icon: Youtube, label: "YouTube" },
+  { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/tradeitnow/" },
+  { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/people/Trade-it/100072312823472/#" },
+  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@Trade.It.2026" },
 ];
 
 export function Footer() {
