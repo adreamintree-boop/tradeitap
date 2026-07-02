@@ -1090,6 +1090,14 @@ const LangContext = createContext<LangContextValue>({
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [code, setCode] = useState("en");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("tradeit_lang");
+      if (saved) setCode(saved);
+    } catch {
+      /* storage may be unavailable */
+    }
+  }, []);
   const value = useMemo<LangContextValue>(() => {
     const lang: Lang = code === "ko" ? "ko" : code === "ja" ? "ja" : code === "zh" ? "zh" : code === "ru" ? "ru" : code === "es" ? "es" : code === "vi" ? "vi" : "en";
     return { code, setCode, lang, t: dict[lang] };
@@ -1097,6 +1105,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute("data-language", value.lang);
+    }
+    try {
+      localStorage.setItem("tradeit_lang", value.lang);
+    } catch {
+      /* storage may be unavailable */
     }
   }, [value.lang]);
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
