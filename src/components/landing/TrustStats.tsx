@@ -18,10 +18,10 @@ export function TrustStats() {
         <span className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           {t.proof.eyebrow}
         </span>
-        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl sm:whitespace-pre-line">
           {t.proof.title}
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lg text-muted-foreground sm:whitespace-pre-line">
           {t.proof.subtitle}
         </p>
       </div>
@@ -60,7 +60,7 @@ export function TrustStats() {
               {s.value}
             </div>
             <div className="mt-2 font-display text-lg font-bold">{s.label}</div>
-            <p className="mt-2 leading-relaxed text-muted-foreground">{s.body}</p>
+            <p className="mt-2 leading-relaxed whitespace-pre-line text-muted-foreground">{s.body}</p>
           </article>
         ))}
       </div>
