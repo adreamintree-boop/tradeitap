@@ -28,10 +28,10 @@ export function Footer() {
             {t.footer.privacy}
           </a>
           <div className="flex items-center gap-4">
-            {socials.map(({ Icon, label }) => (
+            {socials.map(({ Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
