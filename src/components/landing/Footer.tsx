@@ -16,7 +16,7 @@ export function Footer() {
         {/* Mobile: first row (links + socials). Desktop: right side. */}
         <div className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:order-2 md:gap-x-6 md:gap-y-3">
           <a
-            href="#"
+            href="https://www.tradeit.global/en/terms-of-use"
             className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.terms}
