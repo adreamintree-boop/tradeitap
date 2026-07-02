@@ -6,7 +6,6 @@ import {
   Eye,
   EyeOff,
   TrendingUp,
-  Users,
   Wallet,
 } from "lucide-react";
 import { Logo } from "@/components/landing/Logo";
