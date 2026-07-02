@@ -1,26 +1,33 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   Check,
   Eye,
   EyeOff,
   TrendingUp,
-  Users,
   Wallet,
 } from "lucide-react";
 import { Logo } from "@/components/landing/Logo";
-import tradeitLogoAsset from "@/assets/tradeit-logo.png.asset.json";
+import tradeitLogoTransparent from "@/assets/tradeit-logo-transparent.png.asset.json";
+import {
+  normalizeSignupLang,
+  signupDict,
+  type SignupCopy,
+  type SignupLang,
+} from "./signup-i18n";
 
 type SignupSearch = {
   type?: string;
   source?: string;
+  lang?: string;
 };
 
 export const Route = createFileRoute("/signup")({
   validateSearch: (search: Record<string, unknown>): SignupSearch => ({
     type: typeof search.type === "string" ? search.type : undefined,
     source: typeof search.source === "string" ? search.source : undefined,
+    lang: typeof search.lang === "string" ? search.lang : undefined,
   }),
   head: () => ({
     meta: [
@@ -35,14 +42,7 @@ export const Route = createFileRoute("/signup")({
   component: SignupPage,
 });
 
-const partnerPoints = [
-  "15% direct recurring commission",
-  "5% indirect partner commission",
-  "Free to join",
-  "Built for consultants, creators, communities, and trade networks",
-];
-
-function PartnerVisual() {
+function PartnerVisual({ c }: { c: SignupCopy }) {
   return (
     <div className="relative mt-10 w-full">
       {/* Monthly Commission — primary card */}
@@ -54,9 +54,9 @@ function PartnerVisual() {
             </span>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-white/70">
-                Monthly Commission
+                {c.monthlyCommission}
               </p>
-              <p className="font-display text-3xl font-extrabold text-white">$1,800</p>
+              <p className="font-display text-3xl font-extrabold text-white">{c.amount}</p>
             </div>
           </div>
           <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/20 px-2.5 py-1 text-xs font-semibold text-emerald-100">
@@ -79,17 +79,17 @@ function PartnerVisual() {
       {/* Direct / Indirect / Referral signups */}
       <div className="mt-4 grid grid-cols-3 gap-3">
         <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Direct</p>
-          <p className="mt-1 font-display text-2xl font-bold text-white">15%</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">{c.directLabel}</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">{c.directValue}</p>
         </div>
         <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Indirect</p>
-          <p className="mt-1 font-display text-2xl font-bold text-white">5%</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">{c.indirectLabel}</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">{c.indirectValue}</p>
         </div>
         <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">Signups</p>
-          <p className="mt-1 font-display text-2xl font-bold text-white">42</p>
-          <p className="text-[10px] text-white/60">This month</p>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-white/70">{c.signupsLabel}</p>
+          <p className="mt-1 font-display text-2xl font-bold text-white">{c.signupsValue}</p>
+          <p className="text-[10px] text-white/60">{c.thisMonth}</p>
         </div>
       </div>
     </div>
@@ -117,10 +117,53 @@ function GeneralVisual() {
   );
 }
 
+/** Renders the terms sentence with inline Terms of Service / Privacy Policy links. */
+function TermsText({ c }: { c: SignupCopy }) {
+  const parts = c.termsTemplate.split(/(\{tos\}|\{privacy\})/);
+  return (
+    <span>
+      {parts.map((part, i) => {
+        if (part === "{tos}") {
+          return (
+            <a key={i} href="#" className="font-medium text-primary underline">
+              {c.tosLabel}
+            </a>
+          );
+        }
+        if (part === "{privacy}") {
+          return (
+            <a key={i} href="#" className="font-medium text-primary underline">
+              {c.privacyLabel}
+            </a>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </span>
+  );
+}
+
 function SignupPage() {
-  const { type, source } = Route.useSearch();
+  const { type, source, lang } = Route.useSearch();
   const navigate = useNavigate();
   const isPartner = type === "partner" || source === "affiliate-partners";
+
+  // Language priority: 1) lang query param, 2) saved language, 3) English.
+  const queryLang = normalizeSignupLang(lang);
+  const [uiLang, setUiLang] = useState<SignupLang>(queryLang ?? "en");
+  useEffect(() => {
+    if (queryLang) {
+      setUiLang(queryLang);
+      return;
+    }
+    try {
+      const saved = normalizeSignupLang(localStorage.getItem("tradeit_lang"));
+      if (saved) setUiLang(saved);
+    } catch {
+      /* storage may be unavailable */
+    }
+  }, [queryLang]);
+  const c = signupDict[uiLang];
 
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState("");
@@ -176,26 +219,23 @@ function SignupPage() {
         />
         <div className="relative w-full max-w-[560px]">
           <Link to="/" className="inline-flex">
-            <div className="rounded-xl bg-white/95 px-5 py-2.5 shadow-lg transition hover:bg-white">
-              <img
-                src={tradeitLogoAsset.url}
-                alt="TradeIt"
-                className="h-8 w-auto object-contain"
-              />
-            </div>
+            <img
+              src={tradeitLogoTransparent.url}
+              alt="TradeIt"
+              className="h-9 w-auto object-contain transition hover:opacity-90"
+            />
           </Link>
 
           {isPartner ? (
             <>
               <h1 className="mt-10 font-display text-4xl font-extrabold leading-tight tracking-tight">
-                Start Earning with TradeIt
+                {c.earnTitle}
               </h1>
               <p className="mt-4 text-base leading-relaxed text-white/80">
-                Join the TradeIt Affiliate Partners Program and earn recurring commissions by
-                recommending a global trade data and AI-powered sales platform.
+                {c.earnDesc}
               </p>
               <ul className="mt-7 space-y-3">
-                {partnerPoints.map((p) => (
+                {c.points.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-sm text-white/90">
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/15">
                       <Check className="h-3 w-3" />
@@ -204,7 +244,7 @@ function SignupPage() {
                   </li>
                 ))}
               </ul>
-              <PartnerVisual />
+              <PartnerVisual c={c} />
             </>
           ) : (
             <>
@@ -232,17 +272,17 @@ function SignupPage() {
           {isPartner && (
             <div className="mb-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
-                Affiliate Partners Program
+                {c.programBadge}
               </span>
             </div>
           )}
 
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-foreground">
-            {isPartner ? "Create your Partner account" : "Create your account"}
+            {isPartner ? c.createTitle : "Create your account"}
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
             {isPartner
-              ? "Use your TradeIt account to access both the TradeIt platform and the Partner Program."
+              ? c.createDesc
               : "Sign up to start exploring global trade data and AI-powered sales."}
           </p>
 
@@ -250,27 +290,27 @@ function SignupPage() {
             {/* Email */}
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-foreground">
-                Email <span className="text-destructive">*</span>
+                {c.emailLabel} <span className="text-destructive">*</span>
               </label>
               <div className="flex items-center gap-2">
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you"
+                  placeholder={c.emailPlaceholder}
                   className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/40"
                 />
                 <span className="text-muted-foreground">@</span>
                 <input
                   value={domain}
                   onChange={(e) => setDomain(e.target.value)}
-                  placeholder="company.com"
+                  placeholder={c.domainPlaceholder}
                   className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/40"
                 />
                 <button
                   type="button"
                   className="h-11 shrink-0 rounded-lg border border-border bg-muted px-4 text-sm font-semibold text-foreground transition hover:bg-muted/70"
                 >
-                  Send Code
+                  {c.sendCode}
                 </button>
               </div>
             </div>
@@ -278,12 +318,12 @@ function SignupPage() {
             {/* Verification code */}
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-foreground">
-                Verification Code <span className="text-destructive">*</span>
+                {c.verifyLabel} <span className="text-destructive">*</span>
               </label>
               <input
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
-                placeholder="Enter the code sent to your email"
+                placeholder={c.verifyPlaceholder}
                 className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/40"
               />
             </div>
@@ -291,7 +331,7 @@ function SignupPage() {
             {/* Password */}
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-foreground">
-                Password <span className="text-destructive">*</span>
+                {c.passwordLabel} <span className="text-destructive">*</span>
               </label>
               <div className="relative">
                 <input
@@ -314,7 +354,7 @@ function SignupPage() {
             {/* Confirm Password */}
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-foreground">
-                Confirm Password <span className="text-destructive">*</span>
+                {c.confirmLabel} <span className="text-destructive">*</span>
               </label>
               <div className="relative">
                 <input
@@ -336,12 +376,12 @@ function SignupPage() {
                 <li
                   className={`flex items-center gap-1.5 text-xs ${pwValid ? "text-emerald-600" : "text-muted-foreground"}`}
                 >
-                  <Check className="h-3.5 w-3.5" /> 8–20 characters (letters and numbers)
+                  <Check className="h-3.5 w-3.5" /> {c.pwHint}
                 </li>
                 <li
                   className={`flex items-center gap-1.5 text-xs ${pwMatch ? "text-emerald-600" : "text-muted-foreground"}`}
                 >
-                  <Check className="h-3.5 w-3.5" /> Passwords match
+                  <Check className="h-3.5 w-3.5" /> {c.pwMatch}
                 </li>
               </ul>
             </div>
@@ -349,7 +389,7 @@ function SignupPage() {
             {/* Name */}
             <div>
               <label className="mb-1.5 block text-sm font-semibold text-foreground">
-                Name <span className="text-destructive">*</span>
+                {c.nameLabel} <span className="text-destructive">*</span>
               </label>
               <input
                 value={name}
@@ -366,16 +406,7 @@ function SignupPage() {
                 onChange={(e) => setAgree(e.target.checked)}
                 className="mt-0.5 h-4 w-4 rounded border-input accent-[var(--primary)]"
               />
-              <span>
-                By creating an account, you agree to the{" "}
-                <a href="#" className="font-medium text-primary underline">
-                  Terms of Service
-                </a>{" "}
-                and{" "}
-                <a href="#" className="font-medium text-primary underline">
-                  Privacy Policy.
-                </a>
-              </span>
+              <TermsText c={c} />
             </label>
 
             {/* Actions */}
@@ -385,7 +416,7 @@ function SignupPage() {
                 className="grid h-12 place-items-center rounded-lg border border-border bg-background text-sm font-semibold text-foreground transition hover:bg-muted"
               >
                 <span className="inline-flex items-center gap-1.5">
-                  <ArrowLeft className="h-4 w-4" /> Back to login
+                  <ArrowLeft className="h-4 w-4" /> {c.backToLogin}
                 </span>
               </Link>
               <button
@@ -393,7 +424,7 @@ function SignupPage() {
                 disabled={!canSubmit}
                 className="h-12 rounded-lg bg-primary text-sm font-semibold text-primary-foreground shadow-float transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Sign up
+                {c.signUp}
               </button>
             </div>
           </form>

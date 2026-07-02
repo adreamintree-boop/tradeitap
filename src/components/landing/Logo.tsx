@@ -38,7 +38,7 @@ export function PartnerButton({
   size?: "lg" | "md";
   children?: React.ReactNode;
 }) {
-  const { t } = useLang();
+  const { t, code } = useLang();
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
   const sizes = {
@@ -55,7 +55,7 @@ export function PartnerButton({
   return (
     <Link
       to="/signup"
-      search={{ type: "partner" }}
+      search={{ type: "partner", lang: code }}
       className={cn(base, sizes[size], variants[variant], className)}
     >
       {children ?? t.becomeAPartner}
