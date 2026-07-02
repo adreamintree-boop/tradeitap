@@ -56,7 +56,10 @@ function LanguageDropdown({
           />
         </button>
         {open && (
-          <div className="mt-1 rounded-xl border border-border bg-popover p-1.5 shadow-lg">
+          <div
+            className="mt-1 max-h-[280px] overflow-y-auto rounded-xl border border-border bg-popover p-1.5 shadow-lg"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             {languages.map((lang) => (
               <button
                 key={lang.code}
@@ -236,9 +239,12 @@ export function Navbar() {
 
         {/* Mobile dropdown menu */}
         <div
-          className={`overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
-            menuOpen ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
+          className={`border-t border-border/60 bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
+            menuOpen
+              ? "max-h-[100dvh] overflow-y-auto opacity-100"
+              : "max-h-0 overflow-hidden opacity-0"
           }`}
+          style={{ WebkitOverflowScrolling: "touch" }}
         >
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
             {navLinks.map((l) => (
