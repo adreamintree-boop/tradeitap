@@ -56,7 +56,10 @@ function LanguageDropdown({
           />
         </button>
         {open && (
-          <div className="mt-1 rounded-xl border border-border bg-popover p-1.5 shadow-lg">
+          <div
+            className="mt-1 max-h-[280px] overflow-y-auto rounded-xl border border-border bg-popover p-1.5 shadow-lg"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             {languages.map((lang) => (
               <button
                 key={lang.code}
