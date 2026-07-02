@@ -22,7 +22,7 @@ export function Footer() {
             {t.footer.terms}
           </a>
           <a
-            href="#"
+            href="https://www.tradeit.global/en/privacy-policy"
             className="text-[13px] font-medium text-foreground transition-colors hover:text-primary md:text-sm"
           >
             {t.footer.privacy}
